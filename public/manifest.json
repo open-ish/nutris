@@ -1,0 +1,25 @@
+{
+  "name": "Nutris",
+  "short_name": "Nutris",
+  "icons": [
+    {
+      "src": "./img/icons/nutrisicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/nutrisicon144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#006064",
+  "theme_color": "#006064",
+  "scope": ".",
+  "orientation": "portrait-primary",
+  "description": "App para cálculos de dietas enterais e parenterais.",
+  "dir": "ltr",
+  "lang": "pt-BR"
+}
