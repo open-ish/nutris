@@ -40,9 +40,11 @@ npm run build
 
 ## Authors
 
-👤 (@tassioFront)[https://github.com/tassioFront]
-👤 (@lupy100)[https://github.com/lupy100]
-👤 (@pehlse)[https://github.com/pehlse]
+👤 [@tassioFront](https://github.com/tassioFront)
+👤 [@lupy100](https://github.com/lupy100)
+👤 [@pehlse](https://github.com/pehlse)
+
+- Github: [@open-ish](https://github.com/open-ish)
 
 ## 🤝 Contributing
 
