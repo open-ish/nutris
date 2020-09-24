@@ -11,10 +11,10 @@ Web App to calculate parenteral diets.
 
 This project uses:
 
-- [Vue ❤️](https://vuejs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Sass](https://sass-lang.com/)
-- [Jest](https://jestjs.io/docs/en/getting-started)
+- [Vue ❤️](https://vuejs.org/) - Awesome JS Framawork!
+- [TypeScript](https://www.typescriptlang.org/) - To build a secure code and avoid bugs.
+- [Sass](https://sass-lang.com/) - CSS Pre-processor with nice approach.
+- [Jest](https://jestjs.io/docs/en/getting-started) - To create unit test and avoid bugs.
 
 This project also uses [Husky](https://github.com/typicode/husky) to prevent commit and push messy and wrong code.
 
