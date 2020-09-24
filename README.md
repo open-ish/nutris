@@ -38,3 +38,16 @@ npm start
 npm run build
 ```
 
+## Authors
+
+👤 (@tassioFront)[https://github.com/tassioFront]
+👤 (@lupy100)[https://github.com/lupy100]
+👤 (@pehlse)[https://github.com/pehlse]
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/juntossomosmais/venice/issues).
+
+## 📝 License
+
+Copyright © 2020 [@open-ish](https://github.com/open-ish)
