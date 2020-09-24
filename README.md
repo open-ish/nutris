@@ -17,3 +17,24 @@ This project uses:
 - [Jest](https://jestjs.io/docs/en/getting-started)
 
 This project also uses [Husky](https://github.com/typicode/husky) to prevent commit and push messy and wrong code.
+
+## Commands
+
+#### Install
+
+```sh
+npm install
+```
+
+#### Usage
+
+```sh
+npm start
+```
+
+#### Build 
+
+```sh
+npm run build
+```
+
