@@ -6,7 +6,7 @@
 </p>
 <h1 align="center">Nutris</h1></a>
 
-Web App to calculate parenteral diets.
+Web App to calculate parenteral diets. [See it running here!🍉](https://nutris.firebaseapp.com/)
 
 ## Stack
 
