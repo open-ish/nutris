@@ -100,5 +100,8 @@ dist
 # DynamoDB Local files
 .dynamodb/
 
+# Credentials
+.npmrc
+
 # TernJS port file
 .tern-port
