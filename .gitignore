@@ -101,7 +101,7 @@ dist
 .dynamodb/
 
 # Credentials
-.npmrc
+.\npmrc
 
 # TernJS port file
 .tern-port
