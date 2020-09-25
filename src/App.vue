@@ -7,6 +7,7 @@
 </template>
 
 <style lang="scss">
+// create reset
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
