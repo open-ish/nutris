@@ -2,10 +2,6 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 require('firebase/auth')
 
-console.log(
-  process.env.VUE_APP_FIREBASE_PROJECT_ID?.includes('dev') && 'Hi, Dev!! ​😁🍉​'
-)
-
 const FIREBASE_URL = '.firebaseapp.com'
 const config = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
