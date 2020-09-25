@@ -34,4 +34,3 @@ console.log(
   process.env.VUE_APP_FIREBASE_PROJECT_ID?.includes("dev") && WELCOME_DEV,
   WELCOME_DEV_STYLES
 );
-
