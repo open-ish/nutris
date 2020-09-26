@@ -1,11 +1,12 @@
 
 
+<a href="https://nutris.firebaseapp.com/">
 <p align="center">
   <img  src="https://img.icons8.com/cotton/2x/watermelon.png" alt="Nutris" width="300" />
 </p>
-<h1 align="center">Nutris</h1>
+<h1 align="center">Nutris</h1></a>
 
-Web App to calculate parenteral diets.
+Web App to calculate parenteral diets. [See it running here!👀](https://nutris.firebaseapp.com/)
 
 ## Stack
 
@@ -16,6 +17,7 @@ This project uses:
 - [Sass](https://sass-lang.com/) - CSS Pre-processor with nice approach.
 - [Vuetify](https://vuetifyjs.com/en/getting-started/quick-start/) - To beautiful and awesome UI components.
 - [Jest](https://jestjs.io/docs/en/getting-started) - To create unit test and avoid bugs.
+- [Venice](https://github.com/juntossomosmais/venice) - We have been using [Juntos Somos Mais](https://github.com/juntossomosmais) Design System as inspiration.
 
 This project also uses [Husky](https://github.com/typicode/husky) to prevent commit and push messy and wrong code.
 
