@@ -9,7 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@open-ish/nutris-roles": "0.0.2",
+    "@open-ish/nutris-roles": "^1.0.0",
     "core-js": "^3.6.5",
     "firebase": "^6.6.1",
     "firebase-admin": "^9.2.0",
