@@ -8,7 +8,7 @@ import FirebaseApp from '@/../firebaseApp'
 
 import { getCssVariableValue } from "@/helpers/styles.ts";
 import { User } from '@/models/User.ts'
-import "@/assets/styles/variables.css";
+import "@/assets/styles/index.css";
 
 const init = () =>
   createApp(App)
