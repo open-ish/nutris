@@ -50,8 +50,12 @@
   },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
-      "vue-cli-service lint",
-      "git add"
+      "npx prettier --write",
+      "eslint **/*.js --fix-dry-run",
+      "jest --bail --findRelatedTests"
+    ],
+    "*.scss": [
+      "stylelint --fix"
     ]
   }
 }
