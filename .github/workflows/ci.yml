@@ -13,7 +13,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          repo-token: '${{ secrets.LHCI_GITHUB_APP_TOKEN }}'
+          repo-token: '${{ secrets.GITHUB_APP_TOKEN }}'
       - run: npm install
       - run: npm run build
       # - name: Lighthouse CI //This is a nice approach, We will use at future.
