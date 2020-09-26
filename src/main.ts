@@ -5,7 +5,7 @@ import router from "./router";
 import store from "./store";
 
 import { getCssVariableValue } from "@/helpers/styles.ts";
-import "@/assets/styles/variables.css";
+import "@/assets/styles/index.css";
 
 const init = () =>
   createApp(App)
