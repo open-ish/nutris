@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@open-ish/nutris-roles": "0.0.2",
+    "@open-ish/nutris-roles": "^1.0.0",
     "core-js": "^3.6.5",
     "firebase": "^6.6.1",
     "firebase-admin": "^9.2.0",
@@ -50,8 +50,12 @@
   },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
-      "vue-cli-service lint",
-      "git add"
+      "npx prettier --write",
+      "eslint **/*.js --fix-dry-run",
+      "jest --bail --findRelatedTests"
+    ],
+    "*.scss": [
+      "stylelint --fix"
     ]
   }
 }
