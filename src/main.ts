@@ -9,11 +9,14 @@ import FirebaseApp from '@/../firebaseApp'
 import { getCssVariableValue } from '@/helpers/styles.ts'
 import { User } from '@/models/User.ts'
 import '@/assets/styles/index.css'
+// @testing
+import { i18n } from '@/i18n/index.ts'
 
 const init = () =>
   createApp(App)
     .use(store)
     .use(router)
+    .use(i18n)
     .mount('#app')
 
 FirebaseApp.auth().onAuthStateChanged(async (user: User) => {

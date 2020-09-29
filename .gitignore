@@ -102,6 +102,7 @@ dist
 
 # Credentials
 .\npmrc
+.\yarnrc
 
 # TernJS port file
 .tern-port
