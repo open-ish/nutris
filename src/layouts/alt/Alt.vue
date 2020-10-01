@@ -10,7 +10,7 @@
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component'
 import { Paths } from '@/router/alt/enums'
-import { LayoutsName, LayoutsPaths } from '@/router/enums'
+import { LayoutsPaths } from '@/router/enums'
 
 @Options({
   name: 'LAlt',

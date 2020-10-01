@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component'
-import { Paths, Names } from '@/router/main/enums'
+import { Paths } from '@/router/main/enums'
 
 export default class LDefault extends Vue {
   Paths = Paths
