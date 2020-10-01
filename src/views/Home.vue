@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
 import { ref, defineComponent } from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
 
