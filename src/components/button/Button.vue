@@ -260,16 +260,6 @@ export default class Button extends Vue {
   }
 }
 
-// .small {
-//   height: var(--space-md);
-//   padding-left: var(--space-sm);
-//   padding-right: var(--space-sm);
-
-//   .children {
-//     font-size: 0.8em;
-//   }
-// }
-
 .medium {
   height: var(--space-md);
   padding-left: var(--space);
