@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import { main } from './main'
+import lDefault from './default'
 import { alt } from './alt'
 
-const routes: Array<RouteRecordRaw> = [main, alt]
+const routes: Array<RouteRecordRaw> = [lDefault, alt]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
