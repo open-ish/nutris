@@ -36,7 +36,7 @@ export default class Button extends Vue {
   @Prop({ default: 'filled' }) variant!: string
   @Prop({ default: 'round-square' }) shape!: string
   @Prop({ default: 'medium' }) size!: string
-  @Prop({ default: true }) isLoading!: boolean
+  @Prop({ default: false }) isLoading!: boolean
   @Prop({ default: '' }) startIcon!: string
   @Prop({ default: '' }) endIcon!: string
   @Prop() href!: string
