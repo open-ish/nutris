@@ -1,4 +1,4 @@
-import Home from '@/views/Home.vue'
+import Home from '@/views/alt/SomeAlt.vue'
 import { Paths, Names } from '@/router/alt/enums'
 
 export default {

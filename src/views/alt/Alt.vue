@@ -1,3 +1,3 @@
 <template>
-  <h2>Home page</h2>
+  <h2>Alt page</h2>
 </template>
