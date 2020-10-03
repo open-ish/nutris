@@ -1,19 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+import lDefault from './default'
+import { alt } from './alt'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-]
+const routes: Array<RouteRecordRaw> = [lDefault, alt]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
