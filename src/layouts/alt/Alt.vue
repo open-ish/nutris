@@ -4,9 +4,9 @@
     <router-link :to="Paths.someAlt">someAlt</router-link>
     <router-link :to="LayoutsPaths.alt">Alt</router-link>
   </header>
-  <div class="alt">
+  <section class="alt">
     <router-view />
-  </div>
+  </section>
   <footer class="center">Alt footer</footer>
 </template>
 
