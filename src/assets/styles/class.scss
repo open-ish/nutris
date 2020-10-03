@@ -1,0 +1,15 @@
+/*
+  Global class starts with g- prefix
+
+  1. elements position
+*/
+.g-center--x,
+.g-center--y {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.g-center--y {
+  flex-direction: column;
+}
