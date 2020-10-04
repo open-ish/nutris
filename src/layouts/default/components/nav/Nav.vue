@@ -1,14 +1,14 @@
 <template>
   <nav class="nav">
-    <router-link class="item g-center--y" to="/">
+    <router-link class="item g-center--y" :to="Paths.calculate">
       <i class="nutris-ticket"></i>
       <span>Cálculo avulso</span>
     </router-link>
-    <router-link class="item g-center--y" to="/">
+    <router-link class="item g-center--y" :to="Paths.manageDiets">
       <i class="nutris-users"></i>
       <span>Meus Pacientes</span>
     </router-link>
-    <router-link class="item g-center--y" to="/">
+    <router-link class="item g-center--y" :to="Paths.patients">
       <i class="nutris-user"></i>
       <span>Novo paciente</span>
     </router-link>
@@ -18,8 +18,12 @@
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component'
 
+import { Paths } from '@/router/default/enums'
+
 @Options({})
-export default class Nav extends Vue {}
+export default class Nav extends Vue {
+  Paths = Paths
+}
 </script>
 
 <style lang="scss" scoped>
