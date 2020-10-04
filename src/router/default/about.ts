@@ -1,4 +1,4 @@
-import { Names, Paths } from './enums'
+import { Names, Paths } from '@/router/default/enums'
 
 export default {
   path: Paths.about,

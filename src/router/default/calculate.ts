@@ -1,8 +1,8 @@
-import Home from '@/views/Home.vue'
 import { Names, Paths } from '@/router/default/enums'
+import Home from '@/views/Home.vue'
 
 export default {
-  path: Paths.home,
-  name: Names.home,
+  path: Paths.calculate,
+  name: Names.calculate,
   component: Home,
 }
