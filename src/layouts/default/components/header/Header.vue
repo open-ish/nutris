@@ -1,8 +1,10 @@
 <template>
   <header class="header dg-container dg-container-large">
     <Logo />
+    <Nav />
     <img
-      class="user-imagem"
+      role="button"
+      class="user-imagem g-cursor"
       src="https://lh3.googleusercontent.com/a-/AAuE7mBJom5F4cC9cujzyz3IM9VVvMWHfs4RCSJjOr8d"
       aria-label="Imagem do usuário"
     />
@@ -13,10 +15,12 @@
 import { Vue, Options } from 'vue-class-component'
 
 import Logo from '@/components/logo/Logo.vue'
+import Nav from '@/layouts/default/components/nav/Nav.vue'
 
 @Options({
   components: {
     Logo,
+    Nav,
   },
 })
 export default class Header extends Vue {}
@@ -38,5 +42,10 @@ export default class Header extends Vue {}
 .user-imagem {
   max-height: 100%;
   border-radius: 50%;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 </style>
