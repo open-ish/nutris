@@ -1,14 +1,26 @@
 <template>
   <nav class="nav">
-    <router-link class="item g-center--y" :to="Paths.calculate">
+    <router-link
+      class="item g-center--y"
+      active-class="active"
+      :to="Paths.calculate"
+    >
       <i class="nutris-ticket"></i>
       <span>Cálculo avulso</span>
     </router-link>
-    <router-link class="item g-center--y" :to="Paths.manageDiets">
+    <router-link
+      class="item g-center--y"
+      active-class="active"
+      :to="Paths.manageDiets"
+    >
       <i class="nutris-users"></i>
       <span>Meus Pacientes</span>
     </router-link>
-    <router-link class="item g-center--y" :to="Paths.patients">
+    <router-link
+      class="item g-center--y"
+      active-class="active"
+      :to="Paths.patients"
+    >
       <i class="nutris-user"></i>
       <span>Novo paciente</span>
     </router-link>
@@ -22,6 +34,9 @@ import { Paths } from '@/router/default/enums'
 
 @Options({})
 export default class Nav extends Vue {
+  created() {
+    console.log(Paths)
+  }
   Paths = Paths
 }
 </script>
@@ -70,5 +85,9 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
       color: var(--primary-color-lighten);
     }
   }
+}
+
+.active {
+  color: var(--primary-color-lighten);
 }
 </style>
