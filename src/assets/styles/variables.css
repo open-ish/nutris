@@ -71,7 +71,7 @@
   --purple-2: #9c27b0;
   --purple-3: #6a1b9a;
   --cyan-1: #80deea;
-  --cyan-2: #00bcd4;
+  --cyan-2: #006064de;
   --cyan-3: #006064;
   /*2.1 Color name by context */
   --brand-color: var(--cyan-3);
