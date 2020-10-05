@@ -1,31 +1,30 @@
 <template>
-  <header class="center">
-    Default Header
-    <router-link :to="Paths.home">Home</router-link>
-    <router-link :to="Paths.about">About</router-link>
-  </header>
-  <main class="default">
+  <Header />
+  <main class="default dg-container dg-container-large">
     <router-view />
   </main>
-  <footer class="center">Default footer</footer>
+  <footer class="dg-container dg-container-large">Default footer</footer>
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component'
+import { Vue, Options } from 'vue-class-component'
 import { Paths } from '@/router/default/enums'
 
+import Header from '@/layouts/default/components/header/Header.vue'
+
+@Options({
+  components: {
+    Header,
+  },
+})
 export default class LDefault extends Vue {
   Paths = Paths
 }
 </script>
 
-<style scoped lang="scss">
-.center,
-.default {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+<style lang="scss">
+@import '@/layouts/default/Default-variables.scss';
+@import '@/layouts/default/Default-class.scss';
 
 .default {
   justify-content: center;

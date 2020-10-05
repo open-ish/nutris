@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, setup } from 'vue-class-component'
+import { Vue } from 'vue-class-component'
 import { useI18n } from 'vue-i18n'
 
 export default class I18n extends Vue {

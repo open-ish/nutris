@@ -1,0 +1,266 @@
+@font-face {
+  font-family: 'nutris';
+  src: url('./assets/icons/nutris.eot?21886223');
+  src: url('./assets/icons/nutris.eot?21886223#iefix')
+      format('embedded-opentype'),
+    url('./assets/icons/nutris.woff2?21886223') format('woff2'),
+    url('./assets/icons/nutris.woff?21886223') format('woff'),
+    url('./assets/icons/nutris.ttf?21886223') format('truetype'),
+    url('./assets/icons/nutris.svg?21886223#nutris') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'nutris';
+    src: url('../font/nutris.svg?21886223#nutris') format('svg');
+  }
+}
+*/
+
+[class^='nutris-']:before,
+[class*=' nutris-']:before {
+  font-family: 'nutris';
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: 0.2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.nutris-alert:before {
+  content: '\e800';
+} /* '' */
+.nutris-arrow-left:before {
+  content: '\e801';
+} /* '' */
+.nutris-plus:before {
+  content: '\e802';
+} /* '' */
+.nutris-minus:before {
+  content: '\e803';
+} /* '' */
+.nutris-spin:before {
+  content: '\e804';
+} /* '' */
+.nutris-arrow-thin-right:before {
+  content: '\e805';
+} /* '' */
+.nutris-flag:before {
+  content: '\e806';
+} /* '' */
+.nutris-search:before {
+  content: '\e807';
+} /* '' */
+.nutris-star:before {
+  content: '\e808';
+} /* '' */
+.nutris-outline:before {
+  content: '\e809';
+} /* '' */
+.nutris-whatsapp:before {
+  content: '\e80a';
+} /* '' */
+.nutris-whatsapp-negative:before {
+  content: '\e80b';
+} /* '' */
+.nutris-emo-coffee:before {
+  content: '\e80c';
+} /* '' */
+.nutris-folder-open:before {
+  content: '\e80d';
+} /* '' */
+.nutris-emo-unhappy:before {
+  content: '\e80e';
+} /* '' */
+.nutris-dot-3:before {
+  content: '\e80f';
+} /* '' */
+.nutris-print:before {
+  content: '\e831';
+} /* '' */
+.nutris-up-dir:before {
+  content: '\e832';
+} /* '' */
+.nutris-home:before {
+  content: '\e833';
+} /* '' */
+.nutris-cancel:before {
+  content: '\e834';
+} /* '' */
+.nutris-business:before {
+  content: '\e837';
+} /* '' */
+.nutris-calendar:before {
+  content: '\e838';
+} /* '' */
+.nutris-cart:before {
+  content: '\e839';
+} /* '' */
+.nutris-chat:before {
+  content: '\e83a';
+} /* '' */
+.nutris-check:before {
+  content: '\e83b';
+} /* '' */
+.nutris-checklist:before {
+  content: '\e83c';
+} /* '' */
+.nutris-coins:before {
+  content: '\e83d';
+} /* '' */
+.nutris-denied:before {
+  content: '\e83e';
+} /* '' */
+.nutris-doc:before {
+  content: '\e83f';
+} /* '' */
+.nutris-dollar:before {
+  content: '\e840';
+} /* '' */
+.nutris-down-dir:before {
+  content: '\e841';
+} /* '' */
+.nutris-edit:before {
+  content: '\e842';
+} /* '' */
+.nutris-filter:before {
+  content: '\e843';
+} /* '' */
+.nutris-heart:before {
+  content: '\e845';
+} /* '' */
+.nutris-icon-warning:before {
+  content: '\e846';
+} /* '' */
+.nutris-list:before {
+  content: '\e848';
+} /* '' */
+.nutris-mail:before {
+  content: '\e849';
+} /* '' */
+.nutris-money:before {
+  content: '\e84c';
+} /* '' */
+.nutris-phone:before {
+  content: '\e84d';
+} /* '' */
+.nutris-pin:before {
+  content: '\e84e';
+} /* '' */
+.nutris-professional:before {
+  content: '\e84f';
+} /* '' */
+.nutris-radio-off:before {
+  content: '\e850';
+} /* '' */
+.nutris-radio-on:before {
+  content: '\e851';
+} /* '' */
+.nutris-standby:before {
+  content: '\e852';
+} /* '' */
+.nutris-store:before {
+  content: '\e853';
+} /* '' */
+.nutris-ticket:before {
+  content: '\e854';
+} /* '' */
+.nutris-timeline-up:before {
+  content: '\e855';
+} /* '' */
+.nutris-timeline:before {
+  content: '\e856';
+} /* '' */
+.nutris-trash:before {
+  content: '\e857';
+} /* '' */
+.nutris-user-block:before {
+  content: '\e858';
+} /* '' */
+.nutris-user-check:before {
+  content: '\e859';
+} /* '' */
+.nutris-user-circle:before {
+  content: '\e85a';
+} /* '' */
+.nutris-user-divide:before {
+  content: '\e85b';
+} /* '' */
+.nutris-user-heart:before {
+  content: '\e85c';
+} /* '' */
+.nutris-user:before {
+  content: '\e85d';
+} /* '' */
+.nutris-users:before {
+  content: '\e85e';
+} /* '' */
+.nutris-video:before {
+  content: '\e85f';
+} /* '' */
+.nutris-visibility-off:before {
+  content: '\e860';
+} /* '' */
+.nutris-visibility-on:before {
+  content: '\e861';
+} /* '' */
+.nutris-check-empty:before {
+  content: '\f096';
+} /* '' */
+.nutris-facebook:before {
+  content: '\f09a';
+} /* '' */
+.nutris-menu:before {
+  content: '\f0c9';
+} /* '' */
+.nutris-angle-left:before {
+  content: '\f104';
+} /* '' */
+.nutris-angle-right:before {
+  content: '\f105';
+} /* '' */
+.nutris-angle-up:before {
+  content: '\f106';
+} /* '' */
+.nutris-angle-down:before {
+  content: '\f107';
+} /* '' */
+.nutris-ok-squared:before {
+  content: '\f14a';
+} /* '' */
+.nutris-instagram:before {
+  content: '\f16d';
+} /* '' */
+.nutris-calc:before {
+  content: '\f1ec';
+} /* '' */
