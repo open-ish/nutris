@@ -34,9 +34,6 @@ import { Paths } from '@/router/default/enums'
 
 @Options({})
 export default class Nav extends Vue {
-  created() {
-    console.log(Paths)
-  }
   Paths = Paths
 }
 </script>
