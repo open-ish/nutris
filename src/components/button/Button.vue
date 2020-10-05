@@ -13,11 +13,11 @@
       :size="spinnerSize"
       class="loading"
     />
-    <span v-if="startIcon" class="startIcon" />
+    <span v-if="startIcon" :class="`${startIcon} startIcon`" />
     <span class="children">
       <slot />
     </span>
-    <span v-if="endIcon" class="endIcon" />
+    <span v-if="endIcon" :class="`${endIcon} endIcon`" />
   </component>
 </template>
 
@@ -30,6 +30,16 @@ import Spinner from '@/components/spinner/Spinner.vue'
   components: {
     Spinner,
   },
+  //  props: {
+  //   color: { default: 'default' },
+  //   variant: { default: 'filled' },
+  //   shape: { default: 'round-square' },
+  //   size: { default: 'medium' },
+  //   isLoading: { default: false },
+  //   startIcon: { default: '' },
+  //   endIcon: { default: '' },
+  //   href: { default: '' },
+  // },
 })
 export default class Button extends Vue {
   @Prop({ default: 'default' }) color!: string

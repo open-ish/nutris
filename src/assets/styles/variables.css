@@ -102,6 +102,7 @@
   --text-color-lighten: var(--gray-3);
 
   /* 3. Utils */
+  --border-radius-lighten: 2px;
   --border-radius: 4px;
   --zindex-1: 1;
   --zindex-5: 5;
