@@ -1,7 +1,7 @@
 <template>
   <router-link :to="Paths.home" role="logo">
     <div class="logo">
-      <img src="../../../public/img/icons/nutrisicon.png" />
+      <img src="@/../public/img/icons/nutrisicon.png" alt="Logo da Nutris" />
       <span>
         Nutris
       </span>
