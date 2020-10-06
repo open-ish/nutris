@@ -165,7 +165,7 @@ export default class Button extends Vue {
 
     &:not([disabled]):not(.isLoading):hover {
       &::before {
-        background-color: var(--default-color-darken);
+        text-decoration: underline;
         opacity: 0.1;
       }
     }
@@ -202,7 +202,7 @@ export default class Button extends Vue {
 
     &:not([disabled]):not(.isLoading):hover {
       &::before {
-        background-color: var(--primary-color-darken);
+        text-decoration: underline;
         opacity: 0.1;
       }
     }
@@ -239,7 +239,7 @@ export default class Button extends Vue {
 
     &:not([disabled]):not(.isLoading):hover {
       &::before {
-        background-color: var(--secondary-color-darken);
+        text-decoration: underline;
         opacity: 0.1;
       }
     }

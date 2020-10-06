@@ -52,6 +52,7 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
   position: fixed;
   width: 100vw;
   font: var(--typography-caption-font);
+  z-index: var(--zindex-100);
 
   @media screen and (min-width: $screen-sm) {
     background-color: transparent;
@@ -60,6 +61,7 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
     margin-left: auto;
     position: initial;
     width: 100%;
+    z-index: initial;
   }
 }
 .item {
