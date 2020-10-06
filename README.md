@@ -4,7 +4,7 @@
 </p>
 <h1 align="center">Nutris</h1></a>
 
-Web App to calculate parenteral diets. [See it running here!👀](https://nutris.firebaseapp.com/)
+Web App to calculate parenteral diets. [See old version running here!👀](https://nutris.web.app/)
 
 ## Stack
 
@@ -48,6 +48,8 @@ npm start
 ```sh
 npm run build
 ```
+
+It'll be running at: http://localhost:1993/
 
 ## Authors
 
