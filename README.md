@@ -20,16 +20,16 @@ This project also uses [Husky](https://github.com/typicode/husky) to prevent com
 
 ## Commands
 
-#### Install (WITH Open-ish`s access)
+#### Install (*WITH* Open-ish's access)
 
 - Generate a token at GitHub
-- Create a .npmrc file, using .npmrc.example as example
+- Create a `.npmrc` file, using `.npmrc.example` as example
 
 ```sh
 npm install
 ```
 
-#### Install (WITHOUT Open-ish`s access)
+#### Install (*WITHOUT* Open-is's access)
 
 Just run:
 
