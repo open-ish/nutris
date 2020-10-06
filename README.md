@@ -1,5 +1,3 @@
-
-
 <a href="https://nutris.firebaseapp.com/">
 <p align="center">
   <img  src="https://img.icons8.com/cotton/2x/watermelon.png" alt="Nutris" width="300" />
@@ -22,7 +20,18 @@ This project also uses [Husky](https://github.com/typicode/husky) to prevent com
 
 ## Commands
 
-#### Install
+#### Install (WITH Open-ish`s access)
+
+- Generate a token at GitHub
+- Create a .npmrc file, using .npmrc.example as example
+
+```sh
+npm install
+```
+
+#### Install (WITHOUT Open-ish`s access)
+
+Just run:
 
 ```sh
 npm install
@@ -34,7 +43,7 @@ npm install
 npm start
 ```
 
-#### Build 
+#### Build
 
 ```sh
 npm run build
