@@ -6,7 +6,7 @@
       :to="Paths.calculate"
     >
       <i class="nutris-ticket"></i>
-      <span>{{ $t('nav.calculate', language) }}</span>
+      <span>{{ $t(navI18nPath.calculate, language) }}</span>
     </router-link>
     <router-link
       class="item g-center--y"
@@ -14,7 +14,7 @@
       :to="Paths.manageDiets"
     >
       <i class="nutris-users"></i>
-      <span>Meus Pacientes</span>
+      <span>{{ $t(navI18nPath.patients, language) }}</span>
     </router-link>
     <router-link
       class="item g-center--y"
@@ -22,7 +22,7 @@
       :to="Paths.patients"
     >
       <i class="nutris-user"></i>
-      <span>Novo paciente</span>
+      <span>{{ $t(navI18nPath.newPacient, language) }}</span>
     </router-link>
 
     <button @click="change()">Chhange</button>
@@ -38,6 +38,7 @@ import { useI18n } from 'vue-i18n'
 import { Paths } from '@/router/default/enums'
 import { I18nGetters, I18nActions } from '@/store/i18n/types'
 import { I18n } from '@/enums/i18n'
+import { navI18nPath } from '@/layouts/default/components/nav/nav.i18n.ts'
 
 const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
 
@@ -58,6 +59,8 @@ const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
 })
 export default class Nav extends Vue {
   Paths = Paths
+  navI18nPath = navI18nPath
+
   setup() {
     return useI18n()
   }

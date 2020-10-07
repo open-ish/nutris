@@ -7,7 +7,7 @@ const state: I18nState = {
 }
 
 const getters = {
-  [I18nGetters.LANGUAGE](state: any) {
+  [I18nGetters.LANGUAGE](state: I18nState) {
     return state.language
   },
 }
