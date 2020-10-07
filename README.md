@@ -4,7 +4,7 @@
 </p>
 <h1 align="center">Nutris</h1></a>
 
-Web App to calculate parenteral diets. [See it running here!👀](https://nutris.firebaseapp.com/)
+Web App to calculate parenteral diets. [See old version running here!👀](https://nutris.web.app/)
 
 ## Stack
 
@@ -20,18 +20,18 @@ This project also uses [Husky](https://github.com/typicode/husky) to prevent com
 
 ## Commands
 
-#### Install (WITH Open-ish`s access)
+#### Install (*WITH* Open-ish's access)
 
 - Generate a token at GitHub
-- Create a .npmrc file, using .npmrc.example as example
+- Create a `.npmrc` file, using `.npmrc.example` as example
 
 ```sh
 npm install
 ```
 
-#### Install (WITHOUT Open-ish`s access)
+#### Install (*WITHOUT* Open-is's access)
 
-Just run:
+- Remove `@open-ish/nutris-roles` dependency from `package.json` file (at the future, we will create a mock function to it).
 
 ```sh
 npm install
@@ -48,6 +48,8 @@ npm start
 ```sh
 npm run build
 ```
+
+It'll be running at: http://localhost:1993/
 
 ## Authors
 
