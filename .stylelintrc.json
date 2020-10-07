@@ -1,0 +1,29 @@
+{
+  "plugins": ["stylelint-order"],
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "order/order": ["custom-properties", "declarations"],
+    "order/properties-alphabetical-order": true,
+    "no-descending-specificity": true,
+    "font-family-no-missing-generic-family-keyword": null,
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["/^v-deep/"]
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "at-root",
+          "function",
+          "if",
+          "each",
+          "include",
+          "mixin"
+        ]
+      }
+    ]
+  }
+}
