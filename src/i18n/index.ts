@@ -1,3 +1,5 @@
+// All i18n configuration will be imported here
+
 import { createI18n } from 'vue-i18n'
 import {
   defaultNavEn,
@@ -7,6 +9,7 @@ import {
 export const i18n = createI18n({
   legacy: true,
   locale: 'br',
+  // texts to translate
   messages: {
     en: {
       nav: defaultNavEn,
