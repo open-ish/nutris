@@ -1,8 +1,8 @@
 import { createStore } from 'vuex'
+import i18n from './i18n'
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    i18n,
+  },
 })

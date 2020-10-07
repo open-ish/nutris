@@ -6,7 +6,7 @@
       :to="Paths.calculate"
     >
       <i class="nutris-ticket"></i>
-      <span>Cálculo avulso</span>
+      <span>{{ $t('nav.calculate', language) }}</span>
     </router-link>
     <router-link
       class="item g-center--y"
@@ -24,17 +24,43 @@
       <i class="nutris-user"></i>
       <span>Novo paciente</span>
     </router-link>
+
+    <button @click="change()">Chhange</button>
   </nav>
 </template>
 
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component'
 
-import { Paths } from '@/router/default/enums'
+import { createNamespacedHelpers } from 'vuex'
+import { useI18n } from 'vue-i18n'
 
-@Options({})
+import { Paths } from '@/router/default/enums'
+import { I18nGetters, I18nActions } from '@/store/i18n/types'
+import { I18n } from '@/enums/i18n'
+
+const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
+
+@Options({
+  computed: {
+    ...mapGetters({
+      language: I18nGetters.LANGUAGE,
+    }),
+  },
+  methods: {
+    ...mapActions({
+      changeLanguage: I18nActions.CHANGE_LANGUAGE,
+    }),
+    change() {
+      this.changeLanguage(I18n.en)
+    },
+  },
+})
 export default class Nav extends Vue {
   Paths = Paths
+  setup() {
+    return useI18n()
+  }
 }
 </script>
 
