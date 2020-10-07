@@ -31,7 +31,7 @@ npm install
 
 #### Install (*WITHOUT* Open-is's access)
 
-Just run:
+- Remove `@open-ish/nutris-roles` dependency from package.json file (at the future, we will create a mock function to it).
 
 ```sh
 npm install
