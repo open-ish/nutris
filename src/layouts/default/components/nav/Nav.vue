@@ -1,39 +1,16 @@
 <template>
   <nav class="nav">
-    <!-- <router-link
-      class="item g-center--y"
-      active-class="active"
-      :to="Paths.calculate"
-    >
-      <i class="nutris-ticket"></i>
-      <span>{{ $t(navI18nPath.calculate, language) }}</span>
-    </router-link>
+    <!-- <button @click="change()">Chhange</button> -->
     <router-link
+      v-for="(item, index) in navOptions"
+      :key="index"
       class="item g-center--y"
       active-class="active"
-      :to="Paths.patients"
+      :to="item.path"
     >
-      <i class="nutris-users"></i>
-      <span>{{ $t(navI18nPath.patients, language) }}</span>
+      <i :class="item.icon"></i>
+      <span>{{ $t(item.i18n, language) }}</span>
     </router-link>
-    <router-link
-      class="item g-center--y"
-      active-class="active"
-      :to="Paths.manageDiets"
-    >
-      <i class="nutris-users"></i>
-      <span>{{ $t(navI18nPath.manageDiets, language) }}</span>
-    </router-link>
-    <router-link
-      class="item g-center--y"
-      active-class="active"
-      :to="Paths.patients"
-    >
-      <i class="nutris-user"></i>
-      <span>{{ $t(navI18nPath.newPacient, language) }}</span>
-    </router-link> -->
-
-    <button @click="change()">Chhange</button>
   </nav>
 </template>
 
@@ -43,10 +20,9 @@ import { Vue, Options } from 'vue-class-component'
 import { createNamespacedHelpers } from 'vuex'
 import { useI18n } from 'vue-i18n'
 
-import { Paths } from '@/router/default/enums'
 import { I18nGetters, I18nActions } from '@/store/i18n/types'
 import { I18n } from '@/enums/i18n'
-import { navI18nPath } from '@/layouts/default/components/nav/nav.i18n.ts'
+import { navOptions } from './navMenu'
 
 const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
 
@@ -66,8 +42,7 @@ const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
   },
 })
 export default class Nav extends Vue {
-  Paths = Paths
-  navI18nPath = navI18nPath
+  navOptions = navOptions
 
   setup() {
     return useI18n()
@@ -104,6 +79,7 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
 .item {
   padding: var(--space-xs);
   text-align: center;
+  flex-grow: 1;
 
   [class^='nutris-'] {
     font-size: 24px;
@@ -114,6 +90,7 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
   }
 
   @media screen and (min-width: $screen-sm) {
+    flex-grow: initial;
     color: var(--white);
     margin-right: var(--space);
 
