@@ -1,6 +1,6 @@
 <template>
   <nav class="nav">
-    <router-link
+    <!-- <router-link
       class="item g-center--y"
       active-class="active"
       :to="Paths.calculate"
@@ -11,10 +11,18 @@
     <router-link
       class="item g-center--y"
       active-class="active"
-      :to="Paths.manageDiets"
+      :to="Paths.patients"
     >
       <i class="nutris-users"></i>
       <span>{{ $t(navI18nPath.patients, language) }}</span>
+    </router-link>
+    <router-link
+      class="item g-center--y"
+      active-class="active"
+      :to="Paths.manageDiets"
+    >
+      <i class="nutris-users"></i>
+      <span>{{ $t(navI18nPath.manageDiets, language) }}</span>
     </router-link>
     <router-link
       class="item g-center--y"
@@ -23,7 +31,7 @@
     >
       <i class="nutris-user"></i>
       <span>{{ $t(navI18nPath.newPacient, language) }}</span>
-    </router-link>
+    </router-link> -->
 
     <button @click="change()">Chhange</button>
   </nav>
