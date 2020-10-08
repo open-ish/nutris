@@ -1,5 +1,5 @@
 <template>
-  <div @click.self="$emit('click')" class="modal">
+  <div @click.self="$emit('click')" class="modal" :class="type">
     <div @click.stop class="content">
       <slot />
     </div>
@@ -10,6 +10,11 @@ import { Options, Vue } from 'vue-class-component'
 
 @Options({
   emits: ['click'],
+  props: {
+    type: {
+      default: 'is-default',
+    },
+  },
 })
 export default class Modal extends Vue {}
 </script>
@@ -23,8 +28,16 @@ export default class Modal extends Vue {}
   background: var(--bg-darken);
   z-index: var(--zindex-100);
   display: flex;
+}
+
+.is-default {
   justify-content: center;
   align-items: center;
+}
+
+.is-menu {
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 .content {
