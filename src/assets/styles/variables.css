@@ -101,6 +101,7 @@
   --danger-color-contrast: var(--white);
   --text-color: var(--gray-5);
   --text-color-lighten: var(--gray-3);
+  --bg-darken: rgba(0, 0, 0, 0.7);
 
   /* 3. Utils */
   --border-radius-lighten: 2px;
