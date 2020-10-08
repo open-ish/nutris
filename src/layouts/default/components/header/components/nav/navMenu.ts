@@ -1,4 +1,4 @@
-import { navI18nPath } from '@/layouts/default/components/nav/nav.i18n.ts'
+import { navI18nPath } from '@/layouts/default/components/header/components/nav/nav.i18n.ts'
 import { Paths } from '@/router/default/enums'
 
 export const navOptions = [

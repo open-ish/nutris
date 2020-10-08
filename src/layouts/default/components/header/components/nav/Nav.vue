@@ -1,6 +1,5 @@
 <template>
   <nav class="nav">
-    <!-- <button @click="change()">Chhange</button> -->
     <router-link
       v-for="(item, index) in navOptions"
       :key="index"
@@ -18,13 +17,11 @@
 import { Vue, Options } from 'vue-class-component'
 
 import { createNamespacedHelpers } from 'vuex'
-import { useI18n } from 'vue-i18n'
 
-import { I18nGetters, I18nActions } from '@/store/i18n/types'
-import { I18n } from '@/enums/i18n'
+import { I18nGetters } from '@/store/i18n/types'
 import { navOptions } from './navMenu'
 
-const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
+const { mapGetters } = createNamespacedHelpers('i18n')
 
 @Options({
   computed: {
@@ -32,21 +29,9 @@ const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
       language: I18nGetters.LANGUAGE,
     }),
   },
-  methods: {
-    ...mapActions({
-      changeLanguage: I18nActions.CHANGE_LANGUAGE,
-    }),
-    change() {
-      this.changeLanguage(I18n.en)
-    },
-  },
 })
 export default class Nav extends Vue {
   navOptions = navOptions
-
-  setup() {
-    return useI18n()
-  }
 }
 </script>
 
