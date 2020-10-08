@@ -5,7 +5,7 @@ export enum Paths {
   home = '/',
   manageDiets = '/manage-diets',
   patients = '/patients',
-  newPatients = '/new-patients',
+  newPatient = '/new-patient',
 }
 
 export enum Names {
@@ -15,5 +15,5 @@ export enum Names {
   home = 'Home',
   manageDiets = 'ManageDiets',
   patients = 'Patients',
-  newPatients = 'NewPatients',
+  newPatient = 'NewPatient',
 }

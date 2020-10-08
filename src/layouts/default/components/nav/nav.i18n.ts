@@ -9,12 +9,12 @@ export const defaultNavBr = {
   calculate: 'Cálculo avulso',
   patients: 'Meus Pacientes',
   newPacient: 'Novo Paciente',
-  manageDiets: 'Gerenciar dietas',
+  manageDiets: 'Minhas Dietas',
 }
 
 export const defaultNavEn = {
   calculate: 'Loose calculate',
   patients: 'My Patients',
   newPacient: 'New Pacient',
-  manageDiets: 'Manage diets',
+  manageDiets: 'My diets',
 }
