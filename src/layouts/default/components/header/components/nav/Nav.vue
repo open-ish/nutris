@@ -57,7 +57,7 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
     justify-content: flex-end;
     margin-left: auto;
     position: initial;
-    width: 100%;
+    width: auto;
     z-index: initial;
   }
 }
