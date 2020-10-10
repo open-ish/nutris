@@ -1,5 +1,5 @@
 <template>
-  <div @click.self="$emit('click')" class="modal" :class="type">
+  <div @click.self="$emit('click')" class="modal" :class="!freeMode && type">
     <div @click.stop class="content">
       <slot />
     </div>
@@ -13,6 +13,9 @@ import { Options, Vue } from 'vue-class-component'
   props: {
     type: {
       default: 'is-default',
+    },
+    freeMode: {
+      default: false,
     },
   },
 })
@@ -33,11 +36,6 @@ export default class Modal extends Vue {}
 .is-default {
   justify-content: center;
   align-items: center;
-}
-
-.is-menu {
-  justify-content: flex-end;
-  align-items: flex-start;
 }
 
 .content {

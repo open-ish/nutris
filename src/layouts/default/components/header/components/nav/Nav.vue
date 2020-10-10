@@ -1,28 +1,14 @@
 <template>
   <nav class="nav">
     <router-link
+      v-for="(item, index) in navOptions"
+      :key="index"
       class="item g-center--y"
       active-class="active"
-      :to="Paths.calculate"
+      :to="item.path"
     >
-      <i class="nutris-ticket"></i>
-      <span>Cálculo avulso</span>
-    </router-link>
-    <router-link
-      class="item g-center--y"
-      active-class="active"
-      :to="Paths.manageDiets"
-    >
-      <i class="nutris-users"></i>
-      <span>Meus Pacientes</span>
-    </router-link>
-    <router-link
-      class="item g-center--y"
-      active-class="active"
-      :to="Paths.patients"
-    >
-      <i class="nutris-user"></i>
-      <span>Novo paciente</span>
+      <i :class="item.icon"></i>
+      <span>{{ $t(item.i18n, language) }}</span>
     </router-link>
   </nav>
 </template>
@@ -30,11 +16,22 @@
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component'
 
-import { Paths } from '@/router/default/enums'
+import { createNamespacedHelpers } from 'vuex'
 
-@Options({})
+import { I18nGetters } from '@/store/i18n/types'
+import { navOptions } from './navMenu'
+
+const { mapGetters } = createNamespacedHelpers('i18n')
+
+@Options({
+  computed: {
+    ...mapGetters({
+      language: I18nGetters.LANGUAGE,
+    }),
+  },
+})
 export default class Nav extends Vue {
-  Paths = Paths
+  navOptions = navOptions
 }
 </script>
 
@@ -60,13 +57,14 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
     justify-content: flex-end;
     margin-left: auto;
     position: initial;
-    width: 100%;
+    width: auto;
     z-index: initial;
   }
 }
 .item {
   padding: var(--space-xs);
   text-align: center;
+  flex-grow: 1;
 
   [class^='nutris-'] {
     font-size: 24px;
@@ -77,6 +75,7 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
   }
 
   @media screen and (min-width: $screen-sm) {
+    flex-grow: initial;
     color: var(--white);
     margin-right: var(--space);
 

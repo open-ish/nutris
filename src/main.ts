@@ -9,7 +9,6 @@ import FirebaseApp from '@/../firebaseApp'
 import { getCssVariableValue } from '@/helpers/styles.ts'
 import { User } from '@/models/User.ts'
 import '@/assets/styles/index.scss'
-// @testing https://github.com/intlify/vue-i18n-next
 import { i18n } from '@/i18n/index.ts'
 
 const init = () =>
