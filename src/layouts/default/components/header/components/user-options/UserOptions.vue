@@ -1,7 +1,7 @@
 <template>
-  <div class="mask" @click="toggleMenu" v-if="isOpen"></div>
+  <div class="mask" ref="mask" @click="toggleMenu"></div>
   <div class="user-options">
-    <ul class="menu" v-if="isOpen">
+    <ul class="menu" ref="menu">
       <li class="item g-cursor" role="button" @click="change()">
         traducao
       </li>
@@ -9,9 +9,9 @@
       <li class="item g-cursor" role="button">Perfil</li>
     </ul>
     <img
-      @click="toggleMenu"
-      role="button"
-      class="user-imagem g-cursor"
+      @click="toggleMenu()"
+      :role="isSmallScreen() ? 'button' : ''"
+      class="user-imagem"
       src="https://lh3.googleusercontent.com/a-/AAuE7mBJom5F4cC9cujzyz3IM9VVvMWHfs4RCSJjOr8d"
       aria-label="Imagem do usuário"
     />
@@ -19,29 +19,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 import { useI18n } from 'vue-i18n'
 
 import { I18nGetters, I18nActions } from '@/store/i18n/types'
 import { I18n } from '@/enums/i18n'
-import { getCssVariableValue } from '@/helpers/styles.ts'
+import { resize } from './resize'
 
 const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
 
 export default defineComponent({
   setup() {
-    const isOpen = ref(false)
-    function toggleMenu() {
-      isOpen.value = !isOpen.value
-    }
-    return { useI18n, toggleMenu, isOpen }
-  },
-  created() {
-    window.addEventListener('resize', () => {
-      this.isOpen =
-        `${window.outerWidth}px` < getCssVariableValue('--screen-sm')
-    })
+    const { toggleMenu, menu, mask, isSmallScreen } = resize()
+    return { useI18n, toggleMenu, menu, mask, isSmallScreen }
   },
   computed: {
     ...mapGetters({
@@ -53,7 +44,7 @@ export default defineComponent({
       changeLanguage: I18nActions.CHANGE_LANGUAGE,
     }),
     change() {
-      this.changeLanguage(I18n.br)
+      this.changeLanguage(I18n.en)
     },
   },
 })
@@ -71,21 +62,13 @@ export default defineComponent({
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: var(--zindex-100);
-
-  @media screen and (min-width: $screen-sm) {
-    display: none;
-  }
+  display: none;
 }
 
 .user-imagem {
   max-height: 100%;
   border-radius: 50%;
-  opacity: 0.8;
   height: calc(#{$header-height-small} - var(--space-sm));
-
-  &:hover {
-    opacity: 1;
-  }
 }
 
 .user-options {
@@ -112,6 +95,7 @@ export default defineComponent({
   @media screen and (max-width: $screen-sm) {
     margin-right: calc(10px * -1);
     margin-top: calc(10px * -1);
+    display: none;
   }
 
   @media screen and (min-width: $screen-sm) {
