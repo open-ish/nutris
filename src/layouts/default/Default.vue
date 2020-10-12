@@ -1,8 +1,6 @@
 <template>
   <Header />
-  <main class="dg-default dg-container dg-container-large">
-    <router-view />
-  </main>
+  <router-view />
   <Footer />
 </template>
 
@@ -37,7 +35,7 @@ export default defineComponent({
   height: calc(100vh);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   @media screen and (max-width: $screen-sm) {
     height: calc(100vh - #{$header-height-small});

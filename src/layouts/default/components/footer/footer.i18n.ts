@@ -1,11 +1,11 @@
-export enum footerDefeaultI18nPath {
+export enum defaultFooterI18nPath {
   madeWithlove = 'footer.madeWithlove',
 }
 
-export const footerDefeaultPt = {
+export const defaultFooterPt = {
   madeWithlove: 'Feito com ❤️ por',
 }
 
-export const footerDefeaultEn = {
+export const defaultFooterEn = {
   madeWithlove: 'Made with ❤️ by',
 }

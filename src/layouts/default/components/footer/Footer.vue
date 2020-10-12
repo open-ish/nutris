@@ -2,7 +2,7 @@
   <footer class="footer dg-container dg-container-large">
     <p class="title">{{ new Date().getFullYear() }} Nutris</p>
     <p>
-      {{ $t(footerDefeaultI18nPath.madeWithlove, language) }}
+      {{ $t(defaultFooterI18nPath.madeWithlove, language) }}
       <Button
         href="https://github.com/open-ish"
         target="_blank"
@@ -22,7 +22,7 @@ import { createNamespacedHelpers } from 'vuex'
 
 import { I18nGetters } from '@/store/i18n/types'
 import Button from '@/components/button/Button.vue'
-import { footerDefeaultI18nPath } from '@/layouts/default/components/footer/footer.i18n'
+import { defaultFooterI18nPath } from '@/layouts/default/components/footer/footer.i18n'
 const { mapGetters } = createNamespacedHelpers('i18n')
 
 export default defineComponent({
@@ -31,7 +31,7 @@ export default defineComponent({
     Button,
   },
   setup() {
-    return { footerDefeaultI18nPath }
+    return { defaultFooterI18nPath }
   },
   computed: {
     ...mapGetters({

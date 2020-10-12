@@ -22,9 +22,11 @@ import {
   userOptionsPt,
 } from '@/layouts/default/components/header/components/user-options/userOptions.i18n.ts'
 import {
-  footerDefeaultEn,
-  footerDefeaultPt,
+  defaultFooterEn,
+  defaultFooterPt,
 } from '@/layouts/default/components/footer/footer.i18n.ts'
+
+import { defaultHomeEn, defaultHomePt } from '@/views/default/home/homei18n.ts'
 
 export const i18n = createI18n({
   legacy: true,
@@ -35,13 +37,15 @@ export const i18n = createI18n({
       // 2. Default Layout
       nav: defaultNavEn,
       userOptions: userOptionsEn,
-      footer: footerDefeaultEn,
+      home: defaultHomeEn,
+      footer: defaultFooterEn,
     },
     pt: {
       // 2. Default Layout
       nav: defaultNavPt,
       userOptions: userOptionsPt,
-      footer: footerDefeaultPt,
+      home: defaultHomePt,
+      footer: defaultFooterPt,
     },
   },
 })
