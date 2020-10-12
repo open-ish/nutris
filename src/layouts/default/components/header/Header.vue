@@ -7,20 +7,20 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component'
+import { defineComponent } from 'vue'
 
 import Logo from '@/components/logo/Logo.vue'
 import Nav from '@/layouts/default/components/header/components/nav/Nav.vue'
 import UserOptions from '@/layouts/default/components/header/components/user-options/UserOptions.vue'
 
-@Options({
+export default defineComponent({
+  name: 'Header',
   components: {
     Logo,
     Nav,
     UserOptions,
   },
 })
-export default class Header extends Vue {}
 </script>
 
 <style lang="scss" scoped>

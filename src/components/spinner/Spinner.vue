@@ -19,13 +19,19 @@
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
+import { defineComponent } from 'vue'
 
-export default class Spinner extends Vue {
-  @Prop({ default: 'default' }) color!: string
-  @Prop({ default: 36 }) size!: number
-}
+export default defineComponent({
+  name: 'Spinner',
+  props: {
+    color: {
+      default: 'default',
+    },
+    size: {
+      default: 36,
+    },
+  },
+})
 </script>
 
 <style lang="scss" scoped>

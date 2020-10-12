@@ -6,9 +6,9 @@
   </div>
 </template>
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { defineComponent } from 'vue'
 
-@Options({
+export default defineComponent({
   emits: ['click'],
   props: {
     type: {
@@ -19,7 +19,6 @@ import { Options, Vue } from 'vue-class-component'
     },
   },
 })
-export default class Modal extends Vue {}
 </script>
 <style lang="scss" scoped>
 .modal {

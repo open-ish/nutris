@@ -10,12 +10,16 @@
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component'
+import { defineComponent } from 'vue'
+
 import { Paths } from '@/router/default/enums'
 
-export default class Logo extends Vue {
-  Paths = Paths
-}
+export default defineComponent({
+  name: 'Btn',
+  setup() {
+    return { Paths }
+  },
+})
 </script>
 
 <style lang="scss" scoped>

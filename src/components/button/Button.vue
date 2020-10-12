@@ -1,11 +1,11 @@
 <template>
   <component
     :is="href ? 'a' : 'button'"
-    :class="buttonClass"
     :href="href"
     :role="href ? '' : 'button'"
     :aria-busy="isLoading"
     @click="$emit('click')"
+    :class="buttonClass"
   >
     <Spinner
       v-if="isLoading"
@@ -22,54 +22,42 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
+import { defineComponent, computed } from 'vue'
+
 import Spinner from '@/components/spinner/Spinner.vue'
 
-@Options({
+export default defineComponent({
+  name: 'Btn',
+  emits: ['click'],
   components: {
     Spinner,
   },
-  //  props: {
-  //   color: { default: 'default' },
-  //   variant: { default: 'filled' },
-  //   shape: { default: 'round-square' },
-  //   size: { default: 'medium' },
-  //   isLoading: { default: false },
-  //   startIcon: { default: '' },
-  //   endIcon: { default: '' },
-  //   href: { default: '' },
-  // },
-})
-export default class Button extends Vue {
-  @Prop({ default: 'default' }) color!: string
-  @Prop({ default: 'filled' }) variant!: string
-  @Prop({ default: 'round-square' }) shape!: string
-  @Prop({ default: 'medium' }) size!: string
-  @Prop({ default: false }) isLoading!: boolean
-  @Prop({ default: '' }) startIcon!: string
-  @Prop({ default: '' }) endIcon!: string
-  @Prop() href!: string
-
-  get buttonClass() {
-    return [
+  props: {
+    color: { default: 'default' },
+    variant: { default: 'filled' },
+    shape: { default: 'round-square' },
+    size: { default: 'medium' },
+    isLoading: { default: false },
+    startIcon: { default: '' },
+    endIcon: { default: '' },
+    href: { default: '' },
+  },
+  setup(props) {
+    const buttonClass = computed(() => [
       'button',
-      this.color,
-      this.variant,
-      this.shape,
-      this.size,
-      this.isLoading ? 'isLoading' : '',
-    ]
-  }
-
-  get spinnerColor() {
-    return this.variant === 'filled' ? `${this.color}-contrast` : this.color
-  }
-
-  get spinnerSize() {
-    return this.size === 'medium' ? 24 : 36
-  }
-}
+      props.color,
+      props.variant,
+      props.shape,
+      props.size,
+      props.isLoading ? 'isLoading' : '',
+    ])
+    const spinnerColor = computed(() =>
+      props.variant === 'filled' ? `${props.color}-contrast` : props.color
+    )
+    const spinnerSize = computed(() => (props.size === 'medium' ? 24 : 36))
+    return { spinnerSize, spinnerColor, buttonClass }
+  },
+})
 </script>
 
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@
   <footer class="footer dg-container dg-container-large">
     <p class="title">{{ new Date().getFullYear() }} Nutris</p>
     <p>
-      Feito com ❤️ por
+      {{ $t(footerDefeaultI18nPath.madeWithlove, language) }}
       <Button
         href="https://github.com/open-ish"
         target="_blank"
@@ -17,16 +17,28 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component'
+import { defineComponent } from 'vue'
+import { createNamespacedHelpers } from 'vuex'
 
+import { I18nGetters } from '@/store/i18n/types'
 import Button from '@/components/button/Button.vue'
+import { footerDefeaultI18nPath } from '@/layouts/default/components/footer/footer.i18n'
+const { mapGetters } = createNamespacedHelpers('i18n')
 
-@Options({
+export default defineComponent({
+  name: 'LFooter',
   components: {
     Button,
   },
+  setup() {
+    return { footerDefeaultI18nPath }
+  },
+  computed: {
+    ...mapGetters({
+      language: I18nGetters.LANGUAGE,
+    }),
+  },
 })
-export default class Footer extends Vue {}
 </script>
 
 <style lang="scss" scoped>

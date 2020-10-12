@@ -11,17 +11,17 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component'
+import { defineComponent } from 'vue'
+
 import { Paths } from '@/router/alt/enums'
 import { LayoutsPaths } from '@/router/enums'
 
-@Options({
+export default defineComponent({
   name: 'LAlt',
+  setup() {
+    return { Paths, LayoutsPaths }
+  },
 })
-export default class LAlt extends Vue {
-  Paths = Paths
-  LayoutsPaths = LayoutsPaths
-}
 </script>
 
 <style scoped lang="scss">

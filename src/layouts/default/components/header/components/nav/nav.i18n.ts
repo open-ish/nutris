@@ -5,7 +5,7 @@ export enum navI18nPath {
   manageDiets = 'nav.manageDiets',
 }
 
-export const defaultNavBr = {
+export const defaultNavPt = {
   calculate: 'Cálculo avulso',
   patients: 'Meus Pacientes',
   newPacient: 'Novo Paciente',

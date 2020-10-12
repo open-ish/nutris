@@ -1,12 +1,13 @@
 import { I18n } from '@/enums/i18n'
 
 export interface I18nState {
-  language: I18n.en | I18n.br
+  language: I18n.en | I18n.pt
 }
 
 // getters
 export const I18nGetters = {
   LANGUAGE: 'LANGUAGE',
+  LABEL_TOGGLE: 'LABEL_TOGGLE',
 }
 
 // actions

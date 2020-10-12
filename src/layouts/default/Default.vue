@@ -7,21 +7,22 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component'
-import { Paths } from '@/router/default/enums'
+import { defineComponent } from 'vue'
 
+import { Paths } from '@/router/default/enums'
 import Header from '@/layouts/default/components/header/Header.vue'
 import Footer from '@/layouts/default/components/footer/Footer.vue'
 
-@Options({
+export default defineComponent({
+  name: 'LDefault',
   components: {
     Header,
     Footer,
   },
+  setup() {
+    return { Paths }
+  },
 })
-export default class LDefault extends Vue {
-  Paths = Paths
-}
 </script>
 
 <style lang="scss">
