@@ -34,5 +34,10 @@ export default defineComponent({
   height: $header-height-small;
   padding-top: var(--space-xs);
   padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-md);
+
+  @media screen and (max-width: $screen-md) {
+    margin-bottom: var(--space-lg);
+  }
 }
 </style>

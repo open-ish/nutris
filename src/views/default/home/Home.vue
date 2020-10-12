@@ -8,15 +8,12 @@
     <p class="content">
       {{ $t(defaultHomeI18nPath.textTwo, language) }}
     </p>
-    <img
-      class="grape"
-      src="https://img.icons8.com/material-rounded/55/006064/grapes.png"
-    />
+    <img class="grape" :src="Statics.grape" />
     <h2 class="purposes">{{ $t(defaultHomeI18nPath.purpose, language) }}</h2>
     <p>
       <em>Nutris</em> {{ $t(defaultHomeI18nPath.purposeText, language) }}
       <Button
-        href="https://github.com/open-ish/nutris"
+        :href="Statics.openIshRepo + '/nutris'"
         target="_blank"
         rel="noopener noreferrer"
         variant="text"
@@ -36,6 +33,7 @@ import { createNamespacedHelpers } from 'vuex'
 import { defaultHomeI18nPath } from '@/views/default/home/homei18n.ts'
 import { I18nGetters } from '@/store/i18n/types'
 import Button from '@/components/button/Button.vue'
+import { Statics } from '@/enums/statics.ts'
 
 const { mapGetters } = createNamespacedHelpers('i18n')
 
@@ -45,7 +43,7 @@ export default defineComponent({
     Button,
   },
   setup() {
-    return { defaultHomeI18nPath }
+    return { defaultHomeI18nPath, Statics }
   },
   computed: {
     ...mapGetters({
@@ -59,17 +57,9 @@ export default defineComponent({
 @import '@/layouts/default/Default-variables.scss';
 
 .home {
-  padding-top: var(--space-md);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   height: 100%;
-  max-width: 700px;
-  // text-align: center;
-
-  @media screen and (max-width: $screen-md) {
-    padding-top: var(--space-lg);
-  }
 
   &::before {
     content: '';
@@ -78,7 +68,7 @@ export default defineComponent({
     background-size: cover;
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: calc(100% - #{$header-height} - var(--space-md));
     opacity: 0.05;
     left: 0;
   }

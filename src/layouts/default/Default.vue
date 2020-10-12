@@ -1,6 +1,8 @@
 <template>
   <Header />
-  <router-view />
+  <div class="dg-default">
+    <router-view />
+  </div>
   <Footer />
 </template>
 
@@ -24,21 +26,19 @@ export default defineComponent({
 @import '@/layouts/default/Default-class.scss';
 
 .dg-default {
-  justify-content: center;
-  min-height: 500px;
-  color: var(--orange-3);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 700px;
+  margin-bottom: auto;
+  overflow: scroll;
 }
 
 .app {
-  position: relative;
-  overflow: auto;
-  height: calc(100vh);
+  align-items: center;
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
-
-  @media screen and (max-width: $screen-sm) {
-    height: calc(100vh - #{$header-height-small});
-  }
+  position: relative;
+  min-height: 100vh;
 }
 </style>

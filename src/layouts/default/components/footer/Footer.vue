@@ -4,7 +4,7 @@
     <p>
       {{ $t(defaultFooterI18nPath.madeWithlove, language) }}
       <Button
-        href="https://github.com/open-ish"
+        :href="Statics.openIshRepo"
         target="_blank"
         rel="noopener noreferrer"
         variant="text"
@@ -23,6 +23,8 @@ import { createNamespacedHelpers } from 'vuex'
 import { I18nGetters } from '@/store/i18n/types'
 import Button from '@/components/button/Button.vue'
 import { defaultFooterI18nPath } from '@/layouts/default/components/footer/footer.i18n'
+import { Statics } from '@/enums/statics.ts'
+
 const { mapGetters } = createNamespacedHelpers('i18n')
 
 export default defineComponent({
@@ -31,7 +33,7 @@ export default defineComponent({
     Button,
   },
   setup() {
-    return { defaultFooterI18nPath }
+    return { defaultFooterI18nPath, Statics }
   },
   computed: {
     ...mapGetters({
@@ -51,11 +53,14 @@ export default defineComponent({
   justify-content: space-around;
   font: var(--typography-body2-font);
   height: $footer-height-small;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
 
-  @media screen and (max-width: $screen-sm) {
-    position: absolute;
-    bottom: calc(-1 * #{$header-height-small});
+  @media screen and (max-width: $screen-md) {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-lg);
   }
+
   .button {
     font: var(--typography-caption-font);
     padding-top: var(--space-xs);
