@@ -1,7 +1,7 @@
 <template>
   <div :class="`container ${error && 'invalid'}`">
     <label v-if="label" :for="label" class="label">
-      {label}
+      {{ label }}
     </label>
     <input
       v-bind="$attrs"
@@ -16,10 +16,10 @@
   </div>
 </template>
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { defineComponent } from 'vue'
 
-@Options({
-  emits: ['input', 'update:value'],
+export default defineComponent({
+  emits: ['update:value'],
   inheritAttrs: false,
   props: {
     label: {
@@ -39,12 +39,12 @@ import { Options, Vue } from 'vue-class-component'
       type: String,
     },
   },
+  methods: {
+    updateInput(newValue: string | number) {
+      this.$emit('update:value', newValue)
+    },
+  },
 })
-export default class Input extends Vue {
-  updateInput(newValue: string | number) {
-    this.$emit('update:value', newValue)
-  }
-}
 </script>
 <style lang="scss" scoped>
 .container {
