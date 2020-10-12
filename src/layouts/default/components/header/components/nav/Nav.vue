@@ -77,11 +77,15 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
   @media screen and (min-width: $screen-sm) {
     flex-grow: initial;
     color: var(--white);
-    margin-right: var(--space);
+    margin-right: var(--space-xs);
 
     &:hover {
       color: var(--primary-color-lighten);
     }
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    margin-right: var(--space-sm);
   }
 }
 

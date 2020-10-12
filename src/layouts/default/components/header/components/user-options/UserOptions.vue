@@ -143,11 +143,15 @@ export default defineComponent({
 
   @media screen and (min-width: $screen-sm) {
     color: var(--white);
-    margin-right: var(--space);
+    margin-right: var(--space-xs);
 
     &:hover {
       color: var(--primary-color-lighten);
     }
+  }
+
+  @media screen and (min-width: $screen-md) {
+    margin-right: var(--space-sm);
   }
 }
 
