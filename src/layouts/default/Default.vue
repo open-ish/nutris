@@ -9,7 +9,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import { Paths } from '@/router/default/enums'
 import Header from '@/layouts/default/components/header/Header.vue'
 import Footer from '@/layouts/default/components/footer/Footer.vue'
 
@@ -18,9 +17,6 @@ export default defineComponent({
   components: {
     Header,
     Footer,
-  },
-  setup() {
-    return { Paths }
   },
 })
 </script>
