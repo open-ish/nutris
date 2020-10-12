@@ -1,14 +1,30 @@
 <template>
   <main class="dg-container dg-container-large home">
     <h1>{{ $t(defaultHomeI18nPath.title, language) }}</h1>
+    <p class="content">
+      <em>Nutris</em>{{ $t(defaultHomeI18nPath.textOne, language) }}
+    </p>
+    <i class="nutris-emo-coffee"></i>
+    <p class="content">
+      {{ $t(defaultHomeI18nPath.textTwo, language) }}
+    </p>
     <img
       class="grape"
       src="https://img.icons8.com/material-rounded/55/006064/grapes.png"
     />
-    <p><em>Nutris</em>{{ $t(defaultHomeI18nPath.textOne, language) }}</p>
-    <i class="nutris-emo-coffee"></i>
+    <h2 class="purposes">{{ $t(defaultHomeI18nPath.purpose, language) }}</h2>
     <p>
-      {{ $t(defaultHomeI18nPath.textTwo, language) }}
+      <em>Nutris</em> {{ $t(defaultHomeI18nPath.purposeText, language) }}
+      <Button
+        href="https://github.com/open-ish/nutris"
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="text"
+        size="small"
+        color="primary"
+      >
+        {{ $t(defaultHomeI18nPath.purposeButton, language) }}
+      </Button>
     </p>
   </main>
 </template>
@@ -19,11 +35,15 @@ import { createNamespacedHelpers } from 'vuex'
 
 import { defaultHomeI18nPath } from '@/views/default/home/homei18n.ts'
 import { I18nGetters } from '@/store/i18n/types'
+import Button from '@/components/button/Button.vue'
 
 const { mapGetters } = createNamespacedHelpers('i18n')
 
 export default defineComponent({
   name: 'Home',
+  components: {
+    Button,
+  },
   setup() {
     return { defaultHomeI18nPath }
   },
@@ -39,16 +59,16 @@ export default defineComponent({
 @import '@/layouts/default/Default-variables.scss';
 
 .home {
-  padding-top: var(--space-sm);
+  padding-top: var(--space-md);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   height: 100%;
   max-width: 700px;
-  text-align: center;
+  // text-align: center;
 
   @media screen and (max-width: $screen-md) {
-    padding-top: var(--space-md);
+    padding-top: var(--space-lg);
   }
 
   &::before {
@@ -75,7 +95,17 @@ h1 {
   letter-spacing: var(--typography-panel-letter);
 }
 
-p:not(:last-of-type) {
-  margin-bottom: var(--space-sm);
+.content {
+  &:first-of-type {
+    margin-top: var(--space-md);
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: var(--space-sm);
+  }
+}
+
+.purposes {
+  margin-bottom: var(--space);
 }
 </style>
