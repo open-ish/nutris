@@ -15,6 +15,7 @@ This project uses:
 - [Sass](https://sass-lang.com/) - CSS Pre-processor with nice approach.
 - [Jest](https://jestjs.io/docs/en/getting-started) - To create unit test and avoid bugs.
 - [Venice](https://github.com/juntossomosmais/venice) - We have been using [Juntos Somos Mais](https://github.com/juntossomosmais) Design System as inspiration.
+- [vue-i18n](https://github.com/intlify/vue-i18n-next) - To create a multi idiom project.
 
 This project also uses [Husky](https://github.com/typicode/husky) to prevent commit and push messy and wrong code.
 
