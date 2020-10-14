@@ -9,7 +9,7 @@
       {{ label }}
     </label>
     {{ value || placeHolder }}
-    <div class="items" v-if="isOpen">
+    <div class="items" :class="isOpen ? 'is-active' : ''">
       <span
         class="item"
         v-for="(option, index) of options"
@@ -89,6 +89,17 @@ export default defineComponent({
   width: 100%;
   left: 0;
   top: 0;
+  height: 0;
+  transform: scaleY(0);
+  transform-origin: top left;
+  opacity: 0;
+  transition: transform var(--transition-duration-speed);
+
+  &.is-active {
+    height: auto;
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }
 
 .item {
