@@ -52,19 +52,6 @@ export default defineComponent({
     }
     return { isOpen, toggle, select }
   },
-  // data() {
-  //   return {
-  //     isOpen: false,
-  //   }
-  // },
-  // methods: {
-  //   toggle() {
-  //     this.isOpen = !this.isOpen
-  //   },
-  //   select(newValue: string) {
-  //     this.$emit('update:value', newValue)
-  //   },
-  // },
 })
 </script>
 <style lang="scss" scoped>
