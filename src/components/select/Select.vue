@@ -22,9 +22,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
+  name: 'Select',
   emits: ['update:value'],
   props: {
     options: {
@@ -43,19 +44,27 @@ export default defineComponent({
       default: 'Selecione',
     },
   },
-  data() {
-    return {
-      isOpen: false,
+  setup(props, { emit }) {
+    const isOpen = ref(false)
+    const toggle = () => (isOpen.value = !isOpen.value)
+    const select = (newValue: string) => {
+      emit('update:value', newValue)
     }
+    return { isOpen, toggle, select }
   },
-  methods: {
-    toggle() {
-      this.isOpen = !this.isOpen
-    },
-    select(newValue: string) {
-      this.$emit('update:value', newValue)
-    },
-  },
+  // data() {
+  //   return {
+  //     isOpen: false,
+  //   }
+  // },
+  // methods: {
+  //   toggle() {
+  //     this.isOpen = !this.isOpen
+  //   },
+  //   select(newValue: string) {
+  //     this.$emit('update:value', newValue)
+  //   },
+  // },
 })
 </script>
 <style lang="scss" scoped>

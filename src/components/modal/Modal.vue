@@ -9,7 +9,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'modal',
+  name: 'Modal',
   emits: ['click'],
   props: {
     type: {
