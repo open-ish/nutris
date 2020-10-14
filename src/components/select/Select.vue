@@ -4,6 +4,7 @@
     :class="{ active: isOpen, 'has-label': label }"
     @click="toggle"
   >
+    <span v-if="isOpen" class="click-outside" />
     <label v-if="label" class="label">
       {{ label }}
     </label>
@@ -102,5 +103,13 @@ export default defineComponent({
   position: absolute;
   bottom: 100%;
   left: 0;
+}
+
+.click-outside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 </style>
