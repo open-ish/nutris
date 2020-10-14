@@ -15,7 +15,7 @@ import { defineComponent } from 'vue'
 import { Paths } from '@/router/default/enums'
 
 export default defineComponent({
-  name: 'Btn',
+  name: 'Logo',
   setup() {
     return { Paths }
   },

@@ -25,7 +25,6 @@ import {
   defaultFooterEn,
   defaultFooterPt,
 } from '@/layouts/default/components/footer/footer.i18n.ts'
-
 import { defaultHomeEn, defaultHomePt } from '@/views/default/home/homei18n.ts'
 
 export const i18n = createI18n({
