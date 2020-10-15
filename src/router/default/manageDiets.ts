@@ -1,8 +1,8 @@
 import { Names, Paths } from '@/router/default/enums'
-import Home from '@/views/default/home/Home.vue'
+import ManageDiets from '@/views/default/manage-diets/ManageDiets.vue'
 
 export default {
   path: Paths.manageDiets,
   name: Names.manageDiets,
-  component: Home,
+  component: ManageDiets,
 }

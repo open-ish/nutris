@@ -269,7 +269,7 @@ export default defineComponent({
 }
 
 .large {
-  height: var(--space-lg);
+  height: 40px;
   padding-left: var(--space);
   padding-right: var(--space);
 
