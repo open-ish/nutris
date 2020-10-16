@@ -1,5 +1,5 @@
 <template>
-  <header class="header dg-container dg-container-large">
+  <header role="banner" class="header dg-container dg-container-large">
     <Logo />
     <Nav />
     <UserOptions />

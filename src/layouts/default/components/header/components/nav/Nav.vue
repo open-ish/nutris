@@ -70,10 +70,6 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
     font-size: 24px;
   }
 
-  span {
-    white-space: nowrap;
-  }
-
   @media screen and (min-width: $screen-sm) {
     flex-grow: initial;
     color: var(--white);
