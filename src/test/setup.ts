@@ -4,6 +4,7 @@ import store from '@/store'
 import router from '@/router'
 import { DefineComponent } from 'vue'
 import { Vue } from 'vue-class-component'
+import { i18n } from '@/i18n/index.ts'
 
 interface TestHelper extends GlobalMountOptions {
   shallow?: boolean
@@ -23,7 +24,7 @@ export const setup: setupFunction = (
     ? mount(component, {
         props: props,
         global: {
-          plugins: [store, router],
+          plugins: [store, router, i18n],
           stubs,
           components,
         },
@@ -31,7 +32,7 @@ export const setup: setupFunction = (
     : shallowMount(component, {
         props: props,
         global: {
-          plugins: [store, router],
+          plugins: [store, router, i18n],
           stubs,
           components,
         },
