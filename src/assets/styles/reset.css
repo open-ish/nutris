@@ -31,6 +31,10 @@ dd {
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Set core body defaults */
 body {
   min-height: 100vh;
