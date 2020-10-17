@@ -1,5 +1,5 @@
 export interface Diet {
-  name: string,
-  calAmount: number,
-  proteinAmount: number,
+  name: string
+  calAmount: number
+  proteinAmount: number
 }

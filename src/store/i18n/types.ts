@@ -1,5 +1,7 @@
 import { I18n } from '@/enums/i18n'
 
+export const I18N_NAMESPACE = 'i18n'
+
 export interface I18nState {
   language: I18n.en | I18n.pt
 }
