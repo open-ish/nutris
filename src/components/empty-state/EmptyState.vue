@@ -1,10 +1,10 @@
 <template>
-  <div class="empty-state dg-container dg-container-large">
+  <section class="empty-state dg-container dg-container-large">
     <slot />
     <Button color="primary" @click="$emit('action')" size="large">
       <slot name="btn" />
     </Button>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
