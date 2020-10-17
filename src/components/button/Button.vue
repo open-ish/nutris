@@ -258,6 +258,20 @@ export default defineComponent({
   }
 }
 
+.brand {
+  &.filled {
+    background-color: var(--brand-color);
+    color: var(--brand-color-contrast);
+
+    &:not([disabled]):not(.isLoading):hover {
+      &::before {
+        background-color: var(--brand-color-darken);
+        opacity: 1;
+      }
+    }
+  }
+}
+
 .medium {
   height: var(--space-md);
   padding-left: var(--space);
@@ -280,6 +294,21 @@ export default defineComponent({
 
 .round-square {
   min-width: var(--space-xlg);
+}
+
+.circle {
+  border-radius: 50%;
+  padding: 0;
+
+  &.medium {
+    width: var(--space-lg);
+    height: var(--space-lg);
+  }
+
+  &.large {
+    width: var(--space-xlg);
+    height: var(--space-xlg);
+  }
 }
 
 .loading {
