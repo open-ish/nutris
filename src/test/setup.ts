@@ -1,43 +1,41 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount, shallowMount, VueWrapper } from '@vue/test-utils'
 import { GlobalMountOptions } from '@vue/test-utils/dist/types'
 import store from '@/store'
 import router from '@/router'
 import { DefineComponent } from 'vue'
+import { Vue } from 'vue-class-component'
 
 interface TestHelper extends GlobalMountOptions {
-  component: DefineComponent
   shallow?: boolean
   props?: { [key: string]: unknown }
 }
 
-export const setup = async ({
+type setupFunction = (
+  component: DefineComponent,
+  config?: TestHelper
+) => VueWrapper<Vue>
+
+export const setup: setupFunction = (
   component,
-  components,
-  props,
-  shallow,
-  stubs,
-  directives,
-}: TestHelper) => {
+  { shallow, props, stubs, components } = { shallow: false }
+) => {
   const wrapper = !shallow
     ? mount(component, {
-        props,
+        props: props,
         global: {
           plugins: [store, router],
           stubs,
           components,
-          directives,
         },
       })
     : shallowMount(component, {
-        props,
+        props: props,
         global: {
           plugins: [store, router],
           stubs,
           components,
-          directives,
         },
       })
-
-  await router.isReady()
+  ;async () => await router.isReady()
   return wrapper
 }
