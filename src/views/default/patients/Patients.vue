@@ -75,13 +75,4 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-class.scss';
 @import '@/layouts/default/Default-variables.scss';
-
-.et {
-  min-height: 800px;
-  min-width: 500px;
-}
-
-.select {
-  max-width: 200px;
-}
 </style>
