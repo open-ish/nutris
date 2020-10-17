@@ -58,7 +58,7 @@ export default defineComponent({
 
   @media screen and (max-width: $screen-md) {
     margin-top: var(--space-lg);
-    margin-bottom: var(--space-lg);
+    margin-bottom: $footer-height-small;
   }
 
   .button {
