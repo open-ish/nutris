@@ -5,25 +5,38 @@
     :class="[`${mode}`, isShowElement && 'is-active']"
     :size="!isBackToTopMode ? 'large' : 'medium'"
     @click="isBackToTopMode ? toTop() : $emit('click')"
-    aria-label="Voltar pro topo"
+    :aria-label="
+      isBackToTopMode
+        ? $t(fixedBtnI18nPath.ariaLabelBtn, language)
+        : ariaLabelBtn
+    "
   >
     <i
       :class="isBackToTopMode ? 'nutris-angle-up' : $attrs.startIcon"
-      :aria-label="ariaLabel"
+      :aria-label="
+        isBackToTopMode
+          ? $t(fixedBtnI18nPath.ariaLabelIcon, language)
+          : ariaLabelIcon
+      "
     ></i>
   </Button>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue'
-
+import { createNamespacedHelpers } from 'vuex'
 import Button from '@/components/button/Button.vue'
 import { scroll } from '@/helpers/window-listeners/scroll.ts'
+import { I18nGetters, I18N_NAMESPACE } from '@/store/i18n/types'
+import { fixedBtnI18nPath } from './FixedBtn.i18n'
+
 const backToTopMode = 'back-to-top'
+const { mapGetters } = createNamespacedHelpers(I18N_NAMESPACE)
 
 interface Fixed {
   mode: 'back-to-top' | 'insert'
-  ariaLabel: 'Seta apontando pra cima.'
+  ariaLabelIcon: 'Seta apontando pra cima.'
+  ariaLabelBtn: ''
 }
 
 export default defineComponent({
@@ -38,15 +51,20 @@ export default defineComponent({
       default: 'back-to-top',
       type: String as PropType<Fixed['mode']>,
     },
-    ariaLabel: {
-      default: 'Seta apontando pra cima.',
-      type: String as PropType<Fixed['ariaLabel']>,
+    ariaLabelIcon: {
+      type: String as PropType<Fixed['ariaLabelIcon']>,
+    },
+    ariaLabelBtn: {
+      type: String as PropType<Fixed['ariaLabelBtn']>,
     },
   },
   setup(props) {
     const isBackToTopMode = ref(props.mode === backToTopMode)
 
-    return { isBackToTopMode, ...scroll() }
+    return { isBackToTopMode, fixedBtnI18nPath, ...scroll() }
+  },
+  computed: {
+    ...mapGetters({ language: I18nGetters.LANGUAGE }),
   },
 })
 </script>
