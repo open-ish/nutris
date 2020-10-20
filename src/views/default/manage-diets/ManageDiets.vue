@@ -5,7 +5,17 @@
       {{ $t(manageDietsI18nPath.emptyStateAction, language) }}
     </template>
   </EmptyState>
-  <section v-else data-testid="manage-diets">
+  <section
+    v-else
+    data-testid="manage-diets-list"
+    class="dg-container dg-container-large manage-diets"
+  >
+    <h1>Minhas dietas cadastradas</h1>
+    <div class="diets">
+      <Diet v-for="diet in 10" :key="diet.name" />
+    </div>
+
+    <!-- fixed  -->
     <FixedBtn
       mode="insert"
       startIcon="nutris-plus"
@@ -23,6 +33,7 @@ import { mapGetters } from 'vuex'
 
 import EmptyState from '@/components/empty-state/EmptyState.vue'
 import FixedBtn from '@/components/button/FixedBtn.vue'
+import Diet from '@/views/default/manage-diets/components/diet/Diet.vue'
 import { I18nGetters, I18N_NAMESPACE } from '@/store/i18n/types'
 import {
   ManageDietsGetters,
@@ -37,6 +48,7 @@ export default defineComponent({
   components: {
     EmptyState,
     FixedBtn,
+    Diet,
   },
   setup() {
     return { manageDietsI18nPath }
@@ -59,4 +71,25 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-class.scss';
 @import '@/layouts/default/Default-variables.scss';
+
+.manage-diets {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.diets {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  & > * {
+    &:not(:last-of-type) {
+      margin-right: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+  }
+}
 </style>
