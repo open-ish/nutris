@@ -2,7 +2,7 @@
   <main class="dg-container dg-container-large home">
     <h1>{{ $t(defaultHomeI18nPath.title, language) }}</h1>
     <p class="content">
-      <em>Nutris</em>{{ $t(defaultHomeI18nPath.textOne, language) }}
+      <em>Nutris</em>{{ $t(defaultHomeI18nPath.textOne, language) }}.
     </p>
     <i class="nutris-emo-coffee"></i>
     <p class="content">
