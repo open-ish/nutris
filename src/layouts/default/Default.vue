@@ -44,4 +44,10 @@ export default defineComponent({
   position: relative;
   min-height: 100vh;
 }
+
+h1 {
+  font: var(--typography-panel-font);
+  letter-spacing: var(--typography-panel-letter);
+  padding-bottom: var(--space-md);
+}
 </style>
