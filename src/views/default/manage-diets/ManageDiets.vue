@@ -83,13 +83,19 @@ export default defineComponent({
 .diets {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 
   & > * {
     &:not(:last-of-type) {
-      margin-right: var(--space-sm);
       margin-bottom: var(--space-sm);
     }
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
 </style>

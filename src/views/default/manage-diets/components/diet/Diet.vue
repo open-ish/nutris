@@ -57,6 +57,8 @@ export default defineComponent({
   height: fit-content;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 300px;
 }
 
 .info {
