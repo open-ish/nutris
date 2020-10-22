@@ -88,12 +88,19 @@ $back-btn: 0 -2px 5px rgba(0, 0, 0, 0.2);
   left: var(--space-sm);
   bottom: calc(#{$footer-height-small} + var(--space-sm));
   opacity: 0;
+
+  @media screen and (min-width: $screen-sm) {
+    bottom: var(--space);
+  }
 }
 
 .insert {
   right: var(--space-sm);
   bottom: calc(#{$footer-height-small} + var(--space-sm));
   opacity: 1;
+  @media screen and (min-width: $screen-sm) {
+    bottom: var(--space);
+  }
 }
 
 .large {
