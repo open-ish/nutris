@@ -86,10 +86,6 @@ h1 {
 }
 
 .content {
-  &:first-of-type {
-    margin-top: var(--space-md);
-  }
-
   &:not(:last-of-type) {
     margin-bottom: var(--space-sm);
   }

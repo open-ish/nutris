@@ -12,7 +12,7 @@
   >
     <h1>Minhas dietas cadastradas</h1>
     <div class="diets">
-      <Diet v-for="diet in 10" :key="diet.name" />
+      <Diet v-for="diet in diets" :key="diet.name" :diet="diet" />
     </div>
 
     <!-- fixed  -->
@@ -83,19 +83,14 @@ export default defineComponent({
 .diets {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 
   & > * {
     &:not(:last-of-type) {
       margin-bottom: var(--space-sm);
+      margin-right: var(--space-xxs);
     }
-  }
-
-  @media screen and (min-width: $screen-sm) {
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
   }
 }
 </style>

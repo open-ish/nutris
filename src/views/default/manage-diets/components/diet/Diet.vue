@@ -1,15 +1,15 @@
 <template>
   <Paper class="paper">
-    <h2>Name</h2>
+    <h2>{{ diet.name }}</h2>
     <div class="info">
       <div class="cal">
         <h3>Calorias</h3>
-        <p>2 kcal/mL</p>
+        <p>{{ diet.calAmount }} kcal/mL</p>
       </div>
       <hr class="divider" />
       <div class="protein">
-        <h3>Proteína</h3>
-        <p>2 g/mL</p>
+        <h3>Proteínas</h3>
+        <p>{{ diet.proteinAmount }} g/mL</p>
       </div>
     </div>
     <Button color="primary" size="small">Editar</Button>
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { mapGetters } from 'vuex'
 
 import Paper from '@/components/paper/Paper.vue'
@@ -27,6 +27,7 @@ import {
   ManageDietsGetters,
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
+import { Diet } from '@/models/Diet'
 
 // const { mapGetters } = createNamespacedHelpers('i18n')
 
@@ -36,6 +37,12 @@ export default defineComponent({
     Button,
     Paper,
   },
+  props: {
+    diet: {
+      type: Object as PropType<Diet>,
+      required: true,
+    },
+  },
   computed: {
     ...mapGetters(I18N_NAMESPACE, {
       language: I18nGetters.LANGUAGE,
@@ -43,11 +50,6 @@ export default defineComponent({
     ...mapGetters(MANAGE_DIETS_NAMESPACE, {
       diets: ManageDietsGetters.DIETS,
     }),
-  },
-  methods: {
-    action() {
-      console.log('fs')
-    },
   },
 })
 </script>
@@ -81,6 +83,7 @@ h3 {
 
 h2 {
   font: var(--typography-subheader-font);
+  text-transform: capitalize;
 }
 
 h3 {
