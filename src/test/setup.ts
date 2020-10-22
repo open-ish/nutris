@@ -20,6 +20,8 @@ export const setup: setupFunction = (
   component,
   { shallow, props, stubs, components } = { shallow: false }
 ) => {
+  router.isReady()
+
   const wrapper = !shallow
     ? mount(component, {
         props: props,
@@ -37,6 +39,6 @@ export const setup: setupFunction = (
           components,
         },
       })
-  ;async () => await router.isReady()
+
   return wrapper
 }
