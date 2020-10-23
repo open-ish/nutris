@@ -4,7 +4,7 @@
       v-for="(item, index) in navOptions"
       :key="index"
       class="item g-center--y"
-      active-class="active"
+      exact-active-class="active"
       :to="item.path"
     >
       <i :class="item.icon"></i>

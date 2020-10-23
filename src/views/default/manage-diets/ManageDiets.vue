@@ -1,5 +1,8 @@
 <template>
-  <EmptyState v-if="!diets.length" @action="action">
+  <EmptyState
+    v-if="!diets.length"
+    @action="$router.push({ name: Names.manageDietsNew })"
+  >
     <h1>{{ $t(manageDietsI18nPath.emptyStateTitle, language) }} 😁</h1>
     <template v-slot:btn>
       {{ $t(manageDietsI18nPath.emptyStateAction, language) }}
@@ -62,11 +65,6 @@ export default defineComponent({
     ...mapGetters(MANAGE_DIETS_NAMESPACE, {
       diets: ManageDietsGetters.DIETS,
     }),
-  },
-  methods: {
-    action() {
-      console.log('fs')
-    },
   },
 })
 </script>

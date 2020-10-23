@@ -2,7 +2,7 @@ export enum Paths {
   about = '/about',
   calculate = '/calculate',
   history = '/history',
-  home = '',
+  home = '/',
   patients = '/patients',
   newPatient = '/new-patient',
 

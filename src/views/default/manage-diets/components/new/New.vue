@@ -53,10 +53,6 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-h1 {
-  text-align: center;
-}
-
 .new-diet {
   display: flex;
   flex-direction: column;
