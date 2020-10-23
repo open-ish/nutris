@@ -13,7 +13,7 @@ export default {
       component: ManageDiets,
     },
     {
-      path: Paths.manageDietsNew,
+      path: Paths.new,
       name: Names.manageDietsNew,
       component: New,
     },

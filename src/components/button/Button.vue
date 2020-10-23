@@ -106,6 +106,7 @@ export default defineComponent({
     &.filled {
       background-color: var(--disabled-color);
       color: var(--disabled-color-contrast);
+      opacity: 0.4;
     }
   }
 }

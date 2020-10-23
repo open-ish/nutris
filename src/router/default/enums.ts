@@ -8,7 +8,9 @@ export enum Paths {
 
   // Manage Diets Routes
   manageDiets = '/manage-diets',
-  manageDietsNew = 'new',
+
+  // news
+  new = 'new',
 }
 
 export enum Names {

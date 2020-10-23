@@ -6,7 +6,7 @@ import manageDietsStore from '@/store/manage-diets/index.ts'
 import EmptyState from '@/components/empty-state/EmptyState.vue'
 import { Diet } from '@/models/Diet'
 
-const TESTID_MANAGE_DIETS = '[data-testid="manage-diets"]'
+const TESTID_MANAGE_DIETS = '[data-testid="manage-diets-list"]'
 const FAKE_DIET: Diet = { name: 'diet', proteinAmount: 1, calAmount: 2 }
 describe('<ManageDiets/> Empty State', () => {
   const wrapper = setup(ManageDiets)

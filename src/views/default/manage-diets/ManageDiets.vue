@@ -23,6 +23,7 @@
         $t(manageDietsI18nPath.ariaLabelAddNewDietIcon, language)
       "
       :aria-label-btn="$t(manageDietsI18nPath.ariaLabelAddNewDietBtn, language)"
+      @click="$router.push({ name: Names.manageDietsNew })"
     />
   </section>
 </template>
@@ -40,6 +41,7 @@ import {
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
 import { manageDietsI18nPath } from './ManageDiets.i18n'
+import { Names } from '@/router/default/enums'
 
 // const { mapGetters } = createNamespacedHelpers('i18n')
 
@@ -51,7 +53,7 @@ export default defineComponent({
     Diet,
   },
   setup() {
-    return { manageDietsI18nPath }
+    return { manageDietsI18nPath, Names }
   },
   computed: {
     ...mapGetters(I18N_NAMESPACE, {
