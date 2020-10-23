@@ -8,7 +8,10 @@ import { MutationTree } from 'vuex'
 import { Diet } from '@/models/Diet'
 
 const state: ManageDietsState = {
-  diets: [{ name: 'diet', proteinAmount: 1, calAmount: 2 }],
+  diets: [
+    // { name: 'diet', proteinAmount: 1, calAmount: 2 },
+    // { name: 'diet2', proteinAmount: 1, calAmount: 2 },
+  ],
 }
 
 const getters = {
