@@ -1,6 +1,7 @@
 import { UserState, UserGetters, UserMutations, UserActions } from './types'
 import { MutationTree, ActionTree } from 'vuex'
 import { signInWithGoogle } from '@/services/auth.service.ts'
+import { User } from '@/models/User'
 
 const state: UserState = {
   user: null,
@@ -15,7 +16,7 @@ const getters = {
   },
 }
 
-const actions: ActionTree<UserState, any> = {
+const actions: ActionTree<UserState, {}> = {
   async [UserActions.LOGIN_GOOGLE]({ commit }) {
     const user = await signInWithGoogle()
 
@@ -26,7 +27,7 @@ const actions: ActionTree<UserState, any> = {
 }
 
 const mutations: MutationTree<UserState> = {
-  [UserMutations.CHANGE_USER](state, user) {
+  [UserMutations.CHANGE_USER](state, user: User) {
     state.user = user
   },
 }
