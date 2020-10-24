@@ -5,7 +5,7 @@
       <Button @click="login" color="primary" shape="circle"
         ><i class="nutris-google"></i>
       </Button>
-      <Button color="primary" shape="circle"
+      <Button disabled color="primary" shape="circle"
         ><i class="nutris-facebook"></i>
       </Button>
     </div>
@@ -21,6 +21,7 @@ import { I18nGetters, I18nActions } from '@/store/i18n/types'
 const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
 
 import Button from '@/components/button/Button.vue'
+import { signInWithGoogle } from '@/services/auth.service.ts'
 
 export default defineComponent({
   name: 'SocialLogin',
@@ -30,6 +31,7 @@ export default defineComponent({
   setup() {
     return {
       useI18n,
+      signInWithGoogle,
     }
   },
   computed: {
@@ -43,8 +45,8 @@ export default defineComponent({
       changeLanguage: I18nActions.CHANGE_LANGUAGE,
     }),
     async login() {
-      // const lo = await signInWithGoogle()
-      // console.log('login -> lo', lo)
+      await signInWithGoogle()
+      document.location.replace('')
     },
   },
 })

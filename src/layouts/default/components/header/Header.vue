@@ -2,7 +2,7 @@
   <header role="banner" class="header dg-container dg-container-large">
     <Logo />
     <Nav v-if="isAuth" />
-    <UserOptions v-if="isAuth" />
+    <UserOptions v-if="isAuth" :user="user" />
     <SocialLogin v-if="!isAuth" />
   </header>
 </template>
@@ -31,6 +31,7 @@ export default defineComponent({
   computed: {
     ...mapGetters({
       isAuth: UserGetters.IS_AUTH,
+      user: UserGetters.USER,
     }),
   },
 })
