@@ -13,7 +13,6 @@
         type="number"
         label="Concentração protéica (em kcal/ml)"
       />
-
       <Button
         @click="!isInvalid && save()"
         color="primary"

@@ -1,0 +1,96 @@
+<template>
+  <div class="social-login">
+    <p>Acessar conta</p>
+    <div class="actions">
+      <Button @click="login" color="primary" shape="circle"
+        ><i class="nutris-google"></i>
+      </Button>
+      <Button color="primary" shape="circle"
+        ><i class="nutris-facebook"></i>
+      </Button>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { createNamespacedHelpers } from 'vuex'
+import { useI18n } from 'vue-i18n'
+
+import { I18nGetters, I18nActions } from '@/store/i18n/types'
+const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
+
+import Button from '@/components/button/Button.vue'
+
+export default defineComponent({
+  name: 'SocialLogin',
+  components: {
+    Button,
+  },
+  setup() {
+    return {
+      useI18n,
+    }
+  },
+  computed: {
+    ...mapGetters({
+      language: I18nGetters.LANGUAGE,
+      labelToggle: I18nGetters.LABEL_TOGGLE,
+    }),
+  },
+  methods: {
+    ...mapActions({
+      changeLanguage: I18nActions.CHANGE_LANGUAGE,
+    }),
+    async login() {
+      // const lo = await signInWithGoogle()
+      // console.log('login -> lo', lo)
+    },
+  },
+})
+</script>
+
+<style lang="scss" scoped>
+@import '@/layouts/default/Default-variables.scss';
+
+.social-login {
+  color: var(--gray-3);
+  display: flex;
+  justify-content: space-around;
+  font: var(--typography-subheader-font);
+  font-weight: 900;
+
+  @media screen and (min-width: $screen-sm) {
+    align-items: center;
+    margin-left: auto;
+    white-space: nowrap;
+    color: var(--white);
+  }
+
+  @media screen and (max-width: $screen-sm) {
+    align-items: center;
+    background-color: var(--white);
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    padding: var(--space-xs);
+    position: fixed;
+    z-index: var(--zindex-100);
+    width: 100vw;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 350px;
+    justify-self: center;
+
+    @media screen and (min-width: $screen-sm) {
+      > .button {
+        margin-left: var(--space-sm);
+      }
+    }
+  }
+}
+</style>

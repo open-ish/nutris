@@ -19,7 +19,7 @@ const getters = {
   },
 }
 
-const actions: ActionTree<I18nState, I18nState> = {
+const actions: ActionTree<I18nState, any> = {
   [I18nActions.CHANGE_LANGUAGE](
     { commit },
     newLanguage: I18nState['language']

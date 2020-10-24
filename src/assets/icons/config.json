@@ -793,8 +793,14 @@
     {
       "uid": "d10920db2e79c997c5e783279291970c",
       "css": "dot-3",
-      "code": 59407,
+      "code": 59277,
       "src": "entypo"
+    },
+    {
+      "uid": "f06fe7ff18d1c591bc1183cb3ab105e9",
+      "css": "google",
+      "code": 61856,
+      "src": "fontawesome"
     },
     {
       "uid": "5d73628bc1aa2d5a8d6c92216d7fb52a",

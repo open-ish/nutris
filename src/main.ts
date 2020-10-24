@@ -10,6 +10,7 @@ import { getCssVariableValue } from '@/helpers/styles.ts'
 import { User } from '@/models/User.ts'
 import '@/assets/styles/index.scss'
 import { i18n } from '@/i18n/index.ts'
+import { UserMutations, USER_NAMESPACE } from './store/user/types'
 
 const init = () =>
   createApp(App)
@@ -18,12 +19,10 @@ const init = () =>
     .use(i18n)
     .mount('#app')
 
+const setUser = USER_NAMESPACE + '/' + UserMutations.CHANGE_USER
+
 FirebaseApp.auth().onAuthStateChanged(async (user: User) => {
-  if (user) {
-    // user commit
-  } else {
-    // another
-  }
+  await store.commit(setUser, user)
   init()
 })
 
