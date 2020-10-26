@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="Paths.home" role="logo">
+  <router-link :to="Paths.home">
     <div class="logo">
       <img src="@/../public/img/icons/nutrisicon.png" alt="Logo da Nutris" />
       <span>
@@ -41,6 +41,7 @@ $logo-gap: -14px;
 
     img {
       height: $logo-height;
+      width: $logo-height;
       margin-top: $logo-gap;
     }
   }
