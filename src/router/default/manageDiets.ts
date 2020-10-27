@@ -7,6 +7,9 @@ export default {
   path: Paths.manageDiets,
   name: Names.manageDiets,
   component: Index,
+  meta: {
+    requiresAuth: true,
+  },
   children: [
     {
       path: '',

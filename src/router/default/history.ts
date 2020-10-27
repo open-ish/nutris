@@ -5,4 +5,7 @@ export default {
   path: Paths.history,
   name: Names.history,
   component: Home,
+  meta: {
+    requiresAuth: true,
+  },
 }

@@ -5,4 +5,7 @@ export default {
   path: Paths.calculate,
   name: Names.calculate,
   component: Home,
+  meta: {
+    requiresAuth: true,
+  },
 }
