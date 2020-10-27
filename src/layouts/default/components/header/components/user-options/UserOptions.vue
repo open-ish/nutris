@@ -67,9 +67,6 @@ export default defineComponent({
       logout,
     }
   },
-  created() {
-    console.log('wewee', this.user)
-  },
   computed: {
     ...mapGetters({
       language: I18nGetters.LANGUAGE,
