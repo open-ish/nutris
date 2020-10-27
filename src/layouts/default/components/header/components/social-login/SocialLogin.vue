@@ -1,11 +1,19 @@
 <template>
   <div class="social-login">
-    <p>Acessar conta</p>
+    <p>Acessar via</p>
     <div class="actions">
-      <Button @click="login" color="primary" shape="circle"
+      <Button
+        aria-label="Fazer login com Google"
+        @click="login"
+        color="primary"
+        shape="circle"
         ><i class="nutris-google"></i>
       </Button>
-      <Button disabled color="primary" shape="circle"
+      <Button
+        aria-label="Fazer login com Facebook"
+        disabled
+        color="primary"
+        shape="circle"
         ><i class="nutris-facebook"></i>
       </Button>
     </div>
@@ -46,7 +54,7 @@ export default defineComponent({
     }),
     async login() {
       await signInWithGoogle()
-      document.location.replace('')
+      document.location.reload(true)
     },
   },
 })
@@ -59,26 +67,18 @@ export default defineComponent({
   color: var(--gray-3);
   display: flex;
   justify-content: space-around;
-  font: var(--typography-subheader-font);
-  font-weight: 900;
+  color: var(--white);
 
   @media screen and (min-width: $screen-sm) {
+    font: var(--typography-subheader-font);
+    font-weight: 900;
     align-items: center;
     margin-left: auto;
     white-space: nowrap;
-    color: var(--white);
   }
 
   @media screen and (max-width: $screen-sm) {
-    align-items: center;
-    background-color: var(--white);
-    bottom: 0;
-    left: 0;
-    flex-direction: column;
-    padding: var(--space-xs);
-    position: fixed;
-    z-index: var(--zindex-100);
-    width: 100vw;
+    text-align: center;
   }
 
   .actions {
