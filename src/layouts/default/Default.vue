@@ -35,7 +35,7 @@ export default defineComponent({
   width: 100%;
   max-width: 1000px;
   margin-bottom: auto;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .app {

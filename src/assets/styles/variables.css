@@ -23,7 +23,9 @@
   --screen-lg: 1280px;
   --screen-xlg: 1440px;
   --screen-max-container: 1140px;
-  --font-family: 'Roboto', sans-serif;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   --typography-panel-font: 900 38px/40px var(--font-family);
   --typography-panel-letter: 0;
   --typography-title-font: 500 24px/28px var(--font-family);
