@@ -41,7 +41,7 @@ export default defineComponent({
     const proteinAmount = ref('')
     const calAmount = ref('')
     const save = () => {
-      console.log(name.value)
+      return name.value
     }
     const isInvalid = computed(
       () => !name.value || !proteinAmount.value || !calAmount.value

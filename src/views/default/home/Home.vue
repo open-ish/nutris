@@ -8,7 +8,7 @@
     <p class="content">
       {{ $t(defaultHomeI18nPath.textTwo, language) }}
     </p>
-    <img class="grape" :src="Statics.grape" />
+    <img aria-hidden="true" class="grape" :src="Statics.grape" />
     <h2 class="purposes">{{ $t(defaultHomeI18nPath.purpose, language) }}</h2>
     <p>
       <em>Nutris</em> {{ $t(defaultHomeI18nPath.purposeText, language) }}
@@ -73,11 +73,15 @@ export default defineComponent({
     left: 0;
   }
 }
+$image-size: 55px;
 
 .grape {
   object-fit: contain;
   color: var(--brand-color);
   margin: var(--space-md);
+  width: $image-size;
+  height: $image-size;
+  margin: 0 auto;
 }
 
 h1 {
