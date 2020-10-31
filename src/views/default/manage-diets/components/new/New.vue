@@ -17,37 +17,77 @@
         @click="!isInvalid && save()"
         color="primary"
         :disabled="isInvalid"
+        :isLoading="isLoading"
         size="large"
         >Salvar 🥳
       </Button>
+      <Alert v-if="errorMessage" :error="errorMessage" />
     </form>
   </section>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
+import { createNamespacedHelpers } from 'vuex'
 
 import Input from '@/components/input/Input.vue'
 import Button from '@/components/button/Button.vue'
+import Alert from '@/components/alert/Alert.vue'
+import {
+  ManageDietsMutations,
+  MANAGE_DIETS_NAMESPACE,
+} from '@/store/manage-diets/types'
+
+const error = 'Desculpe, poderia tentar novamente mais tarde? 🙌'
+
+const { mapActions } = createNamespacedHelpers(MANAGE_DIETS_NAMESPACE)
 
 export default defineComponent({
   name: 'New',
   components: {
     Input,
     Button,
+    Alert,
   },
   setup() {
     const name = ref('')
     const proteinAmount = ref('')
     const calAmount = ref('')
-    const save = () => {
-      return name.value
+    const isLoading = ref(false)
+    const errorMessage = ref('')
+    const loading = () => {
+      isLoading.value = !isLoading.value
     }
     const isInvalid = computed(
       () => !name.value || !proteinAmount.value || !calAmount.value
     )
 
-    return { name, proteinAmount, calAmount, save, isInvalid }
+    return {
+      name,
+      proteinAmount,
+      calAmount,
+      isInvalid,
+      isLoading,
+      loading,
+      errorMessage,
+    }
+  },
+  methods: {
+    ...mapActions({
+      postDiet: ManageDietsMutations.POST_DIETS,
+    }),
+    async save() {
+      this.loading()
+
+      const response = await this.postDiet({
+        name: this.name,
+        proteinAmount: this.proteinAmount,
+        calAmount: this.calAmount,
+      })
+
+      this.errorMessage = !response ? '' : error
+      this.loading()
+    },
   },
 })
 </script>
