@@ -4,7 +4,7 @@
     :href="href"
     :role="href ? '' : 'button'"
     :aria-busy="isLoading"
-    @click="$emit('click')"
+    @click="!isLoading && $emit('click')"
     :class="buttonClass"
   >
     <Spinner
@@ -54,7 +54,7 @@ export default defineComponent({
     const spinnerColor = computed(() =>
       props.variant === 'filled' ? `${props.color}-contrast` : props.color
     )
-    const spinnerSize = computed(() => (props.size === 'medium' ? 24 : 36))
+    const spinnerSize = computed(() => (props.size === 'medium' ? 22 : 32))
     return { spinnerSize, spinnerColor, buttonClass }
   },
 })
