@@ -15,10 +15,12 @@ export const ManageDietsGetters = {
 export const ManageDietsActions = {
   GET_DIETS: 'GET_DIETS',
   POST_DIETS: 'POST_DIETS',
+  UPDATE_DIET: 'UPDATE_DIET',
 }
 
 // mutations
 export const ManageDietsMutations = {
   GET_DIETS: 'GET_DIETS',
   POST_DIETS: 'POST_DIETS',
+  UPDATE_DIET: 'UPDATE_DIET',
 }

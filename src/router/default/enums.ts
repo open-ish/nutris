@@ -11,6 +11,7 @@ export enum Paths {
 
   // news
   new = 'new',
+  edit = 'edit/',
 }
 
 export enum Names {
@@ -24,4 +25,5 @@ export enum Names {
   // Manage Diets Routes
   manageDiets = 'ManageDiets',
   manageDietsNew = 'ManageDietsNew',
+  manageDietsEdit = 'ManageDietsEdit',
 }

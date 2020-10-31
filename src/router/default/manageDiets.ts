@@ -2,7 +2,7 @@ import { RouteLocationNormalized } from 'vue-router'
 import { Names, Paths } from '@/router/default/enums'
 import Index from '@/layouts/Index.vue'
 import ManageDiets from '@/views/default/manage-diets/ManageDiets.vue'
-import New from '@/views/default/manage-diets/components/new/New.vue'
+import Form from '@/views/default/manage-diets/components/form/Form.vue'
 import store from '@/store/index'
 import {
   ManageDietsActions,
@@ -38,7 +38,13 @@ export default {
     {
       path: Paths.new,
       name: Names.manageDietsNew,
-      component: New,
+      component: Form,
+    },
+    {
+      path: Paths.edit + ':id',
+      name: Names.manageDietsEdit,
+      component: Form,
+      props: true,
     },
   ],
 }
