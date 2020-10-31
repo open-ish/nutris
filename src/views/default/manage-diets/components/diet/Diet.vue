@@ -1,6 +1,14 @@
 <template>
   <Paper class="paper">
     <h2>{{ diet.name }}</h2>
+    <Button
+      @click="toggleRemoveModal()"
+      class="remove"
+      variant="text"
+      color="danger"
+    >
+      <i class="nutris-cancel" aria-label="Excluir dieta"></i>
+    </Button>
     <div class="info">
       <div class="cal">
         <h3>Calorias</h3>
@@ -28,16 +36,33 @@
       >Editar</Button
     >
   </Paper>
+  <Modal @click="toggleRemoveModal" v-if="isOpenModal">
+    <div class="remove-modal">
+      <p>
+        Quer realmente apagar a dieta <strong>{{ diet.name }}</strong> 🙁 ?
+      </p>
+      <Button
+        variant="text"
+        color="danger"
+        @click="removeDiet"
+        :isLoading="isLoading"
+        >Sim, quero deletar</Button
+      >
+    </div>
+  </Modal>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import { mapGetters } from 'vuex'
+import { defineComponent, PropType, ref } from 'vue'
+import { mapGetters, mapActions } from 'vuex'
 
 import Paper from '@/components/paper/Paper.vue'
 import Button from '@/components/button/Button.vue'
+import Modal from '@/components/modal/Modal.vue'
+
 import { I18nGetters, I18N_NAMESPACE } from '@/store/i18n/types'
 import {
+  ManageDietsActions,
   ManageDietsGetters,
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
@@ -45,10 +70,11 @@ import { Diet } from '@/models/Diet'
 import { Names } from '@/router/default/enums'
 
 export default defineComponent({
-  name: 'Diets',
+  name: 'Diet',
   components: {
     Button,
     Paper,
+    Modal,
   },
   props: {
     diet: {
@@ -57,7 +83,11 @@ export default defineComponent({
     },
   },
   setup() {
-    return { Names }
+    const isOpenModal = ref(false)
+    const isLoading = ref(false)
+    const toggleRemoveModal = () => (isOpenModal.value = !isOpenModal.value)
+    const toggleLoading = () => (isLoading.value = !isLoading.value)
+    return { Names, isOpenModal, toggleRemoveModal, isLoading, toggleLoading }
   },
   computed: {
     ...mapGetters(I18N_NAMESPACE, {
@@ -66,6 +96,17 @@ export default defineComponent({
     ...mapGetters(MANAGE_DIETS_NAMESPACE, {
       diets: ManageDietsGetters.DIETS,
     }),
+  },
+  methods: {
+    ...mapActions(MANAGE_DIETS_NAMESPACE, {
+      deleteDiet: ManageDietsActions.DELETE_DIET,
+    }),
+    async removeDiet() {
+      this.toggleLoading()
+      const response = await this.deleteDiet(this.diet.id)
+
+      this.toggleLoading()
+    },
   },
 })
 </script>
@@ -77,6 +118,7 @@ export default defineComponent({
   flex-direction: column;
   width: 100%;
   max-width: 300px;
+  position: relative;
 }
 
 .info {
@@ -120,5 +162,23 @@ p {
 
 .button {
   margin: auto;
+}
+
+.remove {
+  position: absolute;
+  right: 0;
+  padding: var(--space-sm) var(--space-xs);
+  top: var(--space-xs);
+}
+
+.remove-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .button {
+    margin-top: var(--space-sm);
+  }
 }
 </style>

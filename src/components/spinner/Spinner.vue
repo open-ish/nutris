@@ -72,6 +72,14 @@ $animation-time: 1s;
   stroke: var(--secondary-color);
 }
 
+.danger {
+  stroke: var(--danger-color);
+}
+
+.danger-contrast {
+  stroke: var(--danger-contrast-color);
+}
+
 .secondary-contrast {
   stroke: var(--secondary-color-contrast);
 }

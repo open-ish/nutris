@@ -259,6 +259,19 @@ export default defineComponent({
   }
 }
 
+.danger {
+  &.text {
+    color: var(--danger-color);
+
+    &:not([disabled]):not(.isLoading):hover {
+      &::before {
+        text-decoration: underline;
+        opacity: 0.1;
+      }
+    }
+  }
+}
+
 .brand {
   &.filled {
     background-color: var(--brand-color);

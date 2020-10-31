@@ -77,6 +77,25 @@ const actions: ActionTree<ManageDietsState, {}> = {
           .catch((error: Error) => error.message)
       : new Error()
   },
+  [ManageDietsActions.DELETE_DIET]({ commit, rootGetters, getters }, id) {
+    const index = getters[ManageDietsGetters.DIETS].findIndex(
+      (diet: Diet) => diet.id === id
+    )
+    const noIndex = index === -1
+    return !noIndex
+      ? FirebaseApp.db
+          .collection(names.users)
+          .doc(rootGetters[user].uid)
+          .collection(names.diets)
+          .doc(id)
+          .delete()
+          .then((doc: Snapshot) => {
+            console.log('doc', doc)
+            commit(ManageDietsMutations.DELETE_DIET, index)
+          })
+          .catch((error: Error) => error.message)
+      : new Error()
+  },
   // saveLegacy() {
   // CHANGE DIETAS TO DIETS
   //   return (
@@ -117,6 +136,9 @@ const mutations: MutationTree<ManageDietsState> = {
   },
   [ManageDietsMutations.UPDATE_DIET](state, { diet, index }) {
     state.diets[index] = diet
+  },
+  [ManageDietsMutations.DELETE_DIET](state, index) {
+    state.diets.splice(index, 1)
   },
 }
 
