@@ -11,12 +11,14 @@ export const ManageDietsGetters = {
   DIETS: 'DIETS',
 }
 
-// // actions
-// export const ManageDietsActions = {
-//   CHANGE_LANGUAGE: 'CHANGE_LANGUAGE',
-// }
+// actions
+export const ManageDietsActions = {
+  GET_DIETS: 'GET_DIETS',
+  POST_DIETS: 'POST_DIETS',
+}
 
 // mutations
 export const ManageDietsMutations = {
-  CHANGE_DIETS: 'CHANGE_DIETS',
+  GET_DIETS: 'GET_DIETS',
+  POST_DIETS: 'POST_DIETS',
 }

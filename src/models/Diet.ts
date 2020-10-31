@@ -1,5 +1,6 @@
 export interface Diet {
+  id: string
   name: string
-  calAmount: number
+  calAmount?: number
   proteinAmount: number
 }
