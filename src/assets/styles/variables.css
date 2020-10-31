@@ -99,7 +99,7 @@
   --success-color-contrast: var(--white);
   --danger-color-lighten: var(--red-2);
   --danger-color: var(--red-3);
-  --danger-color: var(--red-4);
+  --danger-color-darken: var(--red-4);
   --danger-color-contrast: var(--white);
   --text-color: var(--gray-5);
   --text-color-lighten: var(--gray-3);
