@@ -1,38 +1,94 @@
+import { MutationTree, ActionTree } from 'vuex'
 import {
   ManageDietsState,
   ManageDietsGetters,
   ManageDietsMutations,
+  ManageDietsActions,
 } from './types'
-// import { I18n } from '@/enums/i18n'
-import { MutationTree } from 'vuex'
+import FirebaseApp from '@/../firebaseApp'
+
 import { Diet } from '@/models/Diet'
+import { names } from '@/enums/collections/firebase'
+import { UserGetters, USER_NAMESPACE } from '../user/types'
+import { Snapshot } from '@/models/firebase'
+
+const user = USER_NAMESPACE + '/' + UserGetters.USER
 
 const state: ManageDietsState = {
-  diets: [
-    // { name: 'diet', proteinAmount: 1, calAmount: 2 },
-    // { name: 'diet2', proteinAmount: 1, calAmount: 2 },
-  ],
+  diets: [],
 }
 
 const getters = {
   [ManageDietsGetters.DIETS](state: ManageDietsState) {
-    console.log('state.diets', state.diets)
     return state.diets
   },
 }
 
-// const actions: ActionTree<I18nState, I18nState> = {
-//   [I18nActions.CHANGE_LANGUAGE](
-//     { commit },
-//     newLanguage: I18nState['language']
-//   ) {
-//     commit(I18nMutations.CHANGE_LANGUAGE, newLanguage)
-//   },
-// }
+const actions: ActionTree<ManageDietsState, {}> = {
+  [ManageDietsActions.GET_DIETS]({ commit, rootGetters }) {
+    return FirebaseApp.db
+      .collection(names.users)
+      .doc(rootGetters[user].uid)
+      .collection(names.diets)
+      .get()
+      .then((querySnapshot: Snapshot[]) => {
+        console.log('querySnapshot', querySnapshot)
+        const diets: Diet[] = []
+        querySnapshot.forEach((doc) => {
+          diets.push({ ...doc.data(), id: doc.id } as Diet)
+        })
+        commit(ManageDietsMutations.GET_DIETS, diets)
+      })
+      .catch((error: Error) => error.message)
+  },
+  [ManageDietsActions.POST_DIETS]({ commit, rootGetters }, diet) {
+    return FirebaseApp.db
+      .collection(names.users)
+      .doc(rootGetters[user].uid)
+      .collection(names.diets)
+      .add(diet)
+      .then((doc: Snapshot) => {
+        commit(ManageDietsMutations.POST_DIETS, { ...diet, id: doc.id })
+      })
+      .catch((error: Error) => error.message)
+  },
+  // saveLegacy() {
+  // CHANGE DIETAS TO DIETS
+  //   return (
+  //     FirebaseApp.db
+  //       .collection(names.users)
+  //       .doc(rootGetters[user].uid)
+  //       // .collection(names.diets)
+  //       .collection('dietas')
+  //       .get()
+  //       .then((querySnapshot: Snapshot[]) => {
+  //         const diets: any = []
+  //         querySnapshot.forEach((doc: any) => {
+  //           const { cal, protein, title } = doc.data().diet
+  //           console.log('cal', cal)
+  //           FirebaseApp.db
+  //             .collection(names.users)
+  //             .doc(rootGetters[user].uid)
+  //             .collection(names.diets)
+  //             .add({ name: title, calAmount: cal, proteinAmount: protein })
+  //             .then((test: Snapshot) => {
+  //               console.log('doc', test)
+  //             })
+  //             .catch((error: Error) => console.log(error.message))
+  //         })
+  //         commit(ManageDietsMutations.GET_DIETS, diets)
+  //       })
+  //       .catch((error: Error) => error)
+  //   )
+  // }
+}
 
 const mutations: MutationTree<ManageDietsState> = {
-  [ManageDietsMutations.CHANGE_DIETS](state, newDiet: Diet) {
-    state.diets.push(newDiet)
+  [ManageDietsMutations.GET_DIETS](state, diets: Diet[]) {
+    state.diets = diets
+  },
+  [ManageDietsMutations.POST_DIETS](state, diet: Diet) {
+    state.diets.push(diet)
   },
 }
 
@@ -40,6 +96,6 @@ export default {
   namespaced: true,
   state,
   getters,
-  // actions,
+  actions,
   mutations,
 }
