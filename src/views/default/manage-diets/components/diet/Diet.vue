@@ -12,7 +12,21 @@
         <p>{{ diet.proteinAmount }} g/mL</p>
       </div>
     </div>
-    <Button color="primary" size="small">Editar</Button>
+    <Button
+      color="primary"
+      size="small"
+      @click="
+        $router.push({
+          name: Names.manageDietsEdit,
+          params: { id: diet.id },
+          query: {
+            name: diet.name,
+            values: [diet.calAmount, diet.proteinAmount],
+          },
+        })
+      "
+      >Editar</Button
+    >
   </Paper>
 </template>
 
@@ -28,8 +42,7 @@ import {
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
 import { Diet } from '@/models/Diet'
-
-// const { mapGetters } = createNamespacedHelpers('i18n')
+import { Names } from '@/router/default/enums'
 
 export default defineComponent({
   name: 'Diets',
@@ -42,6 +55,9 @@ export default defineComponent({
       type: Object as PropType<Diet>,
       required: true,
     },
+  },
+  setup() {
+    return { Names }
   },
   computed: {
     ...mapGetters(I18N_NAMESPACE, {

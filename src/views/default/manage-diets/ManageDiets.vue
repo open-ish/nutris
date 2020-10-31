@@ -46,8 +46,6 @@ import {
 import { manageDietsI18nPath } from './ManageDiets.i18n'
 import { Names } from '@/router/default/enums'
 
-// const { mapGetters } = createNamespacedHelpers('i18n')
-
 export default defineComponent({
   name: 'ManageDiets',
   components: {

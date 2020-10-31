@@ -1,6 +1,8 @@
 <template>
   <section class="dg-container dg-container-large new-diet">
-    <h1>Cadastrar nova dieta</h1>
+    <h1 v-once>
+      {{ isEditMode ? `Editar dieta ${name}` : 'Cadastrar nova dieta' }}
+    </h1>
     <form @submit.prevent class="new-form">
       <Input autofocus v-model:value="name" label="Nome da nova dieta" />
       <Input
@@ -19,7 +21,7 @@
         :disabled="isInvalid"
         :isLoading="isLoading"
         size="large"
-        >Salvar 🥳
+        >Salvar alterações
       </Button>
       <Alert v-if="errorMessage" :error="errorMessage" />
     </form>
@@ -27,9 +29,12 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { createNamespacedHelpers } from 'vuex'
 
+import { Paths, Names } from '@/router/default/enums'
+import { querys, params } from '@/helpers/router/index'
 import Input from '@/components/input/Input.vue'
 import Button from '@/components/button/Button.vue'
 import Alert from '@/components/alert/Alert.vue'
@@ -43,16 +48,26 @@ const error = 'Desculpe, poderia tentar novamente mais tarde? 🙌'
 const { mapActions } = createNamespacedHelpers(MANAGE_DIETS_NAMESPACE)
 
 export default defineComponent({
-  name: 'New',
+  name: 'Form',
   components: {
     Input,
     Button,
     Alert,
   },
+  props: {
+    id: {
+      type: String,
+    },
+  },
   setup() {
-    const name = ref('')
-    const proteinAmount = ref('')
-    const calAmount = ref('')
+    const router = useRouter()
+    const query = querys(router)
+    const { id } = params(router)
+    const isEditMode = id
+
+    const name = ref(query.name || '')
+    const calAmount = ref(query.values?.[0] || '')
+    const proteinAmount = ref(query.values?.[0] || '')
     const isLoading = ref(false)
     const errorMessage = ref('')
     const loading = () => {
@@ -63,27 +78,38 @@ export default defineComponent({
     )
 
     return {
+      Paths,
+      Names,
       name,
       proteinAmount,
       calAmount,
       isInvalid,
       isLoading,
       loading,
+      isEditMode,
       errorMessage,
     }
   },
   methods: {
     ...mapActions({
       postDiet: ManageDietsMutations.POST_DIETS,
+      updateDiet: ManageDietsMutations.UPDATE_DIET,
     }),
     async save() {
       this.loading()
 
-      const response = await this.postDiet({
-        name: this.name,
-        proteinAmount: this.proteinAmount,
-        calAmount: this.calAmount,
-      })
+      const response = this.isEditMode
+        ? await this.updateDiet({
+            id: this.isEditMode,
+            name: this.name,
+            proteinAmount: this.proteinAmount,
+            calAmount: this.calAmount,
+          })
+        : await this.postDiet({
+            name: this.name,
+            proteinAmount: this.proteinAmount,
+            calAmount: this.calAmount,
+          })
 
       this.errorMessage = !response ? '' : error
       this.loading()
