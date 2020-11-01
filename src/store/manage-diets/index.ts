@@ -48,7 +48,7 @@ const actions: ActionTree<ManageDietsState, {}> = {
       .doc(rootGetters[user].uid)
       .collection(names.diets)
       .add(diet)
-      .then((doc: any) => {
+      .then((doc: Snapshot) => {
         commit(ManageDietsMutations.POST_DIETS, { ...diet, id: doc.id })
       })
       .catch((error: Error) => error.message)

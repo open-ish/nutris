@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import { Router } from 'vue-router'
 
 const paramsQuerysFactory = (router: Router) => router.currentRoute?.value

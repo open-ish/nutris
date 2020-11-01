@@ -6,12 +6,12 @@ import Form from '@/views/default/manage-diets/components/form/Form.vue'
 import store from '@/store/index'
 import {
   ManageDietsActions,
-  ManageDietsGetters,
+  // ManageDietsGetters,
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
 
 const getDiets = MANAGE_DIETS_NAMESPACE + '/' + ManageDietsActions.GET_DIETS
-const diets = MANAGE_DIETS_NAMESPACE + '/' + ManageDietsGetters.DIETS
+// const diets = MANAGE_DIETS_NAMESPACE + '/' + ManageDietsGetters.DIETS
 
 export default {
   path: Paths.manageDiets,

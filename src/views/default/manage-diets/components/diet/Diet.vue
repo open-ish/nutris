@@ -103,7 +103,7 @@ export default defineComponent({
     }),
     async removeDiet() {
       this.toggleLoading()
-      const response = await this.deleteDiet(this.diet.id)
+      await this.deleteDiet(this.diet.id)
 
       this.toggleLoading()
     },
