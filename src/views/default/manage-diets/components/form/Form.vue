@@ -42,6 +42,7 @@ import {
   ManageDietsMutations,
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
+import { timestamp } from '@/helpers/date/date'
 
 const error = 'Desculpe, poderia tentar novamente mais tarde? 🙌'
 
@@ -67,7 +68,7 @@ export default defineComponent({
 
     const name = ref(query.name || '')
     const calAmount = ref(query.values?.[0] || '')
-    const proteinAmount = ref(query.values?.[0] || '')
+    const proteinAmount = ref(query.values?.[1] || '')
     const isLoading = ref(false)
     const errorMessage = ref('')
     const loading = () => {
@@ -88,6 +89,7 @@ export default defineComponent({
       loading,
       isEditMode,
       errorMessage,
+      router,
     }
   },
   methods: {
@@ -109,9 +111,12 @@ export default defineComponent({
             name: this.name,
             proteinAmount: this.proteinAmount,
             calAmount: this.calAmount,
+            date: timestamp(),
           })
 
       this.errorMessage = !response ? '' : error
+
+      !this.errorMessage && this.router.replace(Paths.manageDiets)
       this.loading()
     },
   },

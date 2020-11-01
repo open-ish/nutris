@@ -11,6 +11,7 @@ import { Diet } from '@/models/Diet'
 import { names } from '@/enums/collections/firebase'
 import { UserGetters, USER_NAMESPACE } from '../user/types'
 import { Snapshot } from '@/models/firebase'
+import { firebaseQuerys } from '@/enums/firebaseQuerys'
 
 const user = USER_NAMESPACE + '/' + UserGetters.USER
 
@@ -30,9 +31,9 @@ const actions: ActionTree<ManageDietsState, {}> = {
       .collection(names.users)
       .doc(rootGetters[user].uid)
       .collection(names.diets)
+      .orderBy('date', firebaseQuerys.desc)
       .get()
       .then((querySnapshot: Snapshot[]) => {
-        console.log('querySnapshot', querySnapshot)
         const diets: Diet[] = []
         querySnapshot.forEach((doc) => {
           diets.push({ ...doc.data(), id: doc.id } as Diet)
@@ -47,7 +48,7 @@ const actions: ActionTree<ManageDietsState, {}> = {
       .doc(rootGetters[user].uid)
       .collection(names.diets)
       .add(diet)
-      .then((doc: Snapshot) => {
+      .then((doc: any) => {
         commit(ManageDietsMutations.POST_DIETS, { ...diet, id: doc.id })
       })
       .catch((error: Error) => error.message)
@@ -67,8 +68,7 @@ const actions: ActionTree<ManageDietsState, {}> = {
           .collection(names.diets)
           .doc(updatedDiet.id)
           .set(updatedDiet)
-          .then((doc: Snapshot) => {
-            console.log('doc', doc)
+          .then(() => {
             commit(ManageDietsMutations.UPDATE_DIET, {
               updatedDiet,
               index,
@@ -89,8 +89,7 @@ const actions: ActionTree<ManageDietsState, {}> = {
           .collection(names.diets)
           .doc(id)
           .delete()
-          .then((doc: Snapshot) => {
-            console.log('doc', doc)
+          .then(() => {
             commit(ManageDietsMutations.DELETE_DIET, index)
           })
           .catch((error: Error) => error.message)
@@ -134,8 +133,8 @@ const mutations: MutationTree<ManageDietsState> = {
   [ManageDietsMutations.POST_DIETS](state, diet: Diet) {
     state.diets.push(diet)
   },
-  [ManageDietsMutations.UPDATE_DIET](state, { diet, index }) {
-    state.diets[index] = diet
+  [ManageDietsMutations.UPDATE_DIET](state, { updatedDiet, index }) {
+    state.diets[index] = updatedDiet
   },
   [ManageDietsMutations.DELETE_DIET](state, index) {
     state.diets.splice(index, 1)

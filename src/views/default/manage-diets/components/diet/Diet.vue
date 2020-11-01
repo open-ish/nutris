@@ -119,6 +119,7 @@ export default defineComponent({
   width: 100%;
   max-width: 300px;
   position: relative;
+  margin-top: var(--space-sm);
 }
 
 .info {
