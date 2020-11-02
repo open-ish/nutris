@@ -27,10 +27,6 @@
         $router.push({
           name: Names.manageDietsEdit,
           params: { id: diet.id },
-          query: {
-            name: diet.name,
-            values: [diet.calAmount, diet.proteinAmount],
-          },
         })
       "
       >Editar</Button

@@ -9,6 +9,7 @@ export interface ManageDietsState {
 // getters
 export const ManageDietsGetters = {
   DIETS: 'DIETS',
+  FIND_DIET: 'FIND_DIET',
 }
 
 // actions

@@ -34,11 +34,12 @@ import { useRouter } from 'vue-router'
 import { createNamespacedHelpers } from 'vuex'
 
 import { Paths, Names } from '@/router/default/enums'
-import { querys, params } from '@/helpers/router/index'
+import { params } from '@/helpers/router/index'
 import Input from '@/components/input/Input.vue'
 import Button from '@/components/button/Button.vue'
 import Alert from '@/components/alert/Alert.vue'
 import {
+  ManageDietsGetters,
   ManageDietsMutations,
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
@@ -68,13 +69,12 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter()
-    const query = querys(router)
     const { id } = params(router)
     const isEditMode = id
 
-    const name = ref(query.name || '')
-    const calAmount = ref(query.values?.[0] || '')
-    const proteinAmount = ref(query.values?.[1] || '')
+    const name = ref('')
+    const calAmount = ref('')
+    const proteinAmount = ref('')
     const isLoading = ref(false)
     const errorMessage = ref('')
     const loading = () => {
@@ -98,6 +98,14 @@ export default defineComponent({
       router,
     }
   },
+  created() {
+    this.isEditMode && this.setDiet()
+  },
+  computed: {
+    ...DIETS_MAPS.mapGetters({
+      findDiet: ManageDietsGetters.FIND_DIET,
+    }),
+  },
   methods: {
     ...DIETS_MAPS.mapActions({
       postDiet: ManageDietsMutations.POST_DIETS,
@@ -106,6 +114,12 @@ export default defineComponent({
     ...POPUP_MAPS.mapActions({
       showMessage: PopupMessageActions.SHOW_MESSAGE,
     }),
+    setDiet() {
+      const diet = this.findDiet(this.isEditMode)
+      this.name = diet.name
+      this.calAmount = diet.calAmount
+      this.proteinAmount = diet.proteinAmount
+    },
     async save() {
       this.loading()
 
@@ -115,6 +129,7 @@ export default defineComponent({
             name: this.name,
             proteinAmount: this.proteinAmount,
             calAmount: this.calAmount,
+            date: this.findDiet(this.isEditMode).date,
           })
         : await this.postDiet({
             name: this.name,
