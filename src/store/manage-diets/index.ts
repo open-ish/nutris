@@ -27,20 +27,23 @@ const getters = {
 
 const actions: ActionTree<ManageDietsState, {}> = {
   [ManageDietsActions.GET_DIETS]({ commit, rootGetters }) {
-    return FirebaseApp.db
-      .collection(names.users)
-      .doc(rootGetters[user].uid)
-      .collection(names.diets)
-      .orderBy('date', firebaseQuerys.desc)
-      .get()
-      .then((querySnapshot: Snapshot[]) => {
-        const diets: Diet[] = []
-        querySnapshot.forEach((doc) => {
-          diets.push({ ...doc.data(), id: doc.id } as Diet)
+    return (
+      FirebaseApp.db
+        .collection(names.users)
+        .doc(rootGetters[user].uid)
+        .collection(names.diets)
+        // .orderBy('date', firebaseQuerys.desc)
+        .get()
+        .then((querySnapshot: Snapshot[]) => {
+          const diets: Diet[] = []
+          querySnapshot.forEach((doc) => {
+            console.log('doc', doc)
+            diets.push({ ...doc.data(), id: doc.id } as Diet)
+          })
+          commit(ManageDietsMutations.GET_DIETS, diets)
         })
-        commit(ManageDietsMutations.GET_DIETS, diets)
-      })
-      .catch((error: Error) => error.message)
+        .catch((error: Error) => error.message)
+    )
   },
   [ManageDietsActions.POST_DIETS]({ commit, rootGetters }, diet) {
     return FirebaseApp.db

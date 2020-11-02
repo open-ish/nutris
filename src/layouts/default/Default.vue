@@ -5,14 +5,23 @@
   </div>
   <Footer />
   <FixedBtn />
+  <PopupMessage v-if="infos.message" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, defineAsyncComponent } from 'vue'
+import { createNamespacedHelpers } from 'vuex'
 
 import FixedBtn from '@/components/button/FixedBtn.vue'
 import Header from '@/layouts/default/components/header/Header.vue'
 import Footer from '@/layouts/default/components/footer/Footer.vue'
+
+import {
+  PopupMessageGetters,
+  POPUP_MESSAGE_NAMESPACE,
+} from '@/store/popup-message/types'
+
+const { mapGetters } = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
 
 export default defineComponent({
   name: 'LDefault',
@@ -20,6 +29,14 @@ export default defineComponent({
     Header,
     Footer,
     FixedBtn,
+    PopupMessage: defineAsyncComponent(() =>
+      import('../../components/popup-message/PopupMessage.vue')
+    ),
+  },
+  computed: {
+    ...mapGetters({
+      infos: PopupMessageGetters.INFOS,
+    }),
   },
 })
 </script>

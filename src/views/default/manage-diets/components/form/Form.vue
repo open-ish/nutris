@@ -42,11 +42,17 @@ import {
   ManageDietsMutations,
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
+
+import {
+  PopupMessageActions,
+  POPUP_MESSAGE_NAMESPACE,
+} from '@/store/popup-message/types'
 import { timestamp } from '@/helpers/date/date'
 
 const error = 'Desculpe, poderia tentar novamente mais tarde? 🙌'
-
-const { mapActions } = createNamespacedHelpers(MANAGE_DIETS_NAMESPACE)
+const success = 'Dieta salva com sucesso! 🥳'
+const DIETS_MAPS = createNamespacedHelpers(MANAGE_DIETS_NAMESPACE)
+const POPUP_MAPS = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
 
 export default defineComponent({
   name: 'Form',
@@ -93,9 +99,12 @@ export default defineComponent({
     }
   },
   methods: {
-    ...mapActions({
+    ...DIETS_MAPS.mapActions({
       postDiet: ManageDietsMutations.POST_DIETS,
       updateDiet: ManageDietsMutations.UPDATE_DIET,
+    }),
+    ...POPUP_MAPS.mapActions({
+      showMessage: PopupMessageActions.SHOW_MESSAGE,
     }),
     async save() {
       this.loading()
@@ -116,7 +125,9 @@ export default defineComponent({
 
       this.errorMessage = !response ? '' : error
 
-      !this.errorMessage && this.router.replace(Paths.manageDiets)
+      !this.errorMessage &&
+        this.showMessage({ message: success, time: 2000, mode: 'success' }) &&
+        this.router.replace(Paths.manageDiets)
       this.loading()
     },
   },
