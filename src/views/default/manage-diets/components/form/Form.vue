@@ -126,10 +126,12 @@ export default defineComponent({
       const response = this.isEditMode
         ? await this.updateDiet({
             id: this.isEditMode,
-            name: this.name,
-            proteinAmount: this.proteinAmount,
-            calAmount: this.calAmount,
-            date: this.findDiet(this.isEditMode).date,
+            diet: {
+              name: this.name,
+              proteinAmount: this.proteinAmount,
+              calAmount: this.calAmount,
+              date: this.findDiet(this.isEditMode).date,
+            },
           })
         : await this.postDiet({
             name: this.name,

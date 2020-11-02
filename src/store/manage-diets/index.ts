@@ -61,10 +61,10 @@ const actions: ActionTree<ManageDietsState, {}> = {
   },
   [ManageDietsActions.UPDATE_DIET](
     { commit, rootGetters, getters },
-    updatedDiet
+    { diet, id }
   ) {
     const index = getters[ManageDietsGetters.DIETS].findIndex(
-      (diet: Diet) => diet.id === updatedDiet.id
+      (currentDiet: Diet) => currentDiet.id === id
     )
     const noIndex = index === -1
     return !noIndex
@@ -72,11 +72,11 @@ const actions: ActionTree<ManageDietsState, {}> = {
           .collection(names.users)
           .doc(rootGetters[user].uid)
           .collection(names.diets)
-          .doc(updatedDiet.id)
-          .set(updatedDiet)
+          .doc(id)
+          .set(diet)
           .then(() => {
             commit(ManageDietsMutations.UPDATE_DIET, {
-              updatedDiet,
+              diet,
               index,
             })
           })
@@ -139,8 +139,8 @@ const mutations: MutationTree<ManageDietsState> = {
   [ManageDietsMutations.POST_DIETS](state, diet: Diet) {
     state.diets.unshift(diet)
   },
-  [ManageDietsMutations.UPDATE_DIET](state, { updatedDiet, index }) {
-    state.diets[index] = updatedDiet
+  [ManageDietsMutations.UPDATE_DIET](state, { diet, index }) {
+    state.diets[index] = diet
   },
   [ManageDietsMutations.DELETE_DIET](state, index) {
     state.diets.splice(index, 1)
