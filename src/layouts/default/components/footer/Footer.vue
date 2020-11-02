@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer dg-container dg-container-large">
+  <footer role="contentinfo" class="footer dg-container dg-container-large">
     <p class="title">{{ new Date().getFullYear() }} Nutris</p>
     <p>
       {{ $t(defaultFooterI18nPath.madeWithlove, language) }}
@@ -58,7 +58,7 @@ export default defineComponent({
 
   @media screen and (max-width: $screen-md) {
     margin-top: var(--space-lg);
-    margin-bottom: var(--space-lg);
+    margin-bottom: $footer-height-small;
   }
 
   .button {

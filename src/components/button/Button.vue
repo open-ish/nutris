@@ -4,7 +4,7 @@
     :href="href"
     :role="href ? '' : 'button'"
     :aria-busy="isLoading"
-    @click="$emit('click')"
+    @click="!isLoading && $emit('click')"
     :class="buttonClass"
   >
     <Spinner
@@ -54,7 +54,7 @@ export default defineComponent({
     const spinnerColor = computed(() =>
       props.variant === 'filled' ? `${props.color}-contrast` : props.color
     )
-    const spinnerSize = computed(() => (props.size === 'medium' ? 24 : 36))
+    const spinnerSize = computed(() => (props.size === 'medium' ? 22 : 32))
     return { spinnerSize, spinnerColor, buttonClass }
   },
 })
@@ -106,6 +106,7 @@ export default defineComponent({
     &.filled {
       background-color: var(--disabled-color);
       color: var(--disabled-color-contrast);
+      opacity: 0.4;
     }
   }
 }
@@ -258,6 +259,33 @@ export default defineComponent({
   }
 }
 
+.danger {
+  &.text {
+    color: var(--danger-color);
+
+    &:not([disabled]):not(.isLoading):hover {
+      &::before {
+        text-decoration: underline;
+        opacity: 0.1;
+      }
+    }
+  }
+}
+
+.brand {
+  &.filled {
+    background-color: var(--brand-color);
+    color: var(--brand-color-contrast);
+
+    &:not([disabled]):not(.isLoading):hover {
+      &::before {
+        background-color: var(--brand-color-darken);
+        opacity: 1;
+      }
+    }
+  }
+}
+
 .medium {
   height: var(--space-md);
   padding-left: var(--space);
@@ -269,7 +297,7 @@ export default defineComponent({
 }
 
 .large {
-  height: var(--space-lg);
+  height: 40px;
   padding-left: var(--space);
   padding-right: var(--space);
 
@@ -280,6 +308,21 @@ export default defineComponent({
 
 .round-square {
   min-width: var(--space-xlg);
+}
+
+.circle {
+  border-radius: 50%;
+  padding: 0;
+
+  &.medium {
+    width: var(--space-lg);
+    height: var(--space-lg);
+  }
+
+  &.large {
+    width: var(--space-xlg);
+    height: var(--space-xlg);
+  }
 }
 
 .loading {

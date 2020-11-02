@@ -19,7 +19,7 @@
       >
         {{ labelToggle.short }}
       </li>
-      <li class="item g-cursor" role="button">
+      <li class="item g-cursor" role="button" @click="logout">
         {{ $t(userOptionsI18nPath.logout, language) }}
       </li>
     </ul>
@@ -27,14 +27,14 @@
       @click="toggleMenu()"
       :role="isSmallScreen() ? 'button' : ''"
       class="user-imagem"
-      src="https://lh3.googleusercontent.com/a-/AAuE7mBJom5F4cC9cujzyz3IM9VVvMWHfs4RCSJjOr8d"
+      :src="user?.photoURL"
       aria-label="Imagem do usuário"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 import { useI18n } from 'vue-i18n'
 
@@ -42,11 +42,18 @@ import { I18nGetters, I18nActions } from '@/store/i18n/types'
 import { I18n } from '@/enums/i18n'
 import { resize } from './resize'
 import { userOptionsI18nPath } from './userOptions.i18n'
+import { User } from '@/models/User'
+import { logout } from '@/services/auth.service.ts'
 
 const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
 
 export default defineComponent({
   name: 'UserOptions',
+  props: {
+    user: {
+      type: Object as PropType<User>,
+    },
+  },
   setup() {
     const { toggleMenu, menu, mask, isSmallScreen } = resize()
     return {
@@ -57,6 +64,7 @@ export default defineComponent({
       isSmallScreen,
       I18n,
       userOptionsI18nPath,
+      logout,
     }
   },
   computed: {

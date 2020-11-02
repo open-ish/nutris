@@ -3,9 +3,15 @@ export enum Paths {
   calculate = '/calculate',
   history = '/history',
   home = '/',
-  manageDiets = '/manage-diets',
   patients = '/patients',
   newPatient = '/new-patient',
+
+  // Manage Diets Routes
+  manageDiets = '/manage-diets',
+
+  // news
+  new = 'new',
+  edit = 'edit/',
 }
 
 export enum Names {
@@ -13,7 +19,11 @@ export enum Names {
   calculate = 'Calculate',
   history = 'History',
   home = 'Home',
-  manageDiets = 'ManageDiets',
   patients = 'Patients',
   newPatient = 'NewPatient',
+
+  // Manage Diets Routes
+  manageDiets = 'ManageDiets',
+  manageDietsNew = 'ManageDietsNew',
+  manageDietsEdit = 'ManageDietsEdit',
 }

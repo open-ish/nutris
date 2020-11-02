@@ -5,4 +5,7 @@ export default {
   path: Paths.newPatient,
   name: Names.newPatient,
   component: Home,
+  meta: {
+    requiresAuth: true,
+  },
 }

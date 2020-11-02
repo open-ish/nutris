@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="Paths.home" role="logo">
+  <router-link :to="Paths.home">
     <div class="logo">
       <img src="@/../public/img/icons/nutrisicon.png" alt="Logo da Nutris" />
       <span>
@@ -28,21 +28,19 @@ $logo-height: 44px;
 $logo-font-size: 24px;
 $logo-gap: -14px;
 
-[role='logo'] {
+.logo {
   color: var(--brand-color-contrast);
+  display: flex;
+  align-items: center;
 
-  .logo {
-    display: flex;
-    align-items: center;
+  span {
+    font-size: $logo-font-size;
+  }
 
-    span {
-      font-size: $logo-font-size;
-    }
-
-    img {
-      height: $logo-height;
-      margin-top: $logo-gap;
-    }
+  img {
+    height: $logo-height;
+    width: $logo-height;
+    margin-top: $logo-gap;
   }
 }
 </style>

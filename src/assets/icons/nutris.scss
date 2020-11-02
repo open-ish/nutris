@@ -56,7 +56,9 @@
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
-
+.nutris-dot-3:before {
+  content: '\e78d';
+} /* '' */
 .nutris-alert:before {
   content: '\e800';
 } /* '' */
@@ -102,9 +104,6 @@
 .nutris-emo-unhappy:before {
   content: '\e80e';
 } /* '' */
-.nutris-dot-3:before {
-  content: '\e80f';
-} /* '' */
 .nutris-print:before {
   content: '\e831';
 } /* '' */
@@ -261,6 +260,9 @@
 .nutris-instagram:before {
   content: '\f16d';
 } /* '' */
+.nutris-google:before {
+  content: '\f1a0';
+} /* '' */
 .nutris-calc:before {
   content: '\f1ec';
 } /* '' */

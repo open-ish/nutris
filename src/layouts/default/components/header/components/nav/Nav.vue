@@ -4,7 +4,7 @@
       v-for="(item, index) in navOptions"
       :key="index"
       class="item g-center--y"
-      active-class="active"
+      exact-active-class="active"
       :to="item.path"
     >
       <i :class="item.icon"></i>
@@ -68,10 +68,6 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
 
   [class^='nutris-'] {
     font-size: 24px;
-  }
-
-  span {
-    white-space: nowrap;
   }
 
   @media screen and (min-width: $screen-sm) {
