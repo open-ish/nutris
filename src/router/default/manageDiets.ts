@@ -1,9 +1,17 @@
 import { RouteLocationNormalized } from 'vue-router'
+
 import { Names, Paths } from '@/router/default/enums'
-import Index from '@/layouts/Index.vue'
-import ManageDiets from '@/views/default/manage-diets/ManageDiets.vue'
-import Form from '@/views/default/manage-diets/components/form/Form.vue'
-import store from '@/store/index'
+const Index = () =>
+  import(/* webpackChunkName: "ManageDiets" */ '@/layouts/Index.vue')
+const ManageDiets = () =>
+  import(
+    /* webpackChunkName: "ManageDiets" */ '@/views/default/manage-diets/ManageDiets.vue'
+  )
+const Form = () =>
+  import(
+    /* webpackChunkName: "Form" */ '@/views/default/manage-diets/components/form/Form.vue'
+  )
+import store from '@/store'
 import {
   ManageDietsActions,
   // ManageDietsGetters,

@@ -1,9 +1,7 @@
 export enum Paths {
-  someAlt = '/someAlt',
-  alt = '/alt',
+  home = '/',
 }
 
 export enum Names {
-  someAlt = 'SomeAlt',
-  alt = 'Alt',
+  home = 'Home',
 }

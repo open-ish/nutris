@@ -13,7 +13,7 @@ export const navOptions = [
     icon: 'nutris-users',
   },
   {
-    path: Paths.newPatient,
+    path: Paths.patients + '/new',
     i18n: navI18nPath.newPacient,
     icon: 'nutris-user',
   },
