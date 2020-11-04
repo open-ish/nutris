@@ -19,7 +19,7 @@ export const logout = () => {
     .then(() => {
       firebase.auth().currentUser
       user.mutations.CHANGE_USER({})
-      window.location.replace('/')
+      window.location.replace('/alt/home')
     })
     .catch((error: Error) => error)
 }
