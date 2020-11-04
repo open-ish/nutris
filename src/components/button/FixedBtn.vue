@@ -75,7 +75,7 @@ $back-btn: 0 -2px 5px rgba(0, 0, 0, 0.2);
 
 .button {
   position: fixed;
-  z-index: var(--zindex-100);
+  z-index: var(--zindex-10);
   box-shadow: $back-btn;
   transition: opacity var(--transition-duration-speed);
 
