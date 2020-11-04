@@ -1,3 +1,4 @@
+import welcome from './welcome'
 import history from './history'
 import calculate from './calculate'
 import manageDiets from './manageDiets'
@@ -10,5 +11,5 @@ export default {
   path: LayoutsPaths.default,
   name: LayoutsName.default,
   component: LDefault,
-  children: [history, calculate, manageDiets, patients],
+  children: [welcome, history, calculate, manageDiets, patients],
 }

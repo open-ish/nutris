@@ -27,7 +27,7 @@ import {
   defaultFooterEn,
   defaultFooterPt,
 } from '@/layouts/default/components/footer/footer.i18n.ts'
-import { defaultHomeEn, defaultHomePt } from '@/views/default/home/homei18n.ts'
+import { defaultHomeEn, defaultHomePt } from '@/views/alt/home/homei18n.ts'
 
 /*
 ==================

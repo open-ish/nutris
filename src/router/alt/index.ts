@@ -1,5 +1,5 @@
 import { LayoutsName, LayoutsPaths } from '@/router/enums'
-const Alt = () => import(/* webpackChunkName: "alt" */ '@/views/alt/Alt.vue')
+const Alt = () => import(/* webpackChunkName: "alt" */ '@/layouts/alt/Alt.vue')
 
 import home from './home'
 

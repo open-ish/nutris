@@ -1,5 +1,5 @@
 export enum Paths {
-  home = '/',
+  home = 'home',
 }
 
 export enum Names {

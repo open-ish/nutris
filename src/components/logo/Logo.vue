@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="Paths.home">
+  <router-link :to="Paths.welcome">
     <div class="logo">
       <img src="@/../public/img/icons/nutrisicon.png" alt="Logo da Nutris" />
       <span>
@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import { Paths } from '@/router/alt/enums'
+import { Paths } from '@/router/default/enums'
 
 export default defineComponent({
   name: 'Logo',
