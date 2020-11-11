@@ -1,5 +1,5 @@
 <template>
-  <header class="header ag-container ag-container-large">
+  <header class="header altg-container altg-container-large">
     <Logo />
     <SocialLogin />
   </header>

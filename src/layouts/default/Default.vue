@@ -6,6 +6,7 @@
   <Footer />
   <FixedBtn />
   <PopupMessage v-if="infos.message" />
+  <LoadingPage />
 </template>
 
 <script lang="ts">
@@ -29,8 +30,15 @@ export default defineComponent({
     Header,
     Footer,
     FixedBtn,
+    LoadingPage: defineAsyncComponent(() =>
+      import(
+        /* webpackChunkName: "LoadingPage" */ '../../components/loading-page/LoadingPage.vue'
+      )
+    ),
     PopupMessage: defineAsyncComponent(() =>
-      import('../../components/popup-message/PopupMessage.vue')
+      import(
+        /* webpackChunkName: "PopupMessage" */ '../../components/popup-message/PopupMessage.vue'
+      )
     ),
   },
   computed: {

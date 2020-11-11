@@ -17,9 +17,14 @@ import {
   // ManageDietsGetters,
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
+import {
+  LOADING_PAGE_NAMESPACE,
+  LoadingPageActions,
+} from '@/store/loading-page/types'
 
-const getDiets = MANAGE_DIETS_NAMESPACE + '/' + ManageDietsActions.GET_DIETS
 // const diets = MANAGE_DIETS_NAMESPACE + '/' + ManageDietsGetters.DIETS
+const getDiets = MANAGE_DIETS_NAMESPACE + '/' + ManageDietsActions.GET_DIETS
+const loadingSpace = LOADING_PAGE_NAMESPACE + '/' + LoadingPageActions.TOGGLE
 
 export default {
   path: Paths.manageDiets,
@@ -34,7 +39,9 @@ export default {
     next: Function
   ) => {
     // !store.getters[diets].length && store.dispatch(getDiets)
+    store.dispatch(loadingSpace, true)
     store.dispatch(getDiets).then(() => {
+      store.dispatch(loadingSpace, false)
       next()
     })
   },
