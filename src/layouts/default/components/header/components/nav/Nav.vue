@@ -37,6 +37,8 @@ export default class Nav extends Vue {
 
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-variables.scss';
+@import '@/layouts/screen.scss';
+
 $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
 
 .nav {

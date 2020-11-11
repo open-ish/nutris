@@ -5,11 +5,11 @@
   1. Class
 */
 
-@import './Default-variables.scss';
+@import './Alt-variables.scss';
 @import '@/layouts/screen.scss';
 
 /* 1. Class */
-.dg-container {
+.ag-container {
   padding-right: $padding-small;
   padding-left: $padding-small;
   margin: 0 auto;

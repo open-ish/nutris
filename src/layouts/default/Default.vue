@@ -44,6 +44,7 @@ export default defineComponent({
 <style lang="scss">
 @import '@/layouts/default/Default-variables.scss';
 @import '@/layouts/default/Default-class.scss';
+@import '@/layouts/screen.scss';
 
 .dg-default {
   display: flex;

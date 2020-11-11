@@ -26,7 +26,9 @@ export default defineComponent({
 })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import '@/layouts/screen.scss';
+
 .dg-alt {
   display: flex;
   flex-direction: column;

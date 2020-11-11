@@ -62,6 +62,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-variables.scss';
+@import '@/layouts/screen.scss';
 
 .social-login {
   color: var(--gray-3);

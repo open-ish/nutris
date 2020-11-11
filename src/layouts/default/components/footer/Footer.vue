@@ -59,6 +59,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-variables.scss';
+@import '@/layouts/screen.scss';
 
 .default {
   margin-bottom: var(--space-xs);
@@ -69,6 +70,14 @@ export default defineComponent({
   }
 }
 
+.alt {
+  margin-top: var(--space-md);
+
+  @media screen and (min-width: $screen-xs) {
+    margin-top: auto;
+  }
+}
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -76,7 +85,6 @@ export default defineComponent({
   justify-content: space-around;
   font: var(--typography-body2-font);
   height: $footer-height-small;
-  margin-top: var(--space-md);
 
   .button {
     font: var(--typography-caption-font);
