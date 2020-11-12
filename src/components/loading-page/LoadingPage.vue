@@ -26,6 +26,7 @@ export default defineComponent({
   position: absolute;
   background: var(--bg-darken);
   top: $header-height-small;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
