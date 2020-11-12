@@ -86,6 +86,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-variables.scss';
+@import '@/layouts/screen.scss';
 
 .mask {
   background: var(--bg-darken);
@@ -95,7 +96,7 @@ export default defineComponent({
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: var(--zindex-100);
+  z-index: var(--zindex-10);
   display: none;
 }
 
@@ -116,7 +117,7 @@ export default defineComponent({
 }
 
 .menu {
-  z-index: var(--zindex-1000);
+  z-index: var(--zindex-10);
   position: absolute;
   top: 0;
   right: 0;

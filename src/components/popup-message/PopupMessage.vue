@@ -46,7 +46,7 @@ export default defineComponent({
   right: var(--space-sm);
   padding: var(--space-sm);
   border-radius: var(--border-radius-lighten);
-  z-index: var(--zindex-1000);
+  z-index: var(--zindex-10);
 }
 
 .default {

@@ -30,10 +30,11 @@
 import { defineComponent } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
-import { defaultHomeI18nPath } from '@/views/default/home/homei18n.ts'
 import { I18nGetters } from '@/store/i18n/types'
 import Button from '@/components/button/Button.vue'
 import { Statics } from '@/enums/statics.ts'
+
+import { defaultHomeI18nPath } from './homei18n'
 
 const { mapGetters } = createNamespacedHelpers('i18n')
 

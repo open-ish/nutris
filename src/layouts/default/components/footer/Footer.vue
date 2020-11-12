@@ -1,5 +1,9 @@
 <template>
-  <footer role="contentinfo" class="footer dg-container dg-container-large">
+  <footer
+    role="contentinfo"
+    class="footer dg-container dg-container-large"
+    :class="layout"
+  >
     <p class="title">{{ new Date().getFullYear() }} Nutris</p>
     <p>
       {{ $t(defaultFooterI18nPath.madeWithlove, language) }}
@@ -17,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
 import { I18nGetters } from '@/store/i18n/types'
@@ -27,8 +31,18 @@ import { Statics } from '@/enums/statics.ts'
 
 const { mapGetters } = createNamespacedHelpers('i18n')
 
+type Footer = {
+  layout: 'default' | 'alt'
+}
+
 export default defineComponent({
   name: 'LFooter',
+  props: {
+    layout: {
+      type: String as PropType<Footer['layout']>,
+      default: 'default',
+    },
+  },
   components: {
     Button,
   },
@@ -45,6 +59,24 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-variables.scss';
+@import '@/layouts/screen.scss';
+
+.default {
+  margin-bottom: var(--space-xs);
+
+  @media screen and (max-width: $screen-md) {
+    margin-top: var(--space-lg);
+    margin-bottom: $footer-height-small;
+  }
+}
+
+.alt {
+  margin-top: var(--space-md);
+
+  @media screen and (min-width: $screen-xs) {
+    margin-top: auto;
+  }
+}
 
 .footer {
   display: flex;
@@ -53,13 +85,6 @@ export default defineComponent({
   justify-content: space-around;
   font: var(--typography-body2-font);
   height: $footer-height-small;
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-xs);
-
-  @media screen and (max-width: $screen-md) {
-    margin-top: var(--space-lg);
-    margin-bottom: $footer-height-small;
-  }
 
   .button {
     font: var(--typography-caption-font);

@@ -1,40 +1,27 @@
 <template>
-  <header role="banner" class="header dg-container dg-container-large">
+  <header class="header altg-container altg-container-large">
     <Logo />
-    <Nav />
-    <UserOptions :user="user" />
+    <SocialLogin />
   </header>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { createNamespacedHelpers } from 'vuex'
 
 import Logo from '@/components/logo/Logo.vue'
-import Nav from '@/layouts/default/components/header/components/nav/Nav.vue'
-import UserOptions from '@/layouts/default/components/header/components/user-options/UserOptions.vue'
-
-import { USER_NAMESPACE, UserGetters } from '@/store/user/types'
-
-const { mapGetters } = createNamespacedHelpers(USER_NAMESPACE)
+import SocialLogin from './components/social-login/SocialLogin.vue'
 
 export default defineComponent({
-  name: 'Header',
+  name: 'AltHeader',
   components: {
     Logo,
-    Nav,
-    UserOptions,
-  },
-  computed: {
-    ...mapGetters({
-      user: UserGetters.USER,
-    }),
+    SocialLogin,
   },
 })
 </script>
 
 <style lang="scss" scoped>
-@import '@/layouts/default/Default-variables.scss';
+@import '@/layouts/alt/Alt-class.scss';
 @import '@/layouts/screen.scss';
 
 .header {

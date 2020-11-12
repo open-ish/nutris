@@ -1,7 +1,8 @@
 <template>
   <Header />
   <div class="dg-default">
-    <router-view />
+    <router-view v-if="!isLoading" />
+    <LoadingPage v-else />
   </div>
   <Footer />
   <FixedBtn />
@@ -20,8 +21,13 @@ import {
   PopupMessageGetters,
   POPUP_MESSAGE_NAMESPACE,
 } from '@/store/popup-message/types'
+import {
+  LoadingPageGetters,
+  LOADING_PAGE_NAMESPACE,
+} from '@/store/loading-page/types'
 
-const { mapGetters } = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
+const LOADING_PAGE_MAPS = createNamespacedHelpers(LOADING_PAGE_NAMESPACE)
+const POPUP_MAPS = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
 
 export default defineComponent({
   name: 'LDefault',
@@ -29,13 +35,23 @@ export default defineComponent({
     Header,
     Footer,
     FixedBtn,
+    LoadingPage: defineAsyncComponent(() =>
+      import(
+        /* webpackChunkName: "LoadingPage" */ '../../components/loading-page/LoadingPage.vue'
+      )
+    ),
     PopupMessage: defineAsyncComponent(() =>
-      import('../../components/popup-message/PopupMessage.vue')
+      import(
+        /* webpackChunkName: "PopupMessage" */ '../../components/popup-message/PopupMessage.vue'
+      )
     ),
   },
   computed: {
-    ...mapGetters({
+    ...POPUP_MAPS.mapGetters({
       infos: PopupMessageGetters.INFOS,
+    }),
+    ...LOADING_PAGE_MAPS.mapGetters({
+      isLoading: LoadingPageGetters.LOADING,
     }),
   },
 })
@@ -44,6 +60,7 @@ export default defineComponent({
 <style lang="scss">
 @import '@/layouts/default/Default-variables.scss';
 @import '@/layouts/default/Default-class.scss';
+@import '@/layouts/screen.scss';
 
 .dg-default {
   display: flex;
