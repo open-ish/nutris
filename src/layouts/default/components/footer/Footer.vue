@@ -1,7 +1,7 @@
 <template>
   <footer
     role="contentinfo"
-    class="footer dg-container dg-container-large"
+    class="footer g-container g-container-large"
     :class="layout"
   >
     <p class="title">{{ new Date().getFullYear() }} Nutris</p>

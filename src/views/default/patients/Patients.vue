@@ -28,6 +28,5 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-@import '@/layouts/default/Default-class.scss';
 @import '@/layouts/default/Default-variables.scss';
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="empty-state dg-container dg-container-large">
+  <section class="empty-state g-container g-container-large">
     <slot />
     <Button color="primary" @click="$emit('action')" size="large">
       <slot name="btn" />

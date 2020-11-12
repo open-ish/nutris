@@ -1,5 +1,5 @@
 <template>
-  <header role="banner" class="header dg-container dg-container-large">
+  <header role="banner" class="header g-container g-container-large">
     <Logo />
     <Nav />
     <UserOptions :user="user" />
@@ -36,6 +36,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-variables.scss';
 @import '@/layouts/screen.scss';
+@import '@/assets/styles/variables.scss';
 
 .header {
   align-items: center;

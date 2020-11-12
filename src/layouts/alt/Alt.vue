@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <section class="alt">
+  <section>
     <router-view />
   </section>
   <Footer layout="alt" />
@@ -29,15 +29,15 @@ export default defineComponent({
 <style lang="scss">
 @import '@/layouts/screen.scss';
 
-.dg-alt {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  max-width: 1000px;
-  margin-bottom: auto;
-  overflow: auto;
-}
+// .dg-alt {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%;
+//   width: 100%;
+//   max-width: 1000px;
+//   margin-bottom: auto;
+//   overflow: auto;
+// }
 
 .app {
   align-items: center;

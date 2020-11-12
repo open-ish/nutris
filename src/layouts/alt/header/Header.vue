@@ -1,5 +1,5 @@
 <template>
-  <header class="header altg-container altg-container-large">
+  <header class="header g-container g-container-large">
     <Logo />
     <SocialLogin />
   </header>
@@ -21,8 +21,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '@/layouts/alt/Alt-class.scss';
 @import '@/layouts/screen.scss';
+@import '@/assets/styles/variables.scss';
 
 .header {
   align-items: center;

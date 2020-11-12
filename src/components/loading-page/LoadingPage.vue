@@ -18,6 +18,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-variables.scss';
+@import '@/assets/styles/variables.scss';
 
 .loading-page {
   z-index: var(--zindex-10);

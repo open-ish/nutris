@@ -1,5 +1,5 @@
 <template>
-  <section class="dg-container dg-container-large new-diet">
+  <section class="g-container g-container-large new-diet">
     <h1 v-once>
       {{ isEditMode ? `Editar dieta ${name}` : 'Cadastrar nova dieta' }}
     </h1>
