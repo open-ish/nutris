@@ -38,7 +38,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '@/layouts/default/Default-variables.scss';
 @import '@/assets/styles/variables.scss';
 
 .popup-message {

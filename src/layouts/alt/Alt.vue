@@ -27,7 +27,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import '@/layouts/screen.scss';
+@import '@/assets/styles/screen.scss';
 
 // .dg-alt {
 //   display: flex;

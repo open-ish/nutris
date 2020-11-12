@@ -58,8 +58,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import '@/layouts/default/Default-variables.scss';
-@import '@/layouts/screen.scss';
+@import '@/assets/styles/screen.scss';
 
 .dg-default {
   display: flex;

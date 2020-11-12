@@ -59,7 +59,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-variables.scss';
-@import '@/layouts/screen.scss';
+@import '@/assets/styles/screen.scss';
 
 .default {
   margin-bottom: var(--space-xs);

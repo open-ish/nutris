@@ -23,7 +23,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '@/layouts/default/Default-variables.scss';
 $logo-height: 44px;
 $logo-font-size: 24px;
 $logo-gap: -14px;
