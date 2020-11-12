@@ -51,7 +51,7 @@ $nav-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
   position: fixed;
   width: 100vw;
   font: var(--typography-caption-font);
-  z-index: var(--zindex-10);
+  z-index: var(--zindex-100);
 
   @media screen and (min-width: $screen-sm) {
     background-color: transparent;

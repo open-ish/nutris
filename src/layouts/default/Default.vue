@@ -1,12 +1,12 @@
 <template>
   <Header />
   <div class="dg-default">
-    <router-view />
+    <router-view v-if="!isLoading" />
+    <LoadingPage v-else />
   </div>
   <Footer />
   <FixedBtn />
   <PopupMessage v-if="infos.message" />
-  <LoadingPage />
 </template>
 
 <script lang="ts">
@@ -21,8 +21,13 @@ import {
   PopupMessageGetters,
   POPUP_MESSAGE_NAMESPACE,
 } from '@/store/popup-message/types'
+import {
+  LoadingPageGetters,
+  LOADING_PAGE_NAMESPACE,
+} from '@/store/loading-page/types'
 
-const { mapGetters } = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
+const LOADING_PAGE_MAPS = createNamespacedHelpers(LOADING_PAGE_NAMESPACE)
+const POPUP_MAPS = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
 
 export default defineComponent({
   name: 'LDefault',
@@ -42,8 +47,11 @@ export default defineComponent({
     ),
   },
   computed: {
-    ...mapGetters({
+    ...POPUP_MAPS.mapGetters({
       infos: PopupMessageGetters.INFOS,
+    }),
+    ...LOADING_PAGE_MAPS.mapGetters({
+      isLoading: LoadingPageGetters.LOADING,
     }),
   },
 })
