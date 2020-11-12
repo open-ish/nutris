@@ -1,7 +1,7 @@
 <template>
   <footer
     role="contentinfo"
-    class="footer dg-container dg-container-large"
+    class="footer g-container g-container-large"
     :class="layout"
   >
     <p class="title">{{ new Date().getFullYear() }} Nutris</p>
@@ -59,7 +59,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/layouts/default/Default-variables.scss';
-@import '@/layouts/screen.scss';
+@import '@/assets/styles/screen.scss';
 
 .default {
   margin-bottom: var(--space-xs);

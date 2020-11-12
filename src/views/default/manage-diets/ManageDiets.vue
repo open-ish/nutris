@@ -11,7 +11,7 @@
   <section
     v-else
     data-testid="manage-diets-list"
-    class="dg-container dg-container-large manage-diets"
+    class="g-container g-container-large manage-diets"
   >
     <h1>Minhas dietas cadastradas</h1>
     <div class="diets">
@@ -67,8 +67,7 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-@import '@/layouts/default/Default-class.scss';
-@import '@/layouts/default/Default-variables.scss';
+@import '@/assets/styles/variables.scss';
 
 .manage-diets {
   width: 100%;

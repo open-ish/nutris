@@ -1,5 +1,5 @@
 <template>
-  <main class="dg-container dg-container-large home">
+  <main class="g-container g-container-large home">
     <h1>{{ $t(defaultHomeI18nPath.title, language) }}</h1>
     <p class="content">
       <em>Nutris</em>{{ $t(defaultHomeI18nPath.textOne, language) }}.
@@ -54,8 +54,7 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-@import '@/layouts/default/Default-class.scss';
-@import '@/layouts/default/Default-variables.scss';
+@import '@/assets/styles/variables.scss';
 
 .home {
   display: flex;
