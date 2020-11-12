@@ -1,8 +1,14 @@
+@import './screen.scss';
+@import './variables.scss';
+
 /*
   Global class starts with g- prefix
 
   1. elements position
+  2. screen
 */
+
+/* 1. elements position */
 .g-center--x,
 .g-center--y {
   display: flex;
@@ -16,4 +22,29 @@
 
 .g-cursor {
   cursor: pointer;
+}
+
+/* 2. screen */
+.g-container {
+  padding-right: $padding-small;
+  padding-left: $padding-small;
+  margin: 0 auto;
+  width: 100%;
+
+  @media screen and (min-width: $screen-sm) {
+    padding-right: $padding;
+    padding-left: $padding;
+  }
+
+  &-small {
+    max-width: $screen-sm;
+  }
+
+  &-medium {
+    max-width: $screen-md;
+  }
+
+  &-large {
+    max-width: $screen-xlg;
+  }
 }
