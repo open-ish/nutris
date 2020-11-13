@@ -24,7 +24,7 @@ export default defineComponent({
   height: calc(100% - #{$header-height-small});
   width: 100%;
   position: absolute;
-  background: var(--bg-darken);
+  background: var(--bg-lighten);
   top: $header-height-small;
   left: 0;
   display: flex;
