@@ -1,7 +1,6 @@
 <template>
   <router-link :to="Paths.welcome">
     <div class="logo">
-      <img src="@/../public/img/icons/nutrisicon.png" alt="Logo da Nutris" />
       <span>
         Nutris
       </span>
@@ -23,9 +22,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$logo-height: 44px;
 $logo-font-size: 24px;
-$logo-gap: -14px;
 
 .logo {
   color: var(--brand-color-contrast);
@@ -34,12 +31,6 @@ $logo-gap: -14px;
 
   span {
     font-size: $logo-font-size;
-  }
-
-  img {
-    height: $logo-height;
-    width: $logo-height;
-    margin-top: $logo-gap;
   }
 }
 </style>
