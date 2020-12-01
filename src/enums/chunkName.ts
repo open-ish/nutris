@@ -1,4 +1,4 @@
-export enum chuckName {
+export enum chunkName {
   loadingPage = 'LoadingPage',
   popupMessage = 'PopupMessage',
 }
