@@ -14,9 +14,9 @@ import { defineComponent, defineAsyncComponent } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
 import FixedBtn from '@/components/button/FixedBtn.vue'
+import { chunkName } from '@/enums/chunkName.ts'
 import Header from '@/layouts/default/components/header/Header.vue'
 import Footer from '@/layouts/default/components/footer/Footer.vue'
-
 import {
   PopupMessageGetters,
   POPUP_MESSAGE_NAMESPACE,
@@ -37,12 +37,12 @@ export default defineComponent({
     FixedBtn,
     LoadingPage: defineAsyncComponent(() =>
       import(
-        /* webpackChunkName: "LoadingPage" */ '../../components/loading-page/LoadingPage.vue'
+        /* webpackChunkName: "[request]" */ `../../components/loading-page/${chunkName.loadingPage}.vue`
       )
     ),
     PopupMessage: defineAsyncComponent(() =>
       import(
-        /* webpackChunkName: "PopupMessage" */ '../../components/popup-message/PopupMessage.vue'
+        /* webpackChunkName: "[request]" */ `../../components/popup-message/${chunkName.popupMessage}.vue`
       )
     ),
   },
