@@ -1,6 +1,6 @@
 <template>
   <div class="identifier">
-    <p v-if="title" class="title">{{ title }}</p>
+    <p v-if="boxTitle" class="boxtitle">{{ boxTitle }}</p>
     <slot />
   </div>
 </template>
@@ -11,33 +11,35 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'NewPatient',
   props: {
-    title: { type: String },
+    boxTitle: { type: String },
   },
 })
 </script>
 <style lang="scss" scoped>
 @import '@/assets/styles/screen.scss';
-$gap-title: 10px;
+$gap-boxtitle: 10px;
 
 .identifier {
   padding: var(--space-xs);
   border: 1px solid var(--gray-2);
   position: relative;
   border-radius: var(--border-radius-lighten);
-  margin-top: var(--space-sm);
+  margin-top: var(--space);
+  width: 100%;
 
   @media screen and (min-width: $screen-sm) {
     padding: var(--space-sm);
-    margin-top: var(--space);
+    margin-top: var(--space-md);
   }
 
-  .title {
+  .boxtitle {
     position: absolute;
-    left: calc(1px + #{$gap-title});
-    top: calc(-1 * #{$gap-title});
+    left: calc(1px + #{$gap-boxtitle});
+    top: calc(-1 * #{$gap-boxtitle});
     background-color: var(--white);
     padding: 0 var(--space-xxs);
     line-height: var(--space-sm);
+    font-weight: 900;
   }
 }
 </style>

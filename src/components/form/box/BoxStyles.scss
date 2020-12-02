@@ -1,0 +1,25 @@
+.box {
+  &-description {
+    font: var(--typography-body2-font);
+    margin: var(--space-xs) 0;
+    letter-spacing: var(--typography-body2-letter);
+    line-height: 18px;
+  }
+
+  &-input {
+    margin: var(--space-sm) 0;
+
+    @media screen and (min-width: $screen-sm) {
+      margin: var(--space) 0;
+    }
+  }
+
+  &-btn-submit {
+    margin: var(--space) auto;
+    margin-top: var(--space-lg);
+
+    @media screen and (min-width: $screen-sm) {
+      margin-right: var(--space-lg);
+    }
+  }
+}
