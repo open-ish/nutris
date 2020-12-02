@@ -34,7 +34,10 @@ import { defaultHomeEn, defaultHomePt } from '@/views/alt/home/homei18n.ts'
 3. Components
 ==================
 */
-import { fixedBtnEn, fixedBtnPt } from '@/components/button/FixedBtn.i18n.ts'
+import {
+  fixedBtnEn,
+  fixedBtnPt,
+} from '@/components/form/button/FixedBtn.i18n.ts'
 
 /*
 ==================

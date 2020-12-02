@@ -25,7 +25,7 @@
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
-import Button from '@/components/button/Button.vue'
+import Button from '@/components/form/button/Button.vue'
 import { scroll } from '@/helpers/window-listeners/scroll.ts'
 import { I18nGetters, I18N_NAMESPACE } from '@/store/i18n/types'
 import { fixedBtnI18nPath } from './FixedBtn.i18n'

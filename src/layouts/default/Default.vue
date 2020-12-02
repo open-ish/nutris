@@ -13,7 +13,7 @@
 import { defineComponent, defineAsyncComponent } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
-import FixedBtn from '@/components/button/FixedBtn.vue'
+import FixedBtn from '@/components/form/button/FixedBtn.vue'
 import { chunkName } from '@/enums/chunkName'
 import Header from '@/layouts/default/components/header/Header.vue'
 import Footer from '@/layouts/default/components/footer/Footer.vue'

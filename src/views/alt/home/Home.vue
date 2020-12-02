@@ -31,7 +31,7 @@ import { defineComponent } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
 import { I18nGetters } from '@/store/i18n/types'
-import Button from '@/components/button/Button.vue'
+import Button from '@/components/form/button/Button.vue'
 import { Statics } from '@/enums/statics.ts'
 
 import { defaultHomeI18nPath } from './homei18n'

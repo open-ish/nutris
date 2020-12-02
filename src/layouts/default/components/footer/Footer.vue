@@ -25,7 +25,7 @@ import { defineComponent, PropType } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
 import { I18nGetters } from '@/store/i18n/types'
-import Button from '@/components/button/Button.vue'
+import Button from '@/components/form/button/Button.vue'
 import { defaultFooterI18nPath } from '@/layouts/default/components/footer/footer.i18n'
 import { Statics } from '@/enums/statics.ts'
 

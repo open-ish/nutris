@@ -36,7 +36,7 @@ import { defineComponent } from 'vue'
 import { mapGetters } from 'vuex'
 
 import EmptyState from '@/components/empty-state/EmptyState.vue'
-import FixedBtn from '@/components/button/FixedBtn.vue'
+import FixedBtn from '@/components/form/button/FixedBtn.vue'
 import Diet from '@/views/default/manage-diets/components/diet/Diet.vue'
 import { I18nGetters, I18N_NAMESPACE } from '@/store/i18n/types'
 import {

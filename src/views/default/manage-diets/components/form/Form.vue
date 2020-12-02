@@ -35,8 +35,8 @@ import { createNamespacedHelpers } from 'vuex'
 
 import { Paths, Names } from '@/router/default/enums'
 import { params } from '@/helpers/router/index'
-import Input from '@/components/input/Input.vue'
-import Button from '@/components/button/Button.vue'
+import Input from '@/components/form/input/Input.vue'
+import Button from '@/components/form/button/Button.vue'
 import Alert from '@/components/alert/Alert.vue'
 import {
   ManageDietsGetters,

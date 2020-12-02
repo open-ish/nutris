@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import Button from '@/components/button/Button.vue'
+import Button from '@/components/form/button/Button.vue'
 
 @Options({
   props: {
