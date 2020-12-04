@@ -15,7 +15,7 @@
         </p>
         <Input
           class="box-input"
-          v-model:value="anonymousText"
+          v-model:value="fields.anonymousText"
           autofocus
           label="Identificação textual (até 6 digitos)"
           placeholder="exemplo: ABCDEF"
@@ -23,7 +23,7 @@
         />
         <Input
           class="box-input"
-          v-model:value="anonymousNumber"
+          v-model:value="fields.anonymousNumber"
           :maxlength="maxlength"
           type="number"
           label="Identificação numérica (até 6 digitos)"
@@ -39,13 +39,13 @@
       <Box boxTitle="Dados 📁">
         <Input
           class="box-input"
-          v-model:value="body"
+          v-model:value="fields.currentBody"
           type="number"
           label="Massa corporal/peso atual (em kg)"
         />
         <Input
           class="box-input"
-          v-model:value="born"
+          v-model:value="fields.born"
           type="date"
           label="Data de nascimento"
         />
@@ -54,7 +54,7 @@
             <label for="female">Feminino</label>
             <input
               type="radio"
-              v-model="gender"
+              v-model="fields.gender"
               name="gender"
               value="F"
               id="female"
@@ -64,7 +64,7 @@
             <label for="male">Masculino</label>
             <input
               type="radio"
-              v-model="gender"
+              v-model="fields.gender"
               name="gender"
               value="M"
               id="male"
@@ -73,7 +73,9 @@
         </div>
       </Box>
       <Button
-        @click="sendData"
+        @click="!isInvalid && save()"
+        :disabled="isInvalid"
+        :isLoading="isLoading"
         class="box-btn-submit"
         size="large"
         color="primary"
@@ -84,15 +86,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
-// import { createNamespacedHelpers } from 'vuex'
+import { defineComponent, ref, computed, reactive } from 'vue'
+import { createNamespacedHelpers } from 'vuex'
 
 import Input from '@/components/form/input/Input.vue'
 import Box from '@/components/form/box/Box.vue'
 import Button from '@/components/form/button/Button.vue'
 import { changeToDot } from '@/helpers/form/form.ts'
+import {
+  PatientsGetters,
+  PatientsMutations,
+  PATIENTS_NAMESPACE,
+} from '@/store/patients/types'
+import { timestamp } from '@/helpers/date/date'
 
-// const { mapGetters } = createNamespacedHelpers('i18n')
+const PATIENTS_MAPS = createNamespacedHelpers(PATIENTS_NAMESPACE)
 
 export default defineComponent({
   name: 'NewPatient',
@@ -102,36 +110,52 @@ export default defineComponent({
     Button,
   },
   setup() {
-    const anonymousNumber = ref('')
-    const anonymousText = ref('')
-    const body = ref('')
-    const born = ref('')
-    const gender = ref('')
     const maxlength = ref(6)
+    const isLoading = ref(false)
+    const errorMessage = ref('')
+    const loading = () => {
+      isLoading.value = !isLoading.value
+    }
+    const fields = reactive({
+      anonymousText: '',
+      anonymousNumber: '',
+      currentBody: '',
+      born: '',
+      gender: '',
+    })
     const anonymousIdentifier = computed(
-      () => anonymousText.value + anonymousNumber.value
+      () => fields.anonymousText + fields.anonymousNumber
     )
-
-    const sendData = () =>
-      console.log({
-        anonymousIdentifier,
-        anonymousText,
-        anonymousNumber,
-        body: changeToDot(body.value),
-        born,
-        gender,
-      })
+    const isInvalid = computed(() => {
+      return Object.values(fields).some((field) => !field)
+    })
 
     return {
       anonymousIdentifier,
-      anonymousText,
-      anonymousNumber,
-      body,
-      born,
-      gender,
-      sendData,
+      fields,
+      isInvalid,
       maxlength,
+      isLoading,
+      loading,
     }
+  },
+  methods: {
+    ...PATIENTS_MAPS.mapActions({
+      postPatient: PatientsMutations.POST_PATIENTS,
+    }),
+    async save() {
+      this.loading()
+      const time = timestamp()
+      const response = await this.postPatient({
+        patient: {
+          ...this.fields,
+          currentBody: changeToDot(this.fields.currentBody),
+          createdAt: time,
+          lastUpdated: time,
+        },
+      })
+      this.loading()
+    },
   },
 })
 </script>
