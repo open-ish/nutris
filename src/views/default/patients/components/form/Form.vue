@@ -81,6 +81,7 @@
         color="primary"
         >Cadastrar paciente</Button
       >
+      <Alert v-if="errorMessage" :error="errorMessage" />
     </form>
   </section>
 </template>
@@ -89,6 +90,7 @@
 import { defineComponent, ref, computed, reactive } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
+import Alert from '@/components/alert/Alert.vue'
 import Input from '@/components/form/input/Input.vue'
 import Box from '@/components/form/box/Box.vue'
 import Button from '@/components/form/button/Button.vue'
@@ -98,9 +100,19 @@ import {
   PatientsMutations,
   PATIENTS_NAMESPACE,
 } from '@/store/patients/types'
+import {
+  PopupMessageActions,
+  POPUP_MESSAGE_NAMESPACE,
+} from '@/store/popup-message/types'
 import { timestamp } from '@/helpers/date/date'
+import { useRouter } from 'vue-router'
+import { Paths } from '@/router/default/enums'
 
 const PATIENTS_MAPS = createNamespacedHelpers(PATIENTS_NAMESPACE)
+const POPUP_MAPS = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
+
+const error = 'Desculpe, poderia tentar novamente mais tarde? 🙌'
+const success = 'Paciente cadastrado com sucesso! 🥳'
 
 export default defineComponent({
   name: 'NewPatient',
@@ -108,8 +120,10 @@ export default defineComponent({
     Input,
     Box,
     Button,
+    Alert,
   },
   setup() {
+    const router = useRouter()
     const maxlength = ref(6)
     const isLoading = ref(false)
     const errorMessage = ref('')
@@ -137,11 +151,16 @@ export default defineComponent({
       maxlength,
       isLoading,
       loading,
+      errorMessage,
+      router,
     }
   },
   methods: {
     ...PATIENTS_MAPS.mapActions({
       postPatient: PatientsMutations.POST_PATIENTS,
+    }),
+    ...POPUP_MAPS.mapActions({
+      showMessage: PopupMessageActions.SHOW_MESSAGE,
     }),
     async save() {
       this.loading()
@@ -154,6 +173,12 @@ export default defineComponent({
           lastUpdated: time,
         },
       })
+
+      this.errorMessage = !response ? '' : error
+
+      !this.errorMessage &&
+        this.showMessage({ message: success, time: 2000, mode: 'success' }) &&
+        this.router.replace(Paths.patients)
       this.loading()
     },
   },
