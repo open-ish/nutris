@@ -1,9 +1,13 @@
 import { CalculationHistory } from './CalculationHistory'
 
 export interface Patient {
-  currentBody: number
-  born: string //date
-  gender: string
   anonymousIdentifier: string //can not have empty space. The user will fill it.
+  anonymousText: ''
+  anonymousNumber: ''
+  currentBody: string
+  born: string //date
+  gender: 'F' | 'M' | null
   calculationHistory: CalculationHistory[] | null
+  lastUpdated: number | Date
+  createdAt: number | Date
 }
