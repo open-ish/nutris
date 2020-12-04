@@ -18,9 +18,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+import { maxLength } from '@/helpers/form/form.ts'
+
 type AttrsInput = {
   id: string
   placeholder: string
+  autofocus: FocusEventInit
 }
 
 export default defineComponent({
@@ -45,7 +48,11 @@ export default defineComponent({
     },
   },
   methods: {
-    updateInput(newValue: string | number) {
+    updateInput(newValue: string) {
+      const hasMaxLength = this.$attrs.maxlength as number
+      newValue = hasMaxLength ? maxLength(newValue, hasMaxLength) : newValue
+
+      this.$forceUpdate()
       this.$emit('update:value', newValue)
     },
   },
@@ -54,6 +61,7 @@ export default defineComponent({
       return {
         id: this.$attrs.id as string,
         placeholder: this.$attrs.placeholder as string,
+        autofocus: this.$attrs.autofocus as FocusEventInit,
       }
     },
   },
