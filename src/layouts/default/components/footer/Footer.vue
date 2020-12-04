@@ -63,9 +63,9 @@ export default defineComponent({
 
 .default {
   margin-bottom: var(--space-xs);
+  margin-top: var(--space-lg);
 
   @media screen and (max-width: $screen-md) {
-    margin-top: var(--space-lg);
     margin-bottom: $footer-height-small;
   }
 }

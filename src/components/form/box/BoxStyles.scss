@@ -17,9 +17,5 @@
   &-btn-submit {
     margin: var(--space) auto;
     margin-top: var(--space-lg);
-
-    @media screen and (min-width: $screen-sm) {
-      margin-right: var(--space-lg);
-    }
   }
 }
