@@ -37,7 +37,7 @@ const actions: ActionTree<ManageDietsState, {}> = {
       .collection(names.users)
       .doc(rootGetters[user].uid)
       .collection(names.diets)
-      .orderBy('date', firebaseQuerys.desc)
+      .orderBy('createdAt', firebaseQuerys.desc)
       .get()
       .then((querySnapshot: Snapshot[]) => {
         const diets: Diet[] = []

@@ -130,14 +130,14 @@ export default defineComponent({
               name: this.name,
               proteinAmount: this.proteinAmount,
               calAmount: this.calAmount,
-              date: this.findDiet(this.isEditMode).date,
+              createdAt: this.findDiet(this.isEditMode).createdAt,
             },
           })
         : await this.postDiet({
             name: this.name,
             proteinAmount: this.proteinAmount,
             calAmount: this.calAmount,
-            date: timestamp(),
+            createdAt: timestamp(),
           })
 
       this.errorMessage = !response ? '' : error
