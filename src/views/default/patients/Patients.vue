@@ -17,6 +17,15 @@
         :patient="patient"
       />
     </div>
+
+    <!-- fixed  -->
+    <FixedBtn
+      mode="insert"
+      startIcon="nutris-plus"
+      aria-label-icon="Sinal de mais"
+      aria-label-btn="Cadastrar novo paciente"
+      @click="$router.push({ path: Paths.patients + '/new' })"
+    />
   </section>
 </template>
 
@@ -26,6 +35,7 @@ import { createNamespacedHelpers } from 'vuex'
 
 // import Input from '@/components/form/input/Input.vue'
 import EmptyState from '@/components/empty-state/EmptyState.vue'
+import FixedBtn from '@/components/form/button/FixedBtn.vue'
 import Patient from './components/patient/Patient.vue'
 import { Paths, Names } from '@/router/default/enums'
 import { PatientsGetters, PATIENTS_NAMESPACE } from '@/store/patients/types'
@@ -37,6 +47,7 @@ export default defineComponent({
   components: {
     // Input,
     EmptyState,
+    FixedBtn,
     Patient,
   },
   setup() {
