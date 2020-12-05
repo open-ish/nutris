@@ -41,7 +41,7 @@ const actions: ActionTree<PatientsState, {}> = {
       .then((querySnapshot: Snapshot[]) => {
         const patients: Patient[] = []
         querySnapshot.forEach((doc) => {
-          patients.push({ ...doc.data(), id: doc.id } as any)
+          patients.push({ ...doc.data(), id: doc.id } as Patient)
         })
         commit(PatientsMutations.GET_PATIENTS, patients)
       })

@@ -13,7 +13,7 @@
     data-testid="manage-diets-list"
     class="g-container g-container-large manage-diets"
   >
-    <h1>Minhas dietas cadastradas</h1>
+    <h1>Minhas dietas</h1>
     <div class="diets">
       <Diet v-for="diet in diets" :key="diet.name" :diet="diet" />
     </div>
