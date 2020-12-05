@@ -3,13 +3,13 @@
     v-if="!patients.length"
     @action="$router.push({ path: Paths.patients + '/new' })"
   >
-    <h1>Pacientes</h1>
+    <h1>Meus Pacientes</h1>
     <template v-slot:btn>
       Cadastrar primeiro paciente
     </template>
   </EmptyState>
   <section v-else class="g-container g-container-large">
-    <h1>Pacientes</h1>
+    <h1>Meus Pacientes</h1>
     <div class="patients">
       <Patient
         v-for="patient in patients"
@@ -53,7 +53,7 @@ export default defineComponent({
 .patients {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   gap: var(--space-xs);
 }
 </style>

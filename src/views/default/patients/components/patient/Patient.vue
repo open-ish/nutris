@@ -1,20 +1,39 @@
 <template>
   <Paper class="patient">
-    <i class="nutris-emo-coffee" aria-label="emoji sorrindo"></i>
-    <div class="tete">
-      <h2>{{ patient.anonymousIdentifier }}</h2>
-      <div class="data">
-        {{ `${patient.currentBody}kg` }}
-        <hr class="divider" />
-        {{ `${getAge(patient.born)} anos` }}
-        <hr class="divider" />
-        {{ patient.gender }}
+    <div class="identifier">
+      <i class="nutris-emo-coffee" aria-label="emoji sorrindo"></i>
+      <h2 title="Identificação anonima deste paciente">
+        {{ patient.anonymousIdentifier }}
+      </h2>
+    </div>
+    <div class="info">
+      <div>
+        <div class="data">
+          <p>
+            {{ `${patient.currentBody}kg` }}
+          </p>
+          <hr class="divider" />
+          <p class="born-age">
+            {{ `${formatDate(patient.born)}` }}
+            <span>{{ `(${getAge(patient.born)} anos)` }}</span>
+          </p>
+          <hr class="divider" />
+          <i
+            :class="patient.gender === 'M' ? 'nutris-male' : 'nutris-female'"
+            :aria-label="
+              patient.gender === 'M' ? 'Sexo masculino' : 'Sexo feminino'
+            "
+            :title="patient.gender === 'M' ? 'Sexo masculino' : 'Sexo feminino'"
+          ></i>
+        </div>
       </div>
+      <Button color="primary" title="Veja mais detalhes sobre o paciente"
+        >Detalhes</Button
+      >
       <p class="last-updated">
         {{ `Último registro: ${formatDate(patient.lastUpdated)}` }}
       </p>
     </div>
-    <Button color="primary">teste</Button>
   </Paper>
 </template>
 
@@ -46,11 +65,32 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
+@import '@/assets/styles/screen.scss';
+
 .patient {
   display: flex;
   max-width: 350px;
-  gap: var(--space-sm);
+  justify-content: space-around;
+  flex-direction: column;
   padding: var(--space-xs);
+  width: 100%;
+
+  @media screen and (min-width: $screen-sm) {
+    max-width: 310px;
+  }
+}
+
+.identifier {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.info {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: baseline;
+  position: relative;
+  justify-content: space-around;
 }
 
 h2 {
@@ -62,19 +102,16 @@ h2 {
   display: flex;
   align-items: baseline;
   margin-bottom: var(--space-sm);
+  width: min-content;
 }
 
 .last-updated {
   font: var(--typography-caption-font);
   color: var(--text-color-lighten);
-
-  position: absolute;
   bottom: 0;
+  right: 0;
+  position: absolute;
   white-space: nowrap;
-}
-
-.button {
-  align-self: center;
 }
 
 .divider {
@@ -84,7 +121,27 @@ h2 {
   height: 12px;
 }
 
-.tete {
-  position: relative;
+.born-age {
+  line-height: var(--space-sm);
+
+  span {
+    font: var(--typography-caption-font);
+    color: var(--text-color-lighten);
+    white-space: nowrap;
+  }
+}
+
+.nutris {
+  &-emo-coffee {
+    margin-left: calc(-1 * var(--space-xs));
+  }
+
+  &-male,
+  &-female {
+    font-size: 14px;
+    &::before {
+      margin: 0;
+    }
+  }
 }
 </style>
