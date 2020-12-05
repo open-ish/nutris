@@ -67,8 +67,6 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
-
 .manage-diets {
   width: 100%;
   display: flex;
