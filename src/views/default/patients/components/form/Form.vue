@@ -95,11 +95,7 @@ import Input from '@/components/form/input/Input.vue'
 import Box from '@/components/form/box/Box.vue'
 import Button from '@/components/form/button/Button.vue'
 import { changeToDot } from '@/helpers/form/form.ts'
-import {
-  PatientsGetters,
-  PatientsMutations,
-  PATIENTS_NAMESPACE,
-} from '@/store/patients/types'
+import { PatientsMutations, PATIENTS_NAMESPACE } from '@/store/patients/types'
 import {
   PopupMessageActions,
   POPUP_MESSAGE_NAMESPACE,
@@ -115,7 +111,7 @@ const error = 'Desculpe, poderia tentar novamente mais tarde? 🙌'
 const success = 'Paciente cadastrado com sucesso! 🥳'
 
 export default defineComponent({
-  name: 'NewPatient',
+  name: 'Form',
   components: {
     Input,
     Box,
@@ -166,12 +162,11 @@ export default defineComponent({
       this.loading()
       const time = timestamp()
       const response = await this.postPatient({
-        patient: {
-          ...this.fields,
-          currentBody: changeToDot(this.fields.currentBody),
-          createdAt: time,
-          lastUpdated: time,
-        },
+        ...this.fields,
+        anonymousIdentifier: this.anonymousIdentifier,
+        currentBody: changeToDot(this.fields.currentBody),
+        createdAt: time,
+        lastUpdated: time,
       })
 
       this.errorMessage = !response ? '' : error

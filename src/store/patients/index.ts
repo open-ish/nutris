@@ -11,7 +11,7 @@ import { names } from '@/enums/collections/firebase'
 import { UserGetters, USER_NAMESPACE } from '../user/types'
 import { Snapshot } from '@/models/firebase'
 import { Patient } from '@/models/Patient'
-import { firebaseQuerys } from '@/enums/firebaseQuerys'
+// import { firebaseQuerys } from '@/enums/firebaseQuerys'
 
 const user = USER_NAMESPACE + '/' + UserGetters.USER
 
