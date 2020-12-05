@@ -2,6 +2,7 @@ import { RouteLocationNormalized } from 'vue-router'
 
 import Index from '@/layouts/Index.vue'
 import Patients from '@/views/default/patients/Patients.vue'
+import PatientDetails from '@/views/default/patients/components/details/Details.vue'
 import Form from '@/views/default/patients/components/form/Form.vue'
 import { Names, Paths } from '@/router/default/enums'
 import {
@@ -42,6 +43,12 @@ export default {
       path: Paths.new,
       name: Names.patientsNew,
       component: Form,
+    },
+    {
+      path: Paths.details + ':id',
+      name: Names.patientsDetails,
+      component: PatientDetails,
+      props: true,
     },
   ],
 }

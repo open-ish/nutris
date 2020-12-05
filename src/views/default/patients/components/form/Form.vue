@@ -165,6 +165,7 @@ export default defineComponent({
         ...this.fields,
         anonymousIdentifier: this.anonymousIdentifier,
         currentBody: changeToDot(this.fields.currentBody),
+        calculationHistory: [],
         createdAt: time,
         lastUpdated: time,
       })

@@ -23,12 +23,12 @@ const getters = {
   [PatientsGetters.PATIENTS](state: PatientsState) {
     return state.patients
   },
-  // [PatientsGetters.FIND_DIET](state: PatientsState) {
-  //   return (id: string) =>
-  //     state..find((diet) => {
-  //       return diet.id === id
-  //     })
-  // },
+  [PatientsGetters.FIND_PATIENT](state: PatientsState) {
+    return (id: string) =>
+      state.patients.find((patient) => {
+        return patient.id === id
+      })
+  },
 }
 
 const actions: ActionTree<PatientsState, {}> = {

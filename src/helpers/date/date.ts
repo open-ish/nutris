@@ -17,7 +17,6 @@ export function timestamp(): number {
 export function getAge(date: string | number) {
   dayjs.extend(relativeTime)
   const isOnlyValue = true
-  console.log(dayjs(date).fromNow(isOnlyValue))
   return dayjs(date)
     .fromNow(isOnlyValue)
     .split(' ')[0]

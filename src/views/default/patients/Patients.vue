@@ -1,7 +1,7 @@
 <template>
   <EmptyState
     v-if="!patients.length"
-    @action="$router.push({ path: Paths.patients + '/new' })"
+    @action="$router.push({ name: Names.patientsNew })"
   >
     <h1>Meus Pacientes</h1>
     <template v-slot:btn>
@@ -24,7 +24,7 @@
       startIcon="nutris-plus"
       aria-label-icon="Sinal de mais"
       aria-label-btn="Cadastrar novo paciente"
-      @click="$router.push({ path: Paths.patients + '/new' })"
+      @click="$router.push({ name: Names.patientsNew })"
     />
   </section>
 </template>
@@ -37,7 +37,7 @@ import { createNamespacedHelpers } from 'vuex'
 import EmptyState from '@/components/empty-state/EmptyState.vue'
 import FixedBtn from '@/components/form/button/FixedBtn.vue'
 import Patient from './components/patient/Patient.vue'
-import { Paths, Names } from '@/router/default/enums'
+import { Names } from '@/router/default/enums'
 import { PatientsGetters, PATIENTS_NAMESPACE } from '@/store/patients/types'
 
 const PATIENTS_MAPS = createNamespacedHelpers(PATIENTS_NAMESPACE)
@@ -51,7 +51,7 @@ export default defineComponent({
     Patient,
   },
   setup() {
-    return { Paths, Names }
+    return { Names }
   },
   computed: {
     ...PATIENTS_MAPS.mapGetters({

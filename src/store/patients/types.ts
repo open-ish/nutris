@@ -8,7 +8,7 @@ export interface PatientsState {
 // getters
 export const PatientsGetters = {
   PATIENTS: 'PATIENTS',
-  // FIND_DIET: 'FIND_DIET',
+  FIND_PATIENT: 'FIND_PATIENT',
 }
 
 // actions

@@ -27,7 +27,15 @@
           ></i>
         </div>
       </div>
-      <Button color="primary" title="Veja mais detalhes sobre o paciente"
+      <Button
+        @click="
+          $router.push({
+            name: Names.patientsDetails,
+            params: { id: patient.id },
+          })
+        "
+        color="primary"
+        title="Veja mais detalhes sobre o paciente"
         >Detalhes</Button
       >
       <p class="last-updated">
@@ -43,6 +51,7 @@ import { defineComponent, PropType } from 'vue'
 
 import Button from '@/components/form/button/Button.vue'
 import Paper from '@/components/paper/Paper.vue'
+import { Names } from '@/router/default/enums'
 import { Patient } from '@/models/Patient'
 import { formatDate, getAge } from '@/helpers/date/date'
 
@@ -60,7 +69,7 @@ export default defineComponent({
     },
   },
   setup() {
-    return { formatDate, getAge }
+    return { formatDate, getAge, Names }
   },
 })
 </script>

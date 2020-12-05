@@ -1,6 +1,7 @@
 import { CalculationHistory } from './CalculationHistory'
 
 export interface Patient {
+  id: string
   anonymousIdentifier: string //can not have empty space. The user will fill it.
   anonymousText: ''
   anonymousNumber: ''
