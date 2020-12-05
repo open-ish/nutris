@@ -11,7 +11,7 @@ import { names } from '@/enums/collections/firebase'
 import { UserGetters, USER_NAMESPACE } from '../user/types'
 import { Snapshot } from '@/models/firebase'
 import { Patient } from '@/models/Patient'
-// import { firebaseQuerys } from '@/enums/firebaseQuerys'
+import { firebaseQuerys } from '@/enums/firebaseQuerys'
 
 const user = USER_NAMESPACE + '/' + UserGetters.USER
 
@@ -20,9 +20,9 @@ const state: PatientsState = {
 }
 
 const getters = {
-  // [PatientsGetters.](state: PatientsState) {
-  //   return state.
-  // },
+  [PatientsGetters.PATIENTS](state: PatientsState) {
+    return state.patients
+  },
   // [PatientsGetters.FIND_DIET](state: PatientsState) {
   //   return (id: string) =>
   //     state..find((diet) => {
@@ -32,22 +32,21 @@ const getters = {
 }
 
 const actions: ActionTree<PatientsState, {}> = {
-  // [PatientsActions.GET_]({ commit, rootGetters }) {
-  //   return FirebaseApp.db
-  //     .collection(names.users)
-  //     .doc(rootGetters[user].uid)
-  //     .collection(names.)
-  //     .orderBy('date', firebaseQuerys.desc)
-  //     .get()
-  //     .then((querySnapshot: Snapshot[]) => {
-  //       const : Diet[] = []
-  //       querySnapshot.forEach((doc) => {
-  //         .push({ ...doc.data(), id: doc.id } as Diet)
-  //       })
-  //       commit(PatientsMutations.GET_, )
-  //     })
-  //     .catch((error: Error) => error.message)
-  // },
+  [PatientsActions.GET_PATIENTS]({ commit, rootGetters }) {
+    return FirebaseApp.db
+      .collection(names.users)
+      .doc(rootGetters[user].uid)
+      .collection(names.patients)
+      .get()
+      .then((querySnapshot: Snapshot[]) => {
+        const patients: Patient[] = []
+        querySnapshot.forEach((doc) => {
+          patients.push({ ...doc.data(), id: doc.id } as any)
+        })
+        commit(PatientsMutations.GET_PATIENTS, patients)
+      })
+      .catch((error: Error) => error.message)
+  },
   [PatientsActions.POST_PATIENTS]({ commit, rootGetters }, patient) {
     return FirebaseApp.db
       .collection(names.users)
@@ -104,9 +103,9 @@ const actions: ActionTree<PatientsState, {}> = {
 }
 
 const mutations: MutationTree<PatientsState> = {
-  // [PatientsMutations.GET_](state, : Diet[]) {
-  //   state. =
-  // },
+  [PatientsMutations.GET_PATIENTS](state, patients: Patient[]) {
+    state.patients = patients
+  },
   [PatientsMutations.POST_PATIENTS](state, patient: Patient) {
     state.patients.unshift(patient)
   },

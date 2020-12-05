@@ -7,13 +7,13 @@ export interface PatientsState {
 
 // getters
 export const PatientsGetters = {
-  // PATIENTS: 'PATIENTS',
+  PATIENTS: 'PATIENTS',
   // FIND_DIET: 'FIND_DIET',
 }
 
 // actions
 export const PatientsActions = {
-  // GET_PATIENTS: 'GET_PATIENTS',
+  GET_PATIENTS: 'GET_PATIENTS',
   POST_PATIENTS: 'POST_PATIENTS',
   // UPDATE_DIET: 'UPDATE_DIET',
   // DELETE_DIET: 'DELETE_DIET',
@@ -21,7 +21,7 @@ export const PatientsActions = {
 
 // mutations
 export const PatientsMutations = {
-  // GET_PATIENTS: 'GET_PATIENTS',
+  GET_PATIENTS: 'GET_PATIENTS',
   POST_PATIENTS: 'POST_PATIENTS',
   // UPDATE_DIET: 'UPDATE_DIET',
   // DELETE_DIET: 'DELETE_DIET',
