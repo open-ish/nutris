@@ -189,7 +189,6 @@ export default defineComponent({
 @import '@/components/form/box/BoxStyles.scss';
 
 .patient-form {
-  font: var(--typography-body2-font);
   display: flex;
   flex-direction: column;
 }
@@ -200,7 +199,6 @@ export default defineComponent({
 }
 
 .anonymous {
-  font: var(--typography-body-font);
   font-style: italic;
   font-weight: 500;
 }
@@ -224,10 +222,6 @@ export default defineComponent({
 
     > * {
       cursor: pointer;
-    }
-
-    label {
-      margin-bottom: var(--space-xs);
     }
 
     &:not(:last-of-type) {
