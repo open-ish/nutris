@@ -43,7 +43,7 @@ export default defineComponent({
     ),
     PopupMessage: defineAsyncComponent(() =>
       import(
-        /* webpackChunkName: "PopupMessage" */ `../../components/popup-message/${popupMessage}.vue`
+        /* webpackChunkName: "[request]" */ `../../components/popup-message/${popupMessage}.vue`
       )
     ),
   },

@@ -33,7 +33,6 @@
 import { defineComponent } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
-// import Input from '@/components/form/input/Input.vue'
 import EmptyState from '@/components/empty-state/EmptyState.vue'
 import FixedBtn from '@/components/form/button/FixedBtn.vue'
 import Patient from './components/patient/Patient.vue'
@@ -45,7 +44,6 @@ const PATIENTS_MAPS = createNamespacedHelpers(PATIENTS_NAMESPACE)
 export default defineComponent({
   name: 'Patients',
   components: {
-    // Input,
     EmptyState,
     FixedBtn,
     Patient,
