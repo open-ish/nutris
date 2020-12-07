@@ -54,7 +54,7 @@ export default defineComponent({
     }),
     async login() {
       await signInWithGoogle()
-      window.location.replace('/calculate')
+      window.location.replace('/welcome')
     },
   },
 })

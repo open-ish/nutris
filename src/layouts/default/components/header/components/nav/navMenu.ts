@@ -2,11 +2,12 @@ import { navI18nPath } from '@/layouts/default/components/header/components/nav/
 import { Paths } from '@/router/default/enums'
 
 export const navOptions = [
-  {
-    path: Paths.calculate,
-    i18n: navI18nPath.calculate,
-    icon: 'nutris-ticket',
-  },
+  // I will think if it is necessary
+  // {
+  //   path: Paths.calculate,
+  //   i18n: navI18nPath.calculate,
+  //   icon: 'nutris-ticket',
+  // },
   {
     path: Paths.patients,
     i18n: navI18nPath.patients,

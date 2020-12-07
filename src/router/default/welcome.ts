@@ -1,10 +1,10 @@
 import { Names, Paths } from '@/router/default/enums'
-import Home from '@/views/alt/home/Home.vue'
+import Welcome from '@/views/default/welcome/Welcome.vue'
 
 export default {
   path: Paths.welcome,
   name: Names.welcome,
-  component: Home,
+  component: Welcome,
   meta: {
     requiresAuth: true,
   },

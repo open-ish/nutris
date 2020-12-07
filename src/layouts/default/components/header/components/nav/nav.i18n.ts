@@ -1,19 +1,19 @@
 export enum navI18nPath {
-  calculate = 'nav.calculate',
+  // calculate = 'nav.calculate',
   patients = 'nav.patients',
   newPacient = 'nav.newPacient',
   manageDiets = 'nav.manageDiets',
 }
 
 export const defaultNavPt = {
-  calculate: 'Cálculo avulso',
+  // calculate: 'Cálculo avulso',
   patients: 'Meus Pacientes',
   newPacient: 'Novo Paciente',
   manageDiets: 'Minhas Dietas',
 }
 
 export const defaultNavEn = {
-  calculate: 'Loose calculate',
+  // calculate: 'Loose calculate',
   patients: 'My Patients',
   newPacient: 'New Pacient',
   manageDiets: 'My diets',
