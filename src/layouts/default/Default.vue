@@ -13,10 +13,10 @@
 import { defineComponent, defineAsyncComponent } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
-import FixedBtn from '@/components/button/FixedBtn.vue'
+import FixedBtn from '@/components/form/button/FixedBtn.vue'
+import { chunkName } from '@/enums/chunkName'
 import Header from '@/layouts/default/components/header/Header.vue'
 import Footer from '@/layouts/default/components/footer/Footer.vue'
-
 import {
   PopupMessageGetters,
   POPUP_MESSAGE_NAMESPACE,
@@ -28,6 +28,7 @@ import {
 
 const LOADING_PAGE_MAPS = createNamespacedHelpers(LOADING_PAGE_NAMESPACE)
 const POPUP_MAPS = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
+const { loadingPage, popupMessage } = chunkName
 
 export default defineComponent({
   name: 'LDefault',
@@ -37,12 +38,12 @@ export default defineComponent({
     FixedBtn,
     LoadingPage: defineAsyncComponent(() =>
       import(
-        /* webpackChunkName: "LoadingPage" */ '../../components/loading-page/LoadingPage.vue'
+        /* webpackChunkName: "[request]" */ `../../components/loading-page/${loadingPage}.vue`
       )
     ),
     PopupMessage: defineAsyncComponent(() =>
       import(
-        /* webpackChunkName: "PopupMessage" */ '../../components/popup-message/PopupMessage.vue'
+        /* webpackChunkName: "[request]" */ `../../components/popup-message/${popupMessage}.vue`
       )
     ),
   },

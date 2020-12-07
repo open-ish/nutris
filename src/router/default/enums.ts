@@ -8,9 +8,10 @@ export enum Paths {
   // Manage Diets Routes
   manageDiets = '/manage-diets',
 
-  // news
+  // Standardization
   new = 'new',
   edit = 'edit/',
+  details = 'details/',
 }
 
 export enum Names {
@@ -27,4 +28,5 @@ export enum Names {
   // Patients Routes
   patients = 'Patients',
   patientsNew = 'PatientsNew',
+  patientsDetails = 'PatientsDetails',
 }

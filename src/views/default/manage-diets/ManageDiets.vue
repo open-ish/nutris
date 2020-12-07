@@ -13,7 +13,7 @@
     data-testid="manage-diets-list"
     class="g-container g-container-large manage-diets"
   >
-    <h1>Minhas dietas cadastradas</h1>
+    <h1>Minhas dietas</h1>
     <div class="diets">
       <Diet v-for="diet in diets" :key="diet.name" :diet="diet" />
     </div>
@@ -36,7 +36,7 @@ import { defineComponent } from 'vue'
 import { mapGetters } from 'vuex'
 
 import EmptyState from '@/components/empty-state/EmptyState.vue'
-import FixedBtn from '@/components/button/FixedBtn.vue'
+import FixedBtn from '@/components/form/button/FixedBtn.vue'
 import Diet from '@/views/default/manage-diets/components/diet/Diet.vue'
 import { I18nGetters, I18N_NAMESPACE } from '@/store/i18n/types'
 import {
@@ -67,8 +67,6 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
-
 .manage-diets {
   width: 100%;
   display: flex;

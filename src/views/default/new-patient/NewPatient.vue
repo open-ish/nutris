@@ -10,7 +10,7 @@
 import { defineComponent } from 'vue'
 // import { createNamespacedHelpers } from 'vuex'
 
-import Input from '@/components/input/Input.vue'
+import Input from '@/components/form/input/Input.vue'
 
 // const { mapGetters } = createNamespacedHelpers('i18n')
 

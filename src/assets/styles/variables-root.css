@@ -104,6 +104,7 @@
   --text-color: var(--gray-5);
   --text-color-lighten: var(--gray-3);
   --bg-darken: rgba(0, 0, 0, 0.7);
+  --bg-lighten: var(--white);
 
   /* 3. Utils */
   --border-radius-lighten: 2px;

@@ -1,6 +1,7 @@
 import { Alerts } from '@/enums/alerts'
 import { Label } from '@/enums/label'
 import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 export function formatDate(date: string | Date | number) {
   const formatedDate = dayjs(date).format(Label.fullDate)
@@ -11,4 +12,12 @@ export function formatDate(date: string | Date | number) {
 
 export function timestamp(): number {
   return new Date().getTime()
+}
+
+export function getAge(date: string | number) {
+  dayjs.extend(relativeTime)
+  const isOnlyValue = true
+  return dayjs(date)
+    .fromNow(isOnlyValue)
+    .split(' ')[0]
 }

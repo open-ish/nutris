@@ -22,6 +22,8 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
+@import '@/assets/styles/screen.scss';
+
 .modal {
   position: fixed;
   left: 0;
@@ -39,8 +41,16 @@ export default defineComponent({
 }
 
 .content {
-  border-radius: var(--border-radius);
   background-color: var(--white);
   padding: var(--space-sm);
+
+  @media screen and (max-width: $screen-sm) {
+    height: 100%;
+    width: 100%;
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    border-radius: var(--border-radius);
+  }
 }
 </style>

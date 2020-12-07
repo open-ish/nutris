@@ -28,7 +28,7 @@ import { useI18n } from 'vue-i18n'
 import { I18nGetters, I18nActions } from '@/store/i18n/types'
 const { mapGetters, mapActions } = createNamespacedHelpers('i18n')
 
-import Button from '@/components/button/Button.vue'
+import Button from '@/components/form/button/Button.vue'
 import { signInWithGoogle } from '@/services/auth.service.ts'
 
 export default defineComponent({
@@ -54,7 +54,7 @@ export default defineComponent({
     }),
     async login() {
       await signInWithGoogle()
-      window.location.replace('/calculate')
+      window.location.replace('/welcome')
     },
   },
 })

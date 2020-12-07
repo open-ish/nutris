@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import Button from '@/components/button/Button.vue'
+import Button from '@/components/form/button/Button.vue'
 
 export default defineComponent({
   name: 'EmptyState',
@@ -28,10 +28,10 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
+  // position: absolute;
+  // top: 50%;
+  // right: 50%;
+  // transform: translate(50%, -50%);
 
   &:first-child {
     font: var(--typography-subheader-font);

@@ -8,13 +8,13 @@
     <label v-if="label" class="label">
       {{ label }}
     </label>
-    {{ value || placeHolder }}
+    {{ (objectInstead ? value.text : value) || placeHolder }}
     <div class="items" :class="isOpen ? 'is-active' : ''">
       <span
         class="item"
         v-for="(option, index) of options"
         :key="index"
-        @click="select(option.text)"
+        @click="select(objectInstead ? option : option.text)"
       >
         {{ option.text }}
       </span>
@@ -34,7 +34,6 @@ export default defineComponent({
       required: true,
     },
     value: {
-      type: String,
       required: true,
     },
     label: {
@@ -43,6 +42,9 @@ export default defineComponent({
     placeHolder: {
       type: String,
       default: 'Selecione',
+    },
+    objectInstead: {
+      default: false,
     },
   },
   setup(props, { emit }) {
@@ -56,11 +58,6 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-.container {
-  display: flex;
-  flex-flow: column;
-}
-
 .custom-select {
   position: relative;
   padding: var(--space-xs);
@@ -69,6 +66,7 @@ export default defineComponent({
   outline: none;
   border: 1px solid var(--gray-2);
   border-radius: var(--border-radius-lighten);
+  z-index: inherit;
 
   &.active {
     border-color: transparent;
@@ -114,6 +112,7 @@ export default defineComponent({
   position: absolute;
   bottom: 100%;
   left: 0;
+  margin-bottom: var(--space-xs);
 }
 
 .click-outside {

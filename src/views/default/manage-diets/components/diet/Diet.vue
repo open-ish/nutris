@@ -53,7 +53,7 @@ import { defineComponent, PropType, ref } from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 
 import Paper from '@/components/paper/Paper.vue'
-import Button from '@/components/button/Button.vue'
+import Button from '@/components/form/button/Button.vue'
 import Modal from '@/components/modal/Modal.vue'
 
 import { I18nGetters, I18N_NAMESPACE } from '@/store/i18n/types'

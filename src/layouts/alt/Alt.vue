@@ -29,16 +29,6 @@ export default defineComponent({
 <style lang="scss">
 @import '@/assets/styles/screen.scss';
 
-// .dg-alt {
-//   display: flex;
-//   flex-direction: column;
-//   height: 100%;
-//   width: 100%;
-//   max-width: 1000px;
-//   margin-bottom: auto;
-//   overflow: auto;
-// }
-
 .app {
   align-items: center;
   display: flex;

@@ -1,10 +1,10 @@
 <template>
-  <div :class="`container ${error && 'invalid'}`">
+  <div :class="[`container ${error && 'invalid'}`, $attrs.class]">
     <label v-if="label" :for="label" class="label">
       {{ label }}
     </label>
     <input
-      v-bind="$attrs"
+      v-bind="inputAttrs"
       class="field"
       :type="type"
       :value="value"
@@ -17,6 +17,14 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+
+import { maxLength } from '@/helpers/form/form.ts'
+
+type AttrsInput = {
+  id: string
+  placeholder: string
+  autofocus: FocusEventInit
+}
 
 export default defineComponent({
   emits: ['update:value'],
@@ -40,8 +48,21 @@ export default defineComponent({
     },
   },
   methods: {
-    updateInput(newValue: string | number) {
+    updateInput(newValue: string) {
+      const hasMaxLength = this.$attrs.maxlength as number
+      newValue = hasMaxLength ? maxLength(newValue, hasMaxLength) : newValue
+
+      this.$forceUpdate()
       this.$emit('update:value', newValue)
+    },
+  },
+  computed: {
+    inputAttrs(): AttrsInput {
+      return {
+        id: this.$attrs.id as string,
+        placeholder: this.$attrs.placeholder as string,
+        autofocus: this.$attrs.autofocus as FocusEventInit,
+      }
     },
   },
 })
@@ -62,7 +83,7 @@ export default defineComponent({
   appearance: none;
   border: 1px solid var(--gray-2);
   border-radius: var(--border-radius-lighten);
-  color: var(--default-color);
+  color: var(--text-color);
   font: var(--typography-body-font);
   outline: 0;
   padding: var(--space-xs);
@@ -86,6 +107,11 @@ export default defineComponent({
 
   &:focus {
     border-color: var(--secondary-color-lighten);
+  }
+
+  &::placeholder {
+    color: var(--gray-3);
+    font-style: italic;
   }
 }
 
