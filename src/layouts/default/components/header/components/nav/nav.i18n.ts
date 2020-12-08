@@ -3,6 +3,7 @@ export enum navI18nPath {
   patients = 'nav.patients',
   newPacient = 'nav.newPacient',
   manageDiets = 'nav.manageDiets',
+  fallBackManageDiets = 'nav.fallBackManageDiets',
 }
 
 export const defaultNavPt = {
@@ -10,6 +11,7 @@ export const defaultNavPt = {
   patients: 'Meus Pacientes',
   newPacient: 'Novo Paciente',
   manageDiets: 'Minhas Dietas',
+  fallBackManageDiets: 'Carregando Dietas',
 }
 
 export const defaultNavEn = {
@@ -17,4 +19,5 @@ export const defaultNavEn = {
   patients: 'My Patients',
   newPacient: 'New Pacient',
   manageDiets: 'My diets',
+  fallBackManageDiets: 'Loading Dietas',
 }
