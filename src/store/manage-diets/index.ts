@@ -12,6 +12,8 @@ import { names } from '@/enums/collections/firebase'
 import { UserGetters, USER_NAMESPACE } from '../user/types'
 import { Snapshot } from '@/models/firebase'
 import { firebaseQuerys } from '@/enums/firebaseQuerys'
+import storage from '@/helpers/localStorage/localStorage'
+import { storageKey } from '@/enums/storageKeys'
 
 const user = USER_NAMESPACE + '/' + UserGetters.USER
 
@@ -134,16 +136,20 @@ const actions: ActionTree<ManageDietsState, {}> = {
 
 const mutations: MutationTree<ManageDietsState> = {
   [ManageDietsMutations.GET_DIETS](state, diets: Diet[]) {
+    storage.set(storageKey.diets, diets)
     state.diets = diets
   },
   [ManageDietsMutations.POST_DIETS](state, diet: Diet) {
     state.diets.unshift(diet)
+    storage.set(storageKey.diets, state.diets)
   },
   [ManageDietsMutations.UPDATE_DIET](state, { diet, index }) {
     state.diets[index] = diet
+    storage.set(storageKey.diets, state.diets)
   },
   [ManageDietsMutations.DELETE_DIET](state, index) {
     state.diets.splice(index, 1)
+    storage.set(storageKey.diets, state.diets)
   },
 }
 

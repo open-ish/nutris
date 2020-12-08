@@ -11,6 +11,12 @@ import { User } from '@/models/User.ts'
 import '@/assets/styles/index.scss'
 import { i18n } from '@/i18n/index.ts'
 import { UserMutations, USER_NAMESPACE } from './store/user/types'
+import storage from './helpers/localStorage/localStorage'
+import { storageKey } from './enums/storageKeys'
+import {
+  ManageDietsMutations,
+  MANAGE_DIETS_NAMESPACE,
+} from './store/manage-diets/types'
 
 const init = () =>
   createApp(App)
@@ -20,8 +26,11 @@ const init = () =>
     .mount('#app')
 
 const setUser = USER_NAMESPACE + '/' + UserMutations.CHANGE_USER
+const setDiets = MANAGE_DIETS_NAMESPACE + '/' + ManageDietsMutations.GET_DIETS
 
 FirebaseApp.auth().onAuthStateChanged(async (user: User) => {
+  const diets = storage.get(storageKey.diets)
+  diets && store.commit(setDiets, diets)
   await store.commit(setUser, user)
   init()
 })
