@@ -3,4 +3,5 @@ export enum names {
   diets = 'diets',
   history = 'history',
   patients = 'patients',
+  calculationHistory = 'calculationHistory',
 }

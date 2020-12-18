@@ -8,5 +8,5 @@ export interface CalculationHistory {
     volumeReceived: number
   }
   diet: Diet
-  createdAt: string
+  createdAt: number | Date
 }

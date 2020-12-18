@@ -17,7 +17,7 @@
     />
     <Input
       class="calculator-input"
-      v-model:value="body"
+      v-model:value="currentBody"
       type="number"
       label="Massa corporal/peso atual (em kg)"
     />
@@ -39,7 +39,7 @@
       type="number"
       label="Volume de dieta recebido (em mL)"
     />
-    <Button @click="calculate()" color="primary"> Calcular </Button>
+    <Button @click="calculate" color="primary"> Calcular </Button>
   </div>
 </template>
 
@@ -48,7 +48,7 @@ import { defineComponent, PropType, ref } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 import { parenteral } from '@open-ish/nutris-roles'
 
-// import { getAge } from '@/helpers/date/date'
+import { postCalculationHistory } from '@/services/calculate.ts'
 import { Patient } from '@/models/Patient'
 import {
   ManageDietsGetters,
@@ -59,6 +59,7 @@ import Input from '@/components/form/input/Input.vue'
 import Select from '@/components/form/select/Select.vue'
 import Button from '@/components/form/button/Button.vue'
 import { Diet } from '@/models/Diet'
+import { timestamp } from '@/helpers/date/date'
 
 const DIETS_MAPS = createNamespacedHelpers(MANAGE_DIETS_NAMESPACE)
 const PATIENTS_MAPS = createNamespacedHelpers(PATIENTS_NAMESPACE)
@@ -79,12 +80,12 @@ export default defineComponent({
     Button,
   },
   setup() {
-    const body = ref('')
+    const currentBody = ref('')
     const diet = ref({} as Diet)
     const calGoal = ref('')
     const proteinGoal = ref('')
     const volumeReceived = ref('')
-    return { body, calGoal, proteinGoal, volumeReceived, diet }
+    return { currentBody, calGoal, proteinGoal, volumeReceived, diet }
   },
   computed: {
     ...DIETS_MAPS.mapGetters({
@@ -94,24 +95,27 @@ export default defineComponent({
       findPatient: PatientsGetters.FIND_PATIENT,
     }),
   },
-  created() {
-    // this.patient = this.findPatient(this.id)
-  },
   methods: {
-    calculate() {
+    async calculate() {
       const data = {
         patient: {
-          body: Number(this.body),
+          currentBody: Number(this.currentBody),
           calGoal: Number(this.calGoal),
           proteinGoal: Number(this.proteinGoal),
           volumeReceived: Number(this.volumeReceived),
         },
         diet: {
-          cal: Number(this.diet.calAmount),
-          protein: Number(this.diet.proteinAmount),
+          ...this.diet,
+          calAmount: Number(this.diet.calAmount),
+          proteinAmount: Number(this.diet.proteinAmount),
         },
+        createdAt: timestamp(),
       }
-      console.log('paraenteral', parenteral(data))
+      if (!this.id) return
+      const response = await postCalculationHistory({
+        historyId: this.id,
+        data,
+      })
     },
   },
 })

@@ -28,5 +28,5 @@ export enum Names {
   // Patients Routes
   patients = 'Patients',
   patientsNew = 'PatientsNew',
-  patientsDetails = 'PatientsDetails',
+  patientsHistory = 'PatientsHistory',
 }
