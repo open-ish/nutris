@@ -30,7 +30,7 @@
       <Button
         @click="
           $router.push({
-            name: Names.patientsDetails,
+            name: Names.patientsHistory,
             params: { id: patient.id },
           })
         "

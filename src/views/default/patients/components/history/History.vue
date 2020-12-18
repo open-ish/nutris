@@ -15,9 +15,12 @@
       </p>
     </div>
     <div class="history">
+      <div v-if="isLoadingHistory" class="spinner">
+        <Spinner color="primary" />
+      </div>
       <EmptyState
         class="empty-remove"
-        v-if="!patient.calculationHistory.length"
+        v-else-if="!patient.calculationHistory.length"
         @action="calculateToggle"
       >
         <p>Ainda não há registros para esse paciente.</p>
@@ -37,7 +40,7 @@
       </div>
     </div>
     <Modal @click="calculateToggle" v-if="isCalculate">
-      <Calculator :patient="patient" />
+      <Calculator :id="id" :patient="patient" />
     </Modal>
   </section>
 </template>
@@ -48,23 +51,27 @@ import { createNamespacedHelpers } from 'vuex'
 
 import EmptyState from '@/components/empty-state/EmptyState.vue'
 import FixedBtn from '@/components/form/button/FixedBtn.vue'
+import Spinner from '@/components/spinner/Spinner.vue'
 import { chunkName } from '@/enums/chunkName'
 import { getAge } from '@/helpers/date/date'
 import { Patient } from '@/models/Patient'
+import { getCalculationHistory } from '@/services/calculate.ts'
 import { PatientsGetters, PATIENTS_NAMESPACE } from '@/store/patients/types'
 
 const PATIENTS_MAPS = createNamespacedHelpers(PATIENTS_NAMESPACE)
 const { calculator, modal } = chunkName
 
 export default defineComponent({
-  name: 'PatientDetail',
+  name: 'History',
   props: {
     id: {
       type: String,
+      required: true,
     },
   },
   components: {
     EmptyState,
+    Spinner,
     Calculator: defineAsyncComponent(() =>
       import(
         /* webpackChunkName: "[request]" */ `../../../../../components/calculator/${calculator}.vue`
@@ -80,17 +87,36 @@ export default defineComponent({
   setup() {
     const patient = reactive({} as Patient)
     const isCalculate = ref(false)
+    const isLoadingHistory = ref(false)
     const calculateToggle = () => (isCalculate.value = !isCalculate.value)
+    const historyToggle = () =>
+      (isLoadingHistory.value = !isLoadingHistory.value)
 
-    return { getAge, patient, isCalculate, calculateToggle }
+    return {
+      getAge,
+      patient,
+      isCalculate,
+      calculateToggle,
+      isLoadingHistory,
+      historyToggle,
+    }
   },
   computed: {
     ...PATIENTS_MAPS.mapGetters({
       findPatient: PatientsGetters.FIND_PATIENT,
     }),
   },
-  created() {
+  async created() {
     this.patient = this.findPatient(this.id)
+    this.historyToggle()
+    const response = await getCalculationHistory({
+      historyId: this.id,
+    })
+    this.historyToggle()
+
+    if (!response) return
+
+    this.patient.calculationHistory = response
   },
 })
 </script>
@@ -107,5 +133,10 @@ export default defineComponent({
 
 .history {
   margin-top: var(--space-sm);
+}
+
+.spinner {
+  margin: var(--space-xlg) auto;
+  width: min-content;
 }
 </style>
