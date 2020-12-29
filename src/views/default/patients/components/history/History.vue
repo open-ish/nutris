@@ -62,7 +62,7 @@ import Spinner from '@/components/spinner/Spinner.vue'
 import { chunkName } from '@/enums/chunkName'
 import { getAge } from '@/helpers/date/date'
 import { Patient } from '@/models/Patient'
-import { getCalculationHistory } from '@/services/calculate.ts'
+import { getCalculationHistory } from '@/services/calculate.service'
 import { PatientsGetters, PATIENTS_NAMESPACE } from '@/store/patients/types'
 
 const PATIENTS_MAPS = createNamespacedHelpers(PATIENTS_NAMESPACE)
@@ -97,7 +97,7 @@ export default defineComponent({
     const isCalculate = ref(false)
     const isLoadingHistory = ref(false)
     const calculateToggle = () => (isCalculate.value = !isCalculate.value)
-    const historyToggle = () =>
+    const historyLoading = () =>
       (isLoadingHistory.value = !isLoadingHistory.value)
 
     return {
@@ -106,7 +106,7 @@ export default defineComponent({
       isCalculate,
       calculateToggle,
       isLoadingHistory,
-      historyToggle,
+      historyLoading,
     }
   },
   computed: {
@@ -116,11 +116,11 @@ export default defineComponent({
   },
   async created() {
     this.patient = this.findPatient(this.id)
-    this.historyToggle()
+    this.historyLoading()
     const response = await getCalculationHistory({
       historyId: this.id,
     })
-    this.historyToggle()
+    this.historyLoading()
 
     if (!response) return
 
