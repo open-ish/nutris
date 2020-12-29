@@ -59,48 +59,21 @@ const actions: ActionTree<PatientsState, {}> = {
       })
       .catch((error: Error) => error.message)
   },
-  // [PatientsActions.UPDATE_DIET](
-  //   { commit, rootGetters, getters },
-  //   { diet, id }
-  // ) {
-  //   const index = getters[PatientsGetters.].findIndex(
-  //     (currentDiet: Diet) => currentDiet.id === id
-  //   )
-  //   const noIndex = index === -1
-  //   return !noIndex
-  //     ? FirebaseApp.db
-  //         .collection(names.users)
-  //         .doc(rootGetters[user].uid)
-  //         .collection(names.)
-  //         .doc(id)
-  //         .set(diet)
-  //         .then(() => {
-  //           commit(PatientsMutations.UPDATE_DIET, {
-  //             diet,
-  //             index,
-  //           })
-  //         })
-  //         .catch((error: Error) => error.message)
-  //     : new Error()
-  // },
-  // [PatientsActions.DELETE_DIET]({ commit, rootGetters, getters }, id) {
-  //   const index = getters[PatientsGetters.].findIndex(
-  //     (diet: Diet) => diet.id === id
-  //   )
-  //   const noIndex = index === -1
-  //   return !noIndex
-  //     ? FirebaseApp.db
-  //         .collection(names.users)
-  //         .doc(rootGetters[user].uid)
-  //         .collection(names.)
-  //         .doc(id)
-  //         .delete()
-  //         .then(() => {
-  //           commit(PatientsMutations.DELETE_DIET, index)
-  //         })
-  //         .catch((error: Error) => error.message)
-  //     : new Error()
-  // },
+  [PatientsActions.UPDATE_HISTORY_LOCALLY](
+    { commit, getters },
+    { history, historyId }
+  ) {
+    const index = getters[PatientsGetters.PATIENTS].findIndex(
+      (currentPatient: Patient) => currentPatient.id === historyId
+    )
+    const noIndex = index === -1
+    return !noIndex
+      ? commit(PatientsMutations.UPDATE_HISTORY_LOCALLY, {
+          history,
+          index,
+        })
+      : new Error()
+  },
 }
 
 const mutations: MutationTree<PatientsState> = {
@@ -110,12 +83,9 @@ const mutations: MutationTree<PatientsState> = {
   [PatientsMutations.POST_PATIENTS](state, patient: Patient) {
     state.patients.unshift(patient)
   },
-  // [PatientsMutations.UPDATE_DIET](state, { diet, index }) {
-  //   state.[index] = diet
-  // },
-  // [PatientsMutations.DELETE_DIET](state, index) {
-  //   state..splice(index, 1)
-  // },
+  [PatientsMutations.UPDATE_HISTORY_LOCALLY](state, { history, index }) {
+    state.patients[index].calculationHistory?.unshift(history)
+  },
 }
 
 export default {

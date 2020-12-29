@@ -70,7 +70,11 @@ import {
   ManageDietsGetters,
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
-import { PatientsGetters, PATIENTS_NAMESPACE } from '@/store/patients/types'
+import {
+  PatientsActions,
+  PatientsGetters,
+  PATIENTS_NAMESPACE,
+} from '@/store/patients/types'
 import Alert from '@/components/alert/Alert.vue'
 import Input from '@/components/form/input/Input.vue'
 import Select from '@/components/form/select/Select.vue'
@@ -86,6 +90,7 @@ import {
 const DIETS_MAPS = createNamespacedHelpers(MANAGE_DIETS_NAMESPACE)
 const PATIENTS_MAPS = createNamespacedHelpers(PATIENTS_NAMESPACE)
 const POPUP_MAPS = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
+
 const error = 'Desculpe, poderia tentar novamente mais tarde? 🙌'
 const success = 'Salvamos esse cálculo pra você ❤️'
 
@@ -138,6 +143,9 @@ export default defineComponent({
     ...POPUP_MAPS.mapActions({
       showMessage: PopupMessageActions.SHOW_MESSAGE,
     }),
+    ...PATIENTS_MAPS.mapActions({
+      updateHistoryLocally: PatientsActions.UPDATE_HISTORY_LOCALLY,
+    }),
     close() {
       this.$emit('close')
     },
@@ -178,10 +186,14 @@ export default defineComponent({
       })
 
       this.errorMessage = !response.error ? '' : error
+
       this.calculatorLoading()
 
       if (this.errorMessage) return
-
+      this.updateHistoryLocally({
+        historyId: this.id,
+        history: data,
+      })
       this.showMessage({ message: success, time: 2000, mode: 'success' })
       this.close()
     },
