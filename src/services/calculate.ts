@@ -1,8 +1,10 @@
 import FirebaseApp from '@/../firebaseApp'
 import { names } from '@/enums/collections/firebase'
-import { CalculationHistory } from '@/models/CalculationHistory'
+import {
+  CalculationHistory,
+  CalculatorIntermediate,
+} from '@/models/CalculationHistory'
 import { Snapshot } from '@/models/firebase'
-import userStore from '@/store/user/index.ts'
 import store from '@/store/'
 import { UserGetters, USER_NAMESPACE } from '@/store/user/types'
 
@@ -35,7 +37,7 @@ export const getCalculationHistory = ({
 }
 
 interface PostCalculationHistoryTypes extends GetCalculationHistoryTypes {
-  data: CalculationHistory
+  data: CalculationHistory | CalculatorIntermediate
 }
 export const postCalculationHistory = ({
   historyId,
