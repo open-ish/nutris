@@ -1,5 +1,13 @@
 <template>
   <div class="calculator">
+    <Button
+      class="btn-cancel"
+      @click="close"
+      variant="text"
+      color="primary"
+      startIcon="nutris-cancel"
+    >
+    </Button>
     <div class="info">
       <h3>Calculadora</h3>
       <p v-if="patient">Paciente: {{ patient.anonymousIdentifier }}</p>
@@ -39,7 +47,15 @@
       type="number"
       label="Volume de dieta recebido (em mL)"
     />
-    <Button @click="calculate" color="primary"> Calcular </Button>
+    <Button
+      :isLoading="isLoading"
+      class="btn-calculate"
+      @click="calculate"
+      color="primary"
+    >
+      Calcular
+    </Button>
+    <Alert v-if="errorMessage" :error="errorMessage" />
   </div>
 </template>
 
@@ -48,21 +64,30 @@ import { defineComponent, PropType, ref } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 import { parenteral } from '@open-ish/nutris-roles'
 
-import { postCalculationHistory } from '@/services/calculate.ts'
+import { postCalculationHistory } from '@/services/calculate.service'
 import { Patient } from '@/models/Patient'
 import {
   ManageDietsGetters,
   MANAGE_DIETS_NAMESPACE,
 } from '@/store/manage-diets/types'
 import { PatientsGetters, PATIENTS_NAMESPACE } from '@/store/patients/types'
+import Alert from '@/components/alert/Alert.vue'
 import Input from '@/components/form/input/Input.vue'
 import Select from '@/components/form/select/Select.vue'
 import Button from '@/components/form/button/Button.vue'
 import { Diet } from '@/models/Diet'
 import { timestamp } from '@/helpers/date/date'
+import { CalculatorIntermediate } from '@/models/CalculationHistory'
+import {
+  PopupMessageActions,
+  POPUP_MESSAGE_NAMESPACE,
+} from '@/store/popup-message/types'
 
 const DIETS_MAPS = createNamespacedHelpers(MANAGE_DIETS_NAMESPACE)
 const PATIENTS_MAPS = createNamespacedHelpers(PATIENTS_NAMESPACE)
+const POPUP_MAPS = createNamespacedHelpers(POPUP_MESSAGE_NAMESPACE)
+const error = 'Desculpe, poderia tentar novamente mais tarde? 🙌'
+const success = 'Salvamos esse cálculo pra você ❤️'
 
 export default defineComponent({
   name: 'Calculator',
@@ -75,17 +100,31 @@ export default defineComponent({
     },
   },
   components: {
+    Alert,
     Input,
     Select,
     Button,
   },
+  emits: ['close'],
   setup() {
     const currentBody = ref('')
     const diet = ref({} as Diet)
     const calGoal = ref('')
     const proteinGoal = ref('')
     const volumeReceived = ref('')
-    return { currentBody, calGoal, proteinGoal, volumeReceived, diet }
+    const isLoading = ref(false)
+    const errorMessage = ref('')
+    const calculatorLoading = () => (isLoading.value = !isLoading.value)
+    return {
+      currentBody,
+      calGoal,
+      proteinGoal,
+      volumeReceived,
+      diet,
+      isLoading,
+      calculatorLoading,
+      errorMessage,
+    }
   },
   computed: {
     ...DIETS_MAPS.mapGetters({
@@ -96,9 +135,18 @@ export default defineComponent({
     }),
   },
   methods: {
+    ...POPUP_MAPS.mapActions({
+      showMessage: PopupMessageActions.SHOW_MESSAGE,
+    }),
+    close() {
+      this.$emit('close')
+    },
     async calculate() {
-      const data = {
+      this.calculatorLoading()
+      const data: CalculatorIntermediate = {
+        parenteralResult: null,
         patient: {
+          body: Number(this.currentBody),
           currentBody: Number(this.currentBody),
           calGoal: Number(this.calGoal),
           proteinGoal: Number(this.proteinGoal),
@@ -106,16 +154,33 @@ export default defineComponent({
         },
         diet: {
           ...this.diet,
+          cal: Number(this.diet.calAmount),
           calAmount: Number(this.diet.calAmount),
+          protein: Number(this.diet.proteinAmount),
           proteinAmount: Number(this.diet.proteinAmount),
         },
         createdAt: timestamp(),
       }
-      if (!this.id) return
+
+      data.parenteralResult = parenteral(data)
+      delete data.patient.body
+      delete data.diet.cal
+      delete data.diet.protein
+
+      if (!this.id) return this.calculatorLoading()
+
       const response = await postCalculationHistory({
         historyId: this.id,
         data,
       })
+
+      this.errorMessage = !response.error ? '' : error
+
+      !this.errorMessage &&
+        this.showMessage({ message: success, time: 2000, mode: 'success' })
+
+      this.calculatorLoading()
+      this.close()
     },
   },
 })
@@ -129,6 +194,13 @@ export default defineComponent({
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
+}
+
+.btn-cancel {
+  position: absolute;
+  right: calc(var(--space-sm) * -1);
+  padding: 0;
 }
 
 .info {
@@ -136,7 +208,7 @@ export default defineComponent({
   margin-bottom: var(--space-sm);
 }
 
-.button {
+.btn-calculate {
   margin-top: var(--space-sm);
 }
 
