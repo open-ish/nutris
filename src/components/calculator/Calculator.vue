@@ -141,9 +141,8 @@ export default defineComponent({
     close() {
       this.$emit('close')
     },
-    async calculate() {
-      this.calculatorLoading()
-      const data: CalculatorIntermediate = {
+    dataHandled() {
+      return {
         parenteralResult: null,
         patient: {
           body: Number(this.currentBody),
@@ -161,6 +160,10 @@ export default defineComponent({
         },
         createdAt: timestamp(),
       }
+    },
+    async calculate() {
+      this.calculatorLoading()
+      const data: CalculatorIntermediate = this.dataHandled()
 
       data.parenteralResult = parenteral(data)
       delete data.patient.body
@@ -175,11 +178,11 @@ export default defineComponent({
       })
 
       this.errorMessage = !response.error ? '' : error
-
-      !this.errorMessage &&
-        this.showMessage({ message: success, time: 2000, mode: 'success' })
-
       this.calculatorLoading()
+
+      if (this.errorMessage) return
+
+      this.showMessage({ message: success, time: 2000, mode: 'success' })
       this.close()
     },
   },
