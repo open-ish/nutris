@@ -28,8 +28,14 @@
           Fazer cálculo
         </template>
       </EmptyState>
-      <div v-else class="data">
-        {{ patient.calculationHistory }}
+      <div v-else-if="patient.calculationHistory.length" class="data">
+        <div class="cards">
+          <Card
+            v-for="item in patient.calculationHistory"
+            :item="item"
+            :key="item.id"
+          />
+        </div>
         <FixedBtn
           @click="calculateToggle"
           mode="insert"
@@ -40,7 +46,7 @@
       </div>
     </div>
     <Modal @click="calculateToggle" v-if="isCalculate">
-      <Calculator :id="id" :patient="patient" />
+      <Calculator @close="calculateToggle" :id="id" :patient="patient" />
     </Modal>
   </section>
 </template>
@@ -49,6 +55,7 @@
 import { defineComponent, reactive, defineAsyncComponent, ref } from 'vue'
 import { createNamespacedHelpers } from 'vuex'
 
+import Card from './components/Card.vue'
 import EmptyState from '@/components/empty-state/EmptyState.vue'
 import FixedBtn from '@/components/form/button/FixedBtn.vue'
 import Spinner from '@/components/spinner/Spinner.vue'
@@ -70,6 +77,7 @@ export default defineComponent({
     },
   },
   components: {
+    Card,
     EmptyState,
     Spinner,
     Calculator: defineAsyncComponent(() =>
