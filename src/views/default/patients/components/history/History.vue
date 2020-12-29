@@ -45,7 +45,7 @@
         />
       </div>
     </div>
-    <Modal @click="calculateToggle" v-if="isCalculate">
+    <Modal type="full" @click="calculateToggle" v-if="isCalculate">
       <Calculator @close="calculateToggle" :id="id" :patient="patient" />
     </Modal>
   </section>
