@@ -1,5 +1,7 @@
 import firebase from 'firebase'
 import user from '@/store/user/index.ts'
+import { LayoutsPaths } from '@/router/enums'
+import { Paths } from '@/router/alt/enums'
 
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider()
@@ -19,7 +21,8 @@ export const logout = () => {
     .then(() => {
       firebase.auth().currentUser
       user.mutations.CHANGE_USER({})
-      window.location.replace('/alt/home')
+      const homePath = LayoutsPaths.alt + Paths.home
+      window.location.replace(homePath)
     })
     .catch((error: Error) => error)
 }

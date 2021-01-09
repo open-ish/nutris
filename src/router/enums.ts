@@ -5,5 +5,5 @@ export enum LayoutsName {
 
 export enum LayoutsPaths {
   default = '/',
-  alt = '/alt',
+  alt = '/',
 }
