@@ -210,16 +210,22 @@ export default defineComponent({
 
   & > .data {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     flex-grow: 1;
 
+    > :not(:last-of-type) {
+      margin-right: var(--space-sm);
+      margin-bottom: var(--space-xs);
+    }
+
     @media screen and (max-width: $screen-sm) {
       margin-bottom: var(--space-sm);
+      justify-content: space-around;
     }
 
     @media screen and (min-width: $screen-sm) {
       margin-right: var(--space-lg);
+      justify-content: space-between;
     }
   }
 }
@@ -270,6 +276,7 @@ h3 {
 .item {
   &:not(:last-child) {
     margin-bottom: var(--space-xs);
+    margin-right: var(--space-sm);
   }
 
   &-title {
