@@ -1,5 +1,5 @@
 export enum Paths {
-  welcome = '/welcome',
+  welcome = '',
   calculate = '/calculate',
   history = '/history',
   patients = '/patients',
