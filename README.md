@@ -10,7 +10,7 @@ Web App to calculate parenteral diets. [See old version running here!👀](https
 
 This project uses:
 
-- [Vue ❤️](https://vuejs.org/) - Awesome JS Framawork!
+- [Vue ❤️](https://vuejs.org/) - Awesome JS Framework!
 - [TypeScript](https://www.typescriptlang.org/) - To build a secure code and avoid bugs.
 - [Sass](https://sass-lang.com/) - CSS Pre-processor with nice approach.
 - [Jest](https://jestjs.io/docs/en/getting-started) - To create unit test and avoid bugs.
